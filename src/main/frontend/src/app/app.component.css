@@ -1,0 +1,18 @@
+
+
+.app-title {
+	color: white;
+	background-color: purple;
+	width:100%;
+	padding: 3px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+.icon-offline {
+	width: 30px; /* you can use % */
+	height: auto;
+	margin-right: 5px;
+}

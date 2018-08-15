@@ -1,0 +1,47 @@
+.mine-list {
+	background-color: #ccccff;
+	border: thin;
+	color: black;
+	margin: auto;
+	width: 100%;
+	border: 3px solid #fdffff;
+	padding: 10px;
+}
+
+.mine-search{
+	display: inline-block;
+	margin: 2px;
+	margin-bottom: 5px;
+}
+
+.mine-search-title {
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+.mine-search-form {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.mine-result {
+	display: inline;
+	border: 1px solid #0B0B61;
+	margin: 2px;
+	background-color: #086A87;
+	padding: 3px;
+}
+
+.mine-result:hover {
+	display: inline;
+	border: 1px solid #0B0B61;
+	margin: 2px;
+	background-color: #ffffff;
+	color: #0B0B61;
+	padding: 3px;
+}
+
+.form-control {
+	display: inline-block;
+}

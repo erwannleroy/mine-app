@@ -1,0 +1,12 @@
+<script src="jsstore.min.js"></script>
+
+<div class="app-title">
+	<span>Gestion des bassins</span>
+	<div *ngIf="isOffline()">
+	<img  class="icon-offline" src="../assets/icons/offline.jpg" />
+	</div>
+</div>
+<app-mine-list></app-mine-list>
+<app-mine-fiche></app-mine-fiche>
+<app-bassin-historique></app-bassin-historique>
+<app-releve-bassin-form></app-releve-bassin-form>

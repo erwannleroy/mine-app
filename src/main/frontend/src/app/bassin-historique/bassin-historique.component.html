@@ -1,0 +1,15 @@
+<div class="bassin-historique" *ngIf="bassin">
+TOTO
+<span *ngIf="bassin.evenements">Entretiens & Incidents</span>
+	<table class="bassin-table" *ngIf="bassin.evenements">
+		<tr class="bassin-item" *ngFor="let e of bassin.evenements">
+			<td>{{e.date}}</td>
+			<td>{{e.type}}</td>
+			<td>{{e.description}}</td>
+		</tr>
+	</table>
+	<div>
+	<button (click)="nouvelleFiche()">Nouvelle fiche de visite</button>
+	</div>
+</div>
+

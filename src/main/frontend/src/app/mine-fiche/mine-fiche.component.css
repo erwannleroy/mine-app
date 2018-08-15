@@ -1,0 +1,54 @@
+.mine-fiche {
+	background-color: white;
+	border: thin;
+	color: black;
+	margin: auto;
+	width: auto;
+	border: 1px solid #fdffff;
+	padding: 10px;
+	/*     display:inline-block; */
+}
+
+.mine-info {
+	background-color: white;
+	color: black;
+	margin: auto;
+	width: auto;
+	display: inline;
+}
+
+.fiche-title {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.bassin-list {
+	background-color: white;
+	border: thin;
+	color: black;
+	margin: auto;
+	width: auto;
+	border: 1px solid #fdffff;
+	padding: 10px;
+}
+
+.bassin-title {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.bassin-item {
+	display: inline-block;
+	border: 1px solid black;
+	margin: 3px;
+}
+
+.bassin-item-list {
+	
+}
+
+.icon-map {
+	width: 30px; /* you can use % */
+	height: auto;
+	margin-right: 5px;
+}
