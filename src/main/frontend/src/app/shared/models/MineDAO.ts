@@ -1,4 +1,4 @@
-import {Deserializable} from './deserializable';
+import {Deserializable} from './Deserializable';
 
 export class MineDAO implements Deserializable {
   nom: string;
