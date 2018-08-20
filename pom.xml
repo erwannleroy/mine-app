@@ -12,12 +12,12 @@
 	<name>mine-app</name>
 	<description>Application full stack</description>
 
-     <parent>
-             <groupId>org.springframework.boot</groupId>
-             <artifactId>spring-boot-starter-parent</artifactId>
-             <version>2.0.2.RELEASE</version>
-             <relativePath/> <!-- lookup parent from repository -->
-       </parent>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.2.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -67,50 +67,89 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.github.eirslett</groupId>
-				<artifactId>frontend-maven-plugin</artifactId>
+	<profiles>
+		<profile>
+			<id>production</id>
 
-				<configuration>
-					<nodeVersion>v8.11.3</nodeVersion>
-					<npmVersion>5.6.0</npmVersion>
-					<nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
-					<workingDirectory>src/main/frontend</workingDirectory>
-				</configuration>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
 
-				<executions>
-					<execution>
-						<id>install node and npm</id>
-						<goals>
-							<goal>install-node-and-npm</goal>
-						</goals>
-					</execution>
-
-					<execution>
-						<id>npm install</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-					</execution>
-
-					<execution>
-						<id>npm run build</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
 
 						<configuration>
-							<arguments>run build</arguments>
+							<nodeVersion>v8.11.3</nodeVersion>
+							<npmVersion>5.6.0</npmVersion>
+							<nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+							<workingDirectory>src/main/frontend</workingDirectory>
 						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+
+						<executions>
+							<execution>
+								<id>install node and npm</id>
+								<goals>
+									<goal>install-node-and-npm</goal>
+								</goals>
+							</execution>
+
+							<execution>
+								<id>npm install</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+							</execution>
+
+							<execution>
+								<id>npm run build</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+
+								<configuration>
+									<arguments>run build</arguments>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>dev</id>
+			<!-- Some other logic here, if necessary. Otherwise, there's no need for 
+				another profile. -->
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>3.1.0</version>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>src/main/resources/dist</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+									<followSymlinks>false</followSymlinks>
+								</fileset>
+							</filesets>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

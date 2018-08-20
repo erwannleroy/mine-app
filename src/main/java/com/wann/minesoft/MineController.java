@@ -18,20 +18,20 @@ public class MineController {
 	@Autowired
 	private MineRepository repo;
 	
-	@GetMapping("/minesAll")
-	@CrossOrigin(origins = {"http://localhost:4200","http://localhost:8081","http://127.0.0.1:8081"})
+	@GetMapping("/services/mines-all")
+	@CrossOrigin
 	public List<Mine> retrieveAll() {
 		List<Mine> result = repo.findAll();
 		return result;
 	}
 	
-	@GetMapping("/mines")
-	@CrossOrigin(origins = {"http://localhost:4200","http://localhost:8081","http://127.0.0.1:8081"})
+	@GetMapping("/services/mines-by-name")
+	@CrossOrigin
 	public Collection<Mine> findByName(@RequestParam String name) {
 		return repo.findByNomContaining(name);
 	}
 	
-	@PostMapping(path="/mines")
+	@PostMapping(path="/services/mines")
 	public Mine addMine(@RequestBody Mine m) {
 		Mine save = repo.save(m);
 		return save;
