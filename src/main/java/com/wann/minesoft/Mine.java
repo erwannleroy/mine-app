@@ -15,21 +15,21 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="MINE")
+@Table(name="mine")
 @Data
 public class Mine {
 
     @Id
-    @Column(name="ID")
+    @Column(name="id")
     private String id;
-    @Column(name="NOM")
+    @Column(name="nom")
     private String nom;
     
-    @Column(name="GPS") 
+    @Column(name="gps") 
     private String gps;
 
     @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name="FK_MINE")
+    @JoinColumn(name="fk_mine")
     private List<Bassin> bassins;
 
     

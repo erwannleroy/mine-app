@@ -12,22 +12,22 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="EVENEMENT")
+@Table(name="evenement")
 @Data
 public class Evenement {
 
     @Id
-    @Column(name="ID")
+    @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name="TYPE")
+    @Column(name="type")
     private String type;
     
-    @Column(name="DATE")
-    private Calendar date;
+    @Column(name="date_evt")
+    private Calendar dateEvt;
     
-    @Column(name="DESCRIPTION") 
+    @Column(name="description") 
     private String description;
 
     public Evenement() {

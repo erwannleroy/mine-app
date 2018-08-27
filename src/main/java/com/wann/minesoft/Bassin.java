@@ -16,28 +16,28 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "BASSIN")
+@Table(name = "bassin")
 @Data
 public class Bassin {
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
 	private String id;
 
-	@Column(name = "NOM")
+	@Column(name = "nom")
 	private String nom;
 
-	@Column(name = "VOLUME_OBJECTIF")
+	@Column(name = "volume_objectif")
 	private Integer volumeObjectif;
 
-	@Column(name = "VOLUME_REEL")
+	@Column(name = "volume_reel")
 	private Integer volumeReel;
 
-	@Column(name = "GPS")
+	@Column(name = "gps")
 	private String gps;
 
 	@OneToMany
-	@JoinColumn(name = "FK_BASSIN")
+	@JoinColumn(name = "fk_bassin")
 	private List<Evenement> evenements;
 
 //	@OneToMany
