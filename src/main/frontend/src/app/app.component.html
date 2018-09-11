@@ -1,12 +1,11 @@
-<script src="jsstore.min.js"></script>
-
+<base href="/">
 <div class="app-title">
-	<span>Gestion des bassins</span>
-	<div *ngIf="isOffline()">
-	<img  class="icon-offline" src="../assets/icons/offline.jpg" />
-	</div>
+<img class="icon-logout" src="../assets/icons/logout.svg"  routerLink="/login"/>
+	<span>Gestion des bassins</span> <img *ngIf="!isOffline()"
+		class="icon-offline" src="../assets/icons/offline.png" /> <img
+		*ngIf="isOffline()" class="icon-offline"
+		src="../assets/icons/online.png" />
 </div>
-<app-mine-list></app-mine-list>
-<app-mine-fiche></app-mine-fiche>
-<app-bassin-historique></app-bassin-historique>
-<app-releve-bassin-form></app-releve-bassin-form>
+
+
+	<router-outlet class="outlet"></router-outlet>

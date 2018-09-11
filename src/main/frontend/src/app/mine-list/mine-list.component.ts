@@ -1,5 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {MineService, UtilityService} from '../shared';
+import { fadeAnimation } from '../shared/animation';
 import {Mine} from '../shared/models/Mine';
 import {Subscription} from 'rxjs';
 
@@ -10,7 +11,6 @@ import {Subscription} from 'rxjs';
 })
 export class MineListComponent implements OnInit, OnDestroy {
   mines: Mine[];
-  subscription: Subscription;
   globalSearch: string;
 
   constructor(private mineService: MineService, private utilityService: UtilityService) {
@@ -26,8 +26,6 @@ export class MineListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
   }
 
   displayMine(m: Mine) {

@@ -14,6 +14,11 @@ import {BassinHistoriqueComponent} from './bassin-historique/bassin-historique.c
 import {LocalStorage} from '@ngx-pwa/local-storage';
 import {MineStoreComponent} from './mine-store/mine-store.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { routingModule } from './/app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MineFindComponent } from './mine-find/mine-find.component';
 
 
 @NgModule({
@@ -26,15 +31,20 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     GlobalSearchFormComponent,
     MineFicheComponent,
     BassinHistoriqueComponent,
-    MineStoreComponent
+    MineStoreComponent,
+    LoginComponent,
+    MineFindComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    routingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
