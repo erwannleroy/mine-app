@@ -1,0 +1,22 @@
+:root {
+  --noir: rgba(37, 22, 5, 1);
+  
+--marron: rgba(197, 123, 87, 1);
+--rose: rgba(241, 171, 134, 1);
+--orange: rgba(242, 100, 25, 1);
+--orangeclair: rgba(245, 166, 91, 1);
+--grisclair: #CCCCCC;
+}
+/* You can add global styles to this file, and also import other style files */
+html, body {
+	width: 100%;
+	/*                 height: 100%; */
+	margin: 0px;
+	padding: 0px;
+	background-color: var(--color-1);
+	display: block;
+	overflow: auto;
+	min-height: 100% !important;
+	font-family: "Roboto", sans-serif;
+}
+

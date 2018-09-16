@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-mine-store',
   templateUrl: './mine-store.component.html',
-  styleUrls: ['./mine-store.component.css']
+  styleUrls: ['./mine-store.component.scss']
 })
 export class MineStoreComponent implements OnInit {
 

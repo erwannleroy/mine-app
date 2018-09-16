@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MineFindComponent } from './mine-find.component';
+import { DataOfflineComponent } from './data-offline.component';
 
-describe('MineFindComponent', () => {
-  let component: MineFindComponent;
-  let fixture: ComponentFixture<MineFindComponent>;
+describe('DataOfflineComponent', () => {
+  let component: DataOfflineComponent;
+  let fixture: ComponentFixture<DataOfflineComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MineFindComponent ]
+      declarations: [ DataOfflineComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MineFindComponent);
+    fixture = TestBed.createComponent(DataOfflineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

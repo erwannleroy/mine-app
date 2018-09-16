@@ -6,7 +6,7 @@ import {Bassin} from '../shared/models/Bassin';
 @Component({
   selector: 'app-mine-fiche',
   templateUrl: './mine-fiche.component.html',
-  styleUrls: ['./mine-fiche.component.css']
+  styleUrls: ['./mine-fiche.component.scss']
 })
 export class MineFicheComponent implements OnInit {
 

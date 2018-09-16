@@ -1,0 +1,35 @@
+	/*
+
+771100	CC6633	FF9900	999999	CCCCCC
+*/
+
+.app-menu {
+	
+}
+
+.app-menu ul {
+	display: flex;
+	width: 100%;
+	margin-top: 0px;
+	padding: 0;
+}
+
+.app-menu ul li {
+	padding: 5px 0px 5px 0px;
+	background-color: var(--orangeclair);
+	color: var(--noir);;
+	display: block;
+	width: 33%;
+	font-size: 14px;
+	text-align: center;
+	border: 1px solid #999999;
+}
+
+.notselected {
+	font-weight: normal;
+	color: #CCCCCC;
+}
+
+.selected {
+	font-weight: bold;
+}

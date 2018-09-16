@@ -1,0 +1,21 @@
+<div [@fade]="'in'">
+	<app-menu></app-menu>
+	<div class="mines">
+		<span class="mines-label" >Mines stockées en hors ligne</span>
+		<ul *ngFor="let m of mines">
+			<li class="name">{{m.nom}}</li>
+			<li *ngIf="m.uptodate" class="uptodate"><img class="icon"
+				src="../assets/icons/uptodate.png" /></li>
+			<li *ngIf="!m.uptodate" class="outtodate" onClick="update(m)"><img
+				class="icon" src="../assets/icons/update.png" /></li>
+			<li class="delete" onClick="delete(m)"><img class="icon"
+				src="../assets/icons/delete.png" /></li>
+		</ul>
+	</div>
+	
+	<div class="visites">
+		<span class="visites-label" >Visites à synchroniser</span>
+		
+	</div>
+
+</div>

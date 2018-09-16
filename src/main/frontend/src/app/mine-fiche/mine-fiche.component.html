@@ -1,29 +1,24 @@
 <div class="mine-fiche" *ngIf="mine">
-	<div class="mine-info">
-		<div style="vertical-align: middle;">
-			<span class="fiche-title">{{mine.nom}}</span> <a target="_blank"
-				href="https://www.google.com/maps/place/{{mine.gps}}"> <img
-				class="icon-map" src="../assets/images/icon-map.jpg" /></a>
-				<button (click)=downloadData()>TÈlÈcharger en vue d'une visite</button>
-		</div>
+	<div class="mine-bandeau">
+		<span class="fiche-title">{{mine.nom}}</span>
+		<!-- 			<div class="icon-map"> -->
+		<!-- 				<a target="_blank"  -->
+		<!-- 					href="https://www.google.com/maps/place/{{mine.gps}}">  -->
+		<img class="icon-map" src="../assets/icons/icon-map.png" />
+		<!-- 					 </a> -->
+		<!-- 			</div> -->
 	</div>
+	<button (click)=downloadData()>T√©l√©charger en vue d'une visite</button>
+	<span>Propri√©taire</span> <span>Adresse</span>
 
-	<div class="bassin-list">
-		<div class="bassin-title">Liste des bassins</div>
-		<div class="bassin-item-list">
-			<div class="bassin-item" *ngFor="let b of mine.bassins"
-				(click)="displayBassin(b)">
-				<div>{{b.nom}}</div>
-				<div>
-					<a target="_blank"
-						href="https://www.google.com/maps/place/{{b.gps}}">Postion
-						Google map</a>
-				</div>
-				<div>Volume objectif : {{b.volumeObjectif}}</div>
-				<div>Volume rÈel : {{b.volumeReel}}</div>
-			</div>
+	<div class="mine-visites">
+		<span>Derni√®res visites</span>
+		<div class="mine-visite">
+			<span>11/02/2018 par Robert Plant (4 ouvrages)</span>
 		</div>
-
+		<div class="mine-visite">
+			<span>11/02/2018 par Robert Plant (7 ouvrages)</span>
+		</div>
 	</div>
 </div>
 

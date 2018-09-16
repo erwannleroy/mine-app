@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-mine-list',
   templateUrl: './mine-list.component.html',
-  styleUrls: ['./mine-list.component.css']
+  styleUrls: ['./mine-list.component.scss']
 })
 export class MineListComponent implements OnInit, OnDestroy {
   mines: Mine[];

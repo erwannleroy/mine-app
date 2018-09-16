@@ -8,7 +8,7 @@ import {Network} from '@ngx-pwa/offline';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   providers: [MineService, UtilityService, JsStoreService, BaseService],
   animations: [fadeAnimation] // register the animation
 })
@@ -19,7 +19,7 @@ export class AppComponent {
   constructor(protected network: Network) {}
 
   isOffline(): Boolean {
-    console.log("online ? " + this.network.online);
+//    console.log("online ? " + this.network.online);
     return !this.network.online;
   }
 

@@ -5,7 +5,7 @@ import {MineService, UtilityService} from '../shared';
 @Component({
   selector: 'app-bassin-historique',
   templateUrl: './bassin-historique.component.html',
-  styleUrls: ['./bassin-historique.component.css']
+  styleUrls: ['./bassin-historique.component.scss']
 })
 export class BassinHistoriqueComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-global-search-form',
   templateUrl: './global-search-form.component.html',
-  styleUrls: ['./global-search-form.component.css']
+  styleUrls: ['./global-search-form.component.scss']
 })
 export class GlobalSearchFormComponent implements OnInit {
   globalSearch: string;

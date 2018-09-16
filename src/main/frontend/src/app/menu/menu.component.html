@@ -1,0 +1,10 @@
+<div class="app-menu">
+	<ul>
+		<li (click)="go('gestionbassin')" *ngIf="router.url != '/gestionbassin'" class="notselected">Gestion des bassins</li>
+		<li (click)="go('gestionbassin')" *ngIf="router.url == '/gestionbassin'" class="selected">Gestion des bassins</li>
+		<li (click)="go('visite')" *ngIf="router.url != '/visite'" class="notselected">Visite d'ouvrage</li>
+		<li (click)="go('visite')" *ngIf="router.url == '/visite'" class="selected">Visite d'ouvrage</li>
+		<li (click)="go('dataoffline')" *ngIf="router.url != '/dataoffline'" class="notselected">Données hors ligne</li>
+		<li (click)="go('dataoffline')" *ngIf="router.url == '/dataoffline'" class="selected">Données hors ligne</li>
+	</ul>
+</div>

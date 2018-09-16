@@ -5,7 +5,7 @@ import { Bassin } from '../shared/models/Bassin';
 @Component({
   selector: 'app-releve-bassin-form',
   templateUrl: './releve-bassin-form.component.html',
-  styleUrls: ['./releve-bassin-form.component.css']
+  styleUrls: ['./releve-bassin-form.component.scss']
 })
 export class ReleveBassinFormComponent implements OnInit {
 

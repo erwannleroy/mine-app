@@ -1,0 +1,38 @@
+	/*
+
+771100	CC6633	FF9900	999999	CCCCCC
+*/
+
+
+.outlet ~ * {
+	/*   position: absolute; */
+	height: 100%;
+	width: 100%;
+	border: 1px solid;
+}
+
+
+
+.app-title {
+	color: var(--noir);
+	background-color: var(--marron);
+	padding: 6px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	
+}
+
+
+
+.icon-offline {
+	width: 24px; /* you can use % */
+	height: auto;
+	float: right;
+}
+
+.icon-logout {
+	width: 24px; /* you can use % */
+	height: auto;
+	float: left;
+}

@@ -1,11 +1,23 @@
 <base href="/">
 <div class="app-title">
-<img class="icon-logout" src="../assets/icons/logout.svg"  routerLink="/login"/>
-	<span>Gestion des bassins</span> <img *ngIf="!isOffline()"
-		class="icon-offline" src="../assets/icons/offline.png" /> <img
-		*ngIf="isOffline()" class="icon-offline"
-		src="../assets/icons/online.png" />
+	<img class="icon-logout" src="../assets/icons/logout.svg"
+		routerLink="/login" /> <span>Gestion des bassins</span> <img
+		*ngIf="!isOffline()" class="icon-offline"
+		src="../assets/icons/offline.png" /> <img *ngIf="isOffline()"
+		class="icon-offline" src="../assets/icons/online.png" />
 </div>
 
 
-	<router-outlet class="outlet"></router-outlet>
+
+
+<router-outlet class="outlet"></router-outlet>
+
+<table>
+	<tr>
+		<td style="background-color:var(--noir);height:10px;"></td>
+		<td style="background-color:var(--rose);height:10px;"></td>
+		<td style="background-color:var(--marron);height:10px;"></td>
+		<td style="background-color:var(--orange);height:10px;"></td>
+		<td style="background-color:var(--orangeclair);height:10px;"></td>
+	</tr>
+</table>

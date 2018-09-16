@@ -1,4 +1,4 @@
-import { environment } from '../environments/environment.prod';
+import {environment} from '../environments/environment.prod';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
@@ -13,12 +13,15 @@ import {MineFicheComponent} from './mine-fiche/mine-fiche.component';
 import {BassinHistoriqueComponent} from './bassin-historique/bassin-historique.component';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 import {MineStoreComponent} from './mine-store/mine-store.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { routingModule } from './/app-routing.module';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MineFindComponent } from './mine-find/mine-find.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {routingModule} from './/app-routing.module';
+import {RouterModule, Routes} from '@angular/router';
+import {LoginComponent} from './login/login.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {GestionBassinComponent} from './gestion-bassin/gestion-bassin.component';
+import {VisiteComponent} from './visite/visite.component';
+import {DataOfflineComponent} from './data-offline/data-offline.component';
+import {MenuComponent} from './menu/menu.component';
 
 
 @NgModule({
@@ -33,13 +36,16 @@ import { MineFindComponent } from './mine-find/mine-find.component';
     BassinHistoriqueComponent,
     MineStoreComponent,
     LoginComponent,
-    MineFindComponent
+    GestionBassinComponent,
+    VisiteComponent,
+    DataOfflineComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     routingModule,
     BrowserAnimationsModule
   ],
