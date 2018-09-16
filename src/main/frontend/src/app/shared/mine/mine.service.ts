@@ -30,8 +30,9 @@ export class MineService {
     console.log('retrievall' + this.network.online);
     if (this.network.online) {
       console.log('on cherche les mines en ONLINE');
-//      console.log('port utilisé : ', process.env.PORT);
-      this.http.get<Mine[]>('http://localhost:8080/services/mines-all').subscribe(data => {
+//      console.log('port utilisï¿½ : ', process.env.PORT);
+      this.http.get<Mine[]>('/services/mines-all').subscribe(data => {
+//      this.http.get<Mine[]>('http://localhost:8080/services/mines-all').subscribe(data => {
         console.log("retour du WS");
         console.log(data);
         this.subject.next(data);
