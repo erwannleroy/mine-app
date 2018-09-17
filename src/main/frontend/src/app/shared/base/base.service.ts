@@ -85,6 +85,13 @@ export class BaseService {
     console.log(mines);
     return mines;
   }
+  deleteMine(nomMine: string) {
+    var nb: Promise<number> = BaseService.connexion.remove({
+      from: 'MINE',
+      where: {nom: nomMine}
+    });
+    console.log("nb mine supprimÃ©e :"+nb);
+  }
 
   selectMines(name: string): Promise<MineDAO[]> {
     var mines: Promise<MineDAO[]>=BaseService.connexion.select({
@@ -109,7 +116,7 @@ export class BaseService {
         alert('Successfully Added');
       }
     }).catch(function(error) {
-      console.log("Erreur à l'insertion : " + error);
+      console.log("Erreur ï¿½ l'insertion : " + error);
       alert(error.message);
     });
   }

@@ -16,20 +16,20 @@
 
 .app-menu ul li {
 	padding: 5px 0px 5px 0px;
-	background-color: var(--orangeclair);
 	color: var(--noir);;
 	display: block;
 	width: 33%;
 	font-size: 14px;
 	text-align: center;
-	border: 1px solid #999999;
+	border: 1px solid var(--grisfonce);
 }
 
 .notselected {
 	font-weight: normal;
-	color: #CCCCCC;
+	background-color: var(--orangeclair);
 }
 
 .selected {
 	font-weight: bold;
+	background-color: var(--orange);
 }

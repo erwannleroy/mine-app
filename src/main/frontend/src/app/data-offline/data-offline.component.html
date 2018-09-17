@@ -1,21 +1,24 @@
 <div [@fade]="'in'">
 	<app-menu></app-menu>
+	<div class="mines-label">Mines stockées en hors ligne</div>
 	<div class="mines">
-		<span class="mines-label" >Mines stockées en hors ligne</span>
-		<ul *ngFor="let m of mines">
-			<li class="name">{{m.nom}}</li>
-			<li *ngIf="m.uptodate" class="uptodate"><img class="icon"
-				src="../assets/icons/uptodate.png" /></li>
-			<li *ngIf="!m.uptodate" class="outtodate" onClick="update(m)"><img
-				class="icon" src="../assets/icons/update.png" /></li>
-			<li class="delete" onClick="delete(m)"><img class="icon"
-				src="../assets/icons/delete.png" /></li>
-		</ul>
+		<div *ngFor="let m of mines" class="mine">
+			<div class="name">{{m.nom}}</div>
+			<div *ngIf="m.uptodate" class="uptodate">
+				<img class="icon" src="../assets/icons/uptodate.png" />
+			</div>
+			<div *ngIf="!m.uptodate" class="outtodate" (click)="update(m)">
+				<img class="icon" src="../assets/icons/update.png" />
+			</div>
+			<div class="delete" (click)="delete(m)">
+				<img class="icon" src="../assets/icons/delete.png" />
+			</div>
+		</div>
 	</div>
-	
+
 	<div class="visites">
-		<span class="visites-label" >Visites à synchroniser</span>
-		
+		<div class="visites-label">Visites à synchroniser</div>
+
 	</div>
 
 </div>

@@ -8,7 +8,7 @@ import {MineOffline} from '../shared/models/MineOffline';
 @Component({
   selector: 'app-data-offline',
   templateUrl: './data-offline.component.html',
-  styleUrls: ['./data-offline.component.css'],
+  styleUrls: ['./data-offline.component.scss'],
   animations: [fadeAnimation] // register the animation
 })
 export class DataOfflineComponent implements OnInit {
@@ -42,6 +42,8 @@ export class DataOfflineComponent implements OnInit {
   }
   
   delete(mine:MineOffline){
-    console.log("suppression de "+mine.nom);  
+    console.log("suppression de "+mine.nom); 
+    this.baseService.deleteMine(mine.nom); 
+    this.ngOnInit();
   }
 }
