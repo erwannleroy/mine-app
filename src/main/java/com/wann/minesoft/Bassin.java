@@ -38,7 +38,7 @@ public class Bassin {
 
 	@OneToMany
 	@JoinColumn(name = "fk_bassin")
-	private List<Evenement> evenements;
+	private List<VisiteMine> evenements;
 
 //	@OneToMany
 //	@JoinColumn(name = "FK_BASSIN")

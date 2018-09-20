@@ -8,13 +8,15 @@
 		</div>
 	</div>
 
-	<div class="mine-results">
-		<div class="mine-result" *ngFor="let m of mines"
+	<div class="mines">
+		<div class="mine" *ngFor="let m of mines"
 			(click)="displayMine(m)">
-			<span>{{m.nom}}</span>
+			{{m.nom}}
 		</div>
 	</div>
 </div>
+
+   
 
 
 
