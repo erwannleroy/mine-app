@@ -2,6 +2,7 @@ package com.wann.minesoft;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,7 +44,7 @@ public class VisiteMine {
 
     @OneToMany(fetch=FetchType.EAGER)
     @JoinColumn(name="fk_mine")
-    private List<VisiteBassin> visitesBassins;
+    private Set<VisiteBassin> visitesBassins;
     
 
     @ManyToOne(fetch=FetchType.EAGER)

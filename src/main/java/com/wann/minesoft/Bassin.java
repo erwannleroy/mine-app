@@ -1,6 +1,7 @@
 package com.wann.minesoft;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +39,7 @@ public class Bassin {
 
 	@OneToMany
 	@JoinColumn(name = "fk_bassin")
-	private List<VisiteMine> evenements;
+	private Set<VisiteMine> evenements;
 
 //	@OneToMany
 //	@JoinColumn(name = "FK_BASSIN")
