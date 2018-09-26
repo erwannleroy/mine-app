@@ -32,9 +32,9 @@ public class Mine {
     @JoinColumn(name="fk_mine")
     private List<Bassin> bassins;
 
-    @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name="fk_mine")
-    private List<VisiteMine> visites;
+//    @OneToMany(fetch=FetchType.EAGER)
+//    @JoinColumn(name="fk_mine")
+//    private List<VisiteMine> visites;
 
     
     public Mine() {

@@ -42,9 +42,9 @@ public class VisiteMine {
     @Column(name="pluviometrie") 
     private Double pluviometrie;
 
-    @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name="fk_mine")
-    private Set<VisiteBassin> visitesBassins;
+//    @OneToMany(fetch=FetchType.EAGER)
+//    @JoinColumn(name="fk_mine")
+//    private Set<VisiteBassin> visitesBassins;
     
 
     @ManyToOne(fetch=FetchType.EAGER)

@@ -39,21 +39,7 @@ public class Bassin {
 
 	@OneToMany
 	@JoinColumn(name = "fk_bassin")
-	private Set<VisiteMine> evenements;
-
-//	@OneToMany
-//	@JoinColumn(name = "FK_BASSIN")
-//	private List<Incident> incidents;
-
-//	@OneToMany
-//	@JoinTable(name = "BASSIN_VERSE", joinColumns = {
-//			@JoinColumn(foreignKey = @ForeignKey(name = "FK_BASSIN_PARENT")) })
-//	private List<Bassin> bassinsParent;
-//
-//	@OneToMany
-//	@JoinTable(name = "BASSIN_VERSE", joinColumns = { 
-//			@JoinColumn(foreignKey = @ForeignKey(name = "FK_BASSIN_ENFANT")) })
-//	private List<Bassin> bassinsEnfant;
+	private Set<VisiteBassin> visiteBassins;
 
 	public Bassin() {
 	}
