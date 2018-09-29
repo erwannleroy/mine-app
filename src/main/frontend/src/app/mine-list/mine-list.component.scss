@@ -4,16 +4,15 @@
 */
 
 .mines {
-padding:10px;
+padding:5px;
 }
 
 
 .mine {
-		display: inline;
-	margin-right: 5px;
+	margin: 5px;
 	background-color: var(--blanc);
 	color: var(--noir);
-	display: table-cell;
+	display: inline-block;
 	font-size: 14px;
 	text-align: center;
 	vertical-align: middle;
@@ -24,10 +23,8 @@ padding:10px;
 
 
 .form {
-  position: relative;
-  z-index: 1;
   background: #CCCCCC;
-  padding: 15px;
+  padding: 5px 10px 5px 10px;
   text-align: center;
 }
 
@@ -36,7 +33,7 @@ padding:10px;
   background: #ffffff;
   width: 100%;
   border: 0;
-  margin: 0 0 15px;
+  //margin: 0 0 15px;
   padding: 5px;
   box-sizing: border-box;
   font-size: 14px;

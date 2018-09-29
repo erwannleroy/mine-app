@@ -1,12 +1,12 @@
-import {UtilityService} from '../utility/utility.service';
-import {BaseService} from '../base/base.service';
-import {Mine} from '../models/Mine';
-import {MineDAO} from '../models/MineDAO';
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {RequestOptions, RequestOptionsArgs, RequestMethod} from '@angular/http';
-import {Network} from '@ngx-pwa/offline';
-import {Observable, Subject} from 'rxjs';
+import { UtilityService } from '../utility/utility.service';
+import { BaseService } from '../base/base.service';
+import { Mine } from '../models/Mine';
+import { MineDAO } from '../models/MineDAO';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
+import { Network } from '@ngx-pwa/offline';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class MineService {
@@ -30,8 +30,8 @@ export class MineService {
     console.log('retrievall' + this.network.online);
     if (this.network.online) {
       console.log('on cherche les mines en ONLINE');
-//      console.log('port utilis� : ', process.env.PORT);
-//      this.http.get<Mine[]>('/services/mines-all').subscribe(data => {
+      //      console.log('port utilis� : ', process.env.PORT);
+      //      this.http.get<Mine[]>('/services/mines-all').subscribe(data => {
       this.http.get<Mine[]>('http://localhost:8080/services/mines-all').subscribe(data => {
         console.log("retour du WS");
         console.log(data);
@@ -56,7 +56,7 @@ export class MineService {
           //          mines[0]=m.content;
           var mine = <Mine>JSON.parse(m.content);
           mines.push(mine);
-        } 
+        }
         console.log("prochain contenu de subject mines");
         console.log(mines);
         this.subject.next(mines);
@@ -70,7 +70,8 @@ export class MineService {
       const myParams = new HttpParams().set('name', name);
 
       console.log(name);
-      this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
+      //this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
+      this.http.get<Mine[]>('http://localhost:8080/services/mines-by-name', { params: myParams }).subscribe(data => {
         this.subject.next(data);
         console.log(data);
       });
@@ -82,7 +83,7 @@ export class MineService {
       this.baseService.selectMines(name).then(data => {
         minesDAO = data;
         console.log("retour du select by name");
-//        console.log(data.content);
+        //        console.log(data.content);
         var mines: Array<Mine> = [];
         for (let m of minesDAO) {
           console.log(m);

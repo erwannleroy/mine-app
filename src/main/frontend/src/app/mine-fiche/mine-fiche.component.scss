@@ -1,8 +1,6 @@
 .mine-fiche {
-}
-
-.mine-info {
-	height: auto;
+	display: table;
+	width: 100%;
 }
 
 .mine-bandeau {
@@ -10,10 +8,16 @@
 	border: 1px solid black;
 }
 
-.fiche-title {
+.mine-nom {
 	font-size: 20px;
 	font-weight: bold;
-	float: left;	
+	background-color: var(--orange);
+	padding : 2px;	
+	margin: 5px 3px 5px 3px;
+}
+
+.storage {
+	padding: 2px;
 }
 
 .icon-map {
@@ -22,20 +26,46 @@
 	float: right;
 }
 
-.mine-visites {
-	display: inline;
+
+.last-visites-title {
+	font-size: 16px;
+	font-weight: bold;
+	align-content: right;
+	background-color: var(--jaunefonce);
+	padding : 2px;	
+	margin: 5px 3px 5px 3px;
 }
 
-button {
-	text-transform: uppercase;
-	outline: 0;
-	background: #FF9900;
-	width: 100%;
-	border: 0;
-	padding: 15px;
-	color: #FFFFFF;
+.visite {
+	background-color: var(--blanc);
+	margin: 5px;
+	color: var(--noir);
 	font-size: 14px;
-	-webkit-transition: all 0.3 ease;
-	transition: all 0.3 ease;
-	cursor: pointer;
+	vertical-align: middle;
+	border: 1px solid var(--marron);
+	padding: 2px 10px 0px 10px;
+}
+
+.visite-general {
+	//display: table-row;
+}
+
+.visite-contexte {
+	font-weight: bold;
+}
+
+.visite-conditions {
+	display: table-row;
+	//vertical-align: middle;
+}
+
+.visite-condition {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+.icon {
+	width: 24px; /* you can use % */
+	height: auto;
 }

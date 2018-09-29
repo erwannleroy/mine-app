@@ -1,4 +1,4 @@
-package com.wann.minesoft;
+package com.wann.minesoft.dao;
 
 import java.util.List;
 
@@ -10,13 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.BatchSize;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name="mine")
 @Data
+@EqualsAndHashCode(exclude="visites")
 public class Mine {
 
     @Id
@@ -28,13 +33,14 @@ public class Mine {
     @Column(name="gps") 
     private String gps;
 
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany
     @JoinColumn(name="fk_mine")
     private List<Bassin> bassins;
 
-//    @OneToMany(fetch=FetchType.EAGER)
-//    @JoinColumn(name="fk_mine")
-//    private List<VisiteMine> visites;
+    @OneToMany
+    @JoinColumn(name="fk_mine")
+    @OrderBy("dateVisite DESC")
+    private List<VisiteMine> visites;
 
     
     public Mine() {

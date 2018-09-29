@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 //import {JsStoreService} from '../jsstore/jsstore.service';
-import {Mine} from '../models/Mine';
-import {MineDAO} from '../models/MineDAO';
+import { Mine } from '../models/Mine';
+import { MineDAO } from '../models/MineDAO';
 import * as JsStore from 'jsstore';
 import {
   IDataBase,
@@ -14,6 +14,8 @@ import * as workerPath from 'file-loader?name=scripts/[name].[hash].js!jsstore/d
   providedIn: 'root'
 })
 export class BaseService {
+
+
 
   static connexion = new JsStore.Instance(new Worker(workerPath));
 
@@ -37,7 +39,7 @@ export class BaseService {
 
     console.log(con);
     console.log('initializeDB exist ? ', con.isDbExist(this.DB_NAME));
-    con.isDbExist(this.DB_NAME).then(function(isExist) {
+    con.isDbExist(this.DB_NAME).then(function (isExist) {
       console.log("DB exist " + isExist);
       console.log(con);
       if (!isExist) {
@@ -56,7 +58,7 @@ export class BaseService {
     const mineTable: ITable = {
       name: "MINE",
       columns: [{
-        name: "nom",
+        name: "key",
         dataType: 'string',
         primaryKey: true
       },
@@ -78,26 +80,27 @@ export class BaseService {
 
 
   getMines(): Promise<MineDAO[]> {
-    var mines: Promise<MineDAO[]>=BaseService.connexion.select({
+    var mines: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE'
     });
     console.log("select MINE");
     console.log(mines);
     return mines;
   }
+
   deleteMine(nomMine: string) {
     var nb: Promise<number> = BaseService.connexion.remove({
       from: 'MINE',
-      where: {nom: nomMine}
+      where: { nom: nomMine }
     });
-    console.log("nb mine supprimée :"+nb);
+    console.log("nb mine supprimée :" + nb);
   }
 
   selectMines(name: string): Promise<MineDAO[]> {
-    var mines: Promise<MineDAO[]>=BaseService.connexion.select({
+    var mines: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE',
       where: {
-        nom: {like: '%'+name+'%'}
+        nom: { like: '%' + name + '%' }
       }
     });
     console.log("select MINE by name");
@@ -105,19 +108,52 @@ export class BaseService {
     return mines;
   }
 
+  existsMine(key: string): Promise<number> {
+    var count: Promise<number> = BaseService.connexion.count({
+      from: 'MINE',
+      where: {
+        nom: key
+      }
+    });
+    console.log("existsMine");
+    console.log(count);
+    return count;
+  }
+
   addMine(mine: Mine) {
+    var success: boolean;
     console.log("add mine : " + mine);
     BaseService.connexion.insert({
       into: "MINE",
-      values: [{nom: mine.nom, content: JSON.stringify(mine)}], //you can insert multiple values at a time
-    }).then(function(rowsInserted) {
+      values: [{ nom: mine.nom, content: JSON.stringify(mine) }], //you can insert multiple values at a time
+    }).then(rowsInserted => {
       console.log('rows inserted : ' + rowsInserted);
-      if (rowsInserted > 0) {
-        alert('Successfully Added');
-      }
-    }).catch(function(error) {
+      success = rowsInserted == 1;
+    }).catch(function (error) {
       console.log("Erreur � l'insertion : " + error);
-      alert(error.message);
+      success = false;
     });
+  }
+
+  updateMine(mine: Mine): boolean {
+    var success: boolean;
+    console.log("update mine : " + mine);
+    BaseService.connexion.update({
+      in: 'MINE',
+      where: {
+        key: mine.nom
+      },
+      set: {
+        content: JSON.stringify(mine)
+      }
+    }).then(rowsUpdated => {
+      console.log('rows updated : ' + rowsUpdated);
+      success = rowsUpdated == 1;
+    }).catch(function (error) {
+      console.log("Erreur a l'insertion : " + error);
+      success = false;
+    });
+
+    return success;
   }
 }

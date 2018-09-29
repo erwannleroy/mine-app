@@ -1,4 +1,4 @@
-package com.wann.minesoft;
+package com.wann.minesoft.dto;
 
 import java.util.Calendar;
 import java.util.List;
@@ -15,44 +15,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
-@Entity
-@Table(name="visite_mine")
 @Data
-public class VisiteMine {
+public class VisiteMineDTO {
 
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(name="date_visite")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Calendar dateVisite;
-    
-    @Column(name="operateur") 
     private String operateur;
-    
-    @Column(name="contexte") 
     private String contexte;
-
-    @Column(name="meteo") 
     private String meteo;
-    
-    @Column(name="pluviometrie") 
     private Double pluviometrie;
-
-//    @OneToMany(fetch=FetchType.EAGER)
-//    @JoinColumn(name="fk_mine")
-//    private Set<VisiteBassin> visitesBassins;
+    private Set<VisiteBassinDTO> visitesBassins;
     
 
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="fk_bassin")
-    private Bassin bassin;
-    
-    public VisiteMine() {
-    }
 
 
 

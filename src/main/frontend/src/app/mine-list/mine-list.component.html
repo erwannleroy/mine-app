@@ -1,24 +1,14 @@
-
 <div class="mine-list-page">
+
 	<div class="form">
-		<div class="mine-form">
-			<input #searchInput type="text" [(ngModel)]="globalSearch"
-				class="mine-search-form" (input)="updatesMines()"
-				placeholder="Tapez le nom d'une mine">
-		</div>
+		<input #searchInput type="text" [(ngModel)]="globalSearch" class="mine-search-form" (input)="updatesMines()"
+		 placeholder="Tapez le nom d'une mine">
 	</div>
 
+
 	<div class="mines">
-		<div class="mine" *ngFor="let m of mines"
-			(click)="displayMine(m)">
+		<div class="mine" *ngFor="let m of mines" (click)="displayMine(m)">
 			{{m.nom}}
 		</div>
 	</div>
 </div>
-
-   
-
-
-
-
-

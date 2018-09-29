@@ -1,4 +1,4 @@
-package com.wann.minesoft;
+package com.wann.minesoft.dao;
 
 import java.util.List;
 import java.util.Set;
@@ -15,10 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 @Entity
 @Table(name = "bassin")
 @Data
+@EqualsAndHashCode(exclude="visiteBassins")
 public class Bassin {
 
 	@Id
@@ -37,8 +40,7 @@ public class Bassin {
 	@Column(name = "gps")
 	private String gps;
 
-	@OneToMany
-	@JoinColumn(name = "fk_bassin")
+	@OneToMany(mappedBy = "bassin")
 	private Set<VisiteBassin> visiteBassins;
 
 	public Bassin() {

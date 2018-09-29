@@ -1,24 +1,30 @@
 <div class="mine-fiche" *ngIf="mine">
-	<div class="mine-bandeau">
-		<span class="fiche-title">{{mine.nom}}</span>
-		<!-- 			<div class="icon-map"> -->
-		<!-- 				<a target="_blank"  -->
-		<!-- 					href="https://www.google.com/maps/place/{{mine.gps}}">  -->
-		<img class="icon-map" src="../assets/icons/icon-map.png" />
-		<!-- 					 </a> -->
-		<!-- 			</div> -->
-	</div>
-	<button (click)=downloadData()>Télécharger en vue d'une visite</button>
-	<span>Propriétaire</span> <span>Adresse</span>
 
-	<div class="mine-visites">
-		<span>Dernières visites</span>
-		<div class="mine-visite">
-			<span>11/02/2018 par Robert Plant (4 ouvrages)</span>
+	<div class="mine-nom">{{mine.nom}}</div>
+
+	<!-- <div class="storage" *ngIf="localStored">
+		<div *ngIf="uptodate" class="uptodate">
+			<img class="icon" src="../assets/icons/uptodate.png" />
 		</div>
-		<div class="mine-visite">
-			<span>11/02/2018 par Robert Plant (7 ouvrages)</span>
+		<div *ngIf="!uptodate" class="outtodate">
+			<img class="icon" src="../assets/icons/update.png" />
 		</div>
 	</div>
+	<div class="storage" *ngIf="!localStored">
+		<div class="download" (click)=downloadData()>Télécharger en vue d'une visite</div>
+	</div> -->
+
+
+	<div class="last-visites-title">Dernières visites</div>
+	<div class="visite" *ngFor="let v of mine.visites">
+		<div class="visite-contexte">{{v.contexte}}</div>
+		<div class="visite-general">Opéré par {{v.operateur}} le {{v.dateVisite}}</div>
+		<div class="visite-conditions">
+			<img class="icon" src="../assets/icons/weather.png" />
+			<span class="visite-condition">{{v.meteo}}</span>
+			<img class="icon" src="../assets/icons/rain-gauge.png" />
+			<span class="visite-condition">{{v.pluviometrie}} mm</span>
+		</div>
+	</div>
+
 </div>
-
