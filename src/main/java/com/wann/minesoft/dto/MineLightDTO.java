@@ -17,7 +17,7 @@ public class MineLightDTO {
     private String gps;
 
     private List<BassinLightDTO> bassins;
-    private List<VisiteMineDTO> visites;
+    private List<VisiteMineDTO> visitesMines;
 
 
 }

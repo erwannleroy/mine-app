@@ -1,8 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {MineService, UtilityService} from '../shared';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { MineService } from '../shared';
 import { fadeAnimation } from '../shared/animation';
-import {Mine} from '../shared/models/Mine';
-import {Subscription} from 'rxjs';
+import { Mine } from '../shared/models/Mine';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mine-list',
@@ -12,8 +12,11 @@ import {Subscription} from 'rxjs';
 export class MineListComponent implements OnInit, OnDestroy {
   mines: Mine[];
   globalSearch: string;
+  mineSelected: Mine;
 
-  constructor(private mineService: MineService, private utilityService: UtilityService) {
+  @Output() notify: EventEmitter<Mine> = new EventEmitter<Mine>();
+
+  constructor(private mineService: MineService) {
     this.mineService.getMines().subscribe(mines => {
       this.mines = mines as Mine[];
       console.log('refresh mine-list component');
@@ -28,21 +31,22 @@ export class MineListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  displayMine(m: Mine) {
-    console.log("display", m);
-    this.utilityService.selectMine(m);
+  selectMine(m: Mine) {
+    console.log("select mine", m);
+    this.mineSelected = m;
+    this.notify.emit(this.mineSelected);
   }
 
   updatesMines() {
     console.log("updateMines");
     const formValue = this.globalSearch;
     console.log(formValue);
-    if (formValue.trim()!=''){
-    this.mineService.findByName(formValue);
-      }
+    if (formValue.trim() != '') {
+      this.mineService.findByName(formValue);
+    }
     else {
       this.mineService.retrieveAll();
     }
-      
+
   }
 }

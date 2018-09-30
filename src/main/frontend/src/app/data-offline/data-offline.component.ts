@@ -29,7 +29,7 @@ export class DataOfflineComponent implements OnInit {
       minesDAO = data;
       for (let m of minesDAO) {
         mine = new MineOffline();
-        mine.nom = m.nom;
+        mine.nom = m.key;
         mine.uptodate = false;
         minesOfflines.push(mine);
       }

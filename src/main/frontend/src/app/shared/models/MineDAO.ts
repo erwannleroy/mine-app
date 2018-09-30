@@ -1,7 +1,7 @@
 import {Deserializable} from './Deserializable';
 
 export class MineDAO implements Deserializable {
-  nom: string;
+  key: string;
   content: string;
 
   deserialize(input: any): this {

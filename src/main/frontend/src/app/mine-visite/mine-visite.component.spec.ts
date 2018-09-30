@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReleveBassinFormComponent } from './releve-bassin-form.component';
+import { MineVisiteComponent } from './mine-visite.component';
 
-describe('ReleveBassinFormComponent', () => {
-  let component: ReleveBassinFormComponent;
-  let fixture: ComponentFixture<ReleveBassinFormComponent>;
+describe('MineVisiteComponent', () => {
+  let component: MineVisiteComponent;
+  let fixture: ComponentFixture<MineVisiteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReleveBassinFormComponent ]
+      declarations: [ MineVisiteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReleveBassinFormComponent);
+    fixture = TestBed.createComponent(MineVisiteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

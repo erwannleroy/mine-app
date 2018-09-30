@@ -6,6 +6,6 @@ export class Mine {
   nom: string;
   gps: string;
   bassins: Bassin[];
-  visites: VisiteMine[];
+  visitesMines: VisiteMine[];
 
 }

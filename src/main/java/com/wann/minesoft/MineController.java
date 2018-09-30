@@ -38,7 +38,7 @@ public class MineController {
 	private MineLightDTO convertMineToDTO(Mine mine) {
 		MineLightDTO mineDto = modelMapper.map(mine, MineLightDTO.class);
 		List<VisiteMineDTO> visitesDto = new ArrayList<>();
-		List<VisiteMine> visites = mine.getVisites();
+		List<VisiteMine> visites = mine.getVisitesMines();
 		if (visites != null) {
 			if (visites.size() == 1) {
 				visitesDto.add(modelMapper.map(visites.get(0), VisiteMineDTO.class));
@@ -47,7 +47,7 @@ public class MineController {
 				visitesDto.add(modelMapper.map(visites.get(1), VisiteMineDTO.class));
 			}
 		}
-		mineDto.setVisites(visitesDto);
+		mineDto.setVisitesMines(visitesDto);
 		return mineDto;
 	}
 

@@ -1,5 +1,6 @@
 import { fadeAnimation } from '../shared/animation';
 import { Component, OnInit } from '@angular/core';
+import { Mine } from '../shared/models/Mine';
 
 @Component({
   selector: 'app-gestion-bassin',
@@ -9,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionBassinComponent implements OnInit {
 
+  mine: Mine;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onNotify(m:Mine):void {
+    console.log("notify mine ",m);
+    this.mine = m;
   }
 
 }

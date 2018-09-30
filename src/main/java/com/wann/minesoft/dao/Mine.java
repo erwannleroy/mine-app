@@ -40,7 +40,7 @@ public class Mine {
     @OneToMany
     @JoinColumn(name="fk_mine")
     @OrderBy("dateVisite DESC")
-    private List<VisiteMine> visites;
+    private List<VisiteMine> visitesMines;
 
     
     public Mine() {

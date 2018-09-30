@@ -1,7 +1,8 @@
 import { Mine } from '../shared/models/Mine';
-import { Component, OnInit } from '@angular/core';
-import { MineService, UtilityService, BaseService } from '../shared';
+import { Component, OnInit, Input } from '@angular/core';
+import { MineService, BaseService } from '../shared';
 import { Bassin } from '../shared/models/Bassin';
+import { VisiteMine } from '../shared/models/VisiteMine';
 
 @Component({
   selector: 'app-mine-fiche',
@@ -10,17 +11,12 @@ import { Bassin } from '../shared/models/Bassin';
 })
 export class MineFicheComponent implements OnInit {
 
-  mine: Mine;
+  _mine: Mine;
   localStored: boolean;
   uptodate: boolean;
+  currentVisite: VisiteMine;
 
-  constructor(private utilityService: UtilityService, private baseService: BaseService) {
-    this.utilityService.getSelectedMine().subscribe(data => {
-      this.mine = data as Mine;
-      console.log('refresh mine-fiche component');
-      this.ngOnInit();
-    },
-      error => console.log(error));
+  constructor(private baseService: BaseService) {
   }
 
   ngOnInit() {
@@ -37,12 +33,29 @@ export class MineFicheComponent implements OnInit {
     }
   }
 
-  displayBassin(b: Bassin) {
-    console.log("display", b);
-    this.utilityService.selectBassin(b);
+  get mine(): Mine {
+    // transform value for display
+    return this._mine;
+  }
+
+  @Input()
+  set mine(m: Mine) {
+    console.log('previous mine: ', this._mine);
+    console.log('current mine: ', m);
+    this._mine = m;
+  }
+
+  showHideDetail(v: VisiteMine) {
+    console.log("display visite", v);
+    if (this.currentVisite == v) {
+      this.currentVisite = null;
+    } else {
+      this.currentVisite = v;
+    }
   }
 
   downloadData() {
     this.baseService.addMine(this.mine);
+    this.ngOnInit();
   }
 }

@@ -1,30 +1,37 @@
 <div class="mine-fiche" *ngIf="mine">
+	<div class="mine-bandeau">
+		<div class="mine-nom">{{mine.nom}}</div>
 
-	<div class="mine-nom">{{mine.nom}}</div>
-
-	<!-- <div class="storage" *ngIf="localStored">
-		<div *ngIf="uptodate" class="uptodate">
-			<img class="icon" src="../assets/icons/uptodate.png" />
+		<div class="storage" *ngIf="localStored">
+			<div class="container">
+				<div class="label">Mine stockée en local</div>
+				<img class="icon" src="../assets/icons/uptodate.png" />
+			</div>
 		</div>
-		<div *ngIf="!uptodate" class="outtodate">
-			<img class="icon" src="../assets/icons/update.png" />
+
+		<div class="storage" *ngIf="!localStored" (click)=downloadData()>
+			<div class="container">
+				<div class="label">Télécharger la mine</div>
+				<img class="icon" src="../assets/icons/download.png" />
+			</div>
 		</div>
 	</div>
-	<div class="storage" *ngIf="!localStored">
-		<div class="download" (click)=downloadData()>Télécharger en vue d'une visite</div>
-	</div> -->
+
 
 
 	<div class="last-visites-title">Dernières visites</div>
-	<div class="visite" *ngFor="let v of mine.visites">
-		<div class="visite-contexte">{{v.contexte}}</div>
-		<div class="visite-general">Opéré par {{v.operateur}} le {{v.dateVisite}}</div>
-		<div class="visite-conditions">
-			<img class="icon" src="../assets/icons/weather.png" />
-			<span class="visite-condition">{{v.meteo}}</span>
-			<img class="icon" src="../assets/icons/rain-gauge.png" />
-			<span class="visite-condition">{{v.pluviometrie}} mm</span>
+	<div class="visite" *ngFor="let vm of mine.visitesMines">
+		<div (click)="showHideDetail(vm)">
+			<div class="visite-contexte">{{vm.contexte}}</div>
+			<div class="visite-general">Opéré par {{vm.operateur}} le {{vm.dateVisite}}</div>
+			<div class="visite-conditions">
+				<img class="icon" src="../assets/icons/weather.png" />
+				<span class="visite-condition">{{vm.meteo}}</span>
+				<img class="icon" src="../assets/icons/rain-gauge.png" />
+				<span class="visite-condition">{{vm.pluviometrie}} mm</span>
+			</div>
 		</div>
+		<app-mine-visite [visiteMine]="currentVisite" *ngIf="vm == currentVisite"></app-mine-visite>
 	</div>
 
 </div>

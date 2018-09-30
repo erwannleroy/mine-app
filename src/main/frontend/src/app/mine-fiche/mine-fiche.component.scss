@@ -1,29 +1,48 @@
+
 .mine-fiche {
-	display: table;
 	width: 100%;
 }
 
 .mine-bandeau {
-	background-color: #999999;
-	border: 1px solid black;
-}
-
-.mine-nom {
-	font-size: 20px;
-	font-weight: bold;
+	display: table;
+	width: 100%;
+	margin-right: 5px;
 	background-color: var(--orange);
-	padding : 2px;	
-	margin: 5px 3px 5px 3px;
 }
 
-.storage {
-	padding: 2px;
+.container {
+	display: table;
+	align-content: center;
+	text-align: center;
+	width: 100%;
 }
 
-.icon-map {
+.mine-nom,.storage {
+	font-weight: bold;
+	color: var(--noir);
+	display: table-cell;
+	font-size: 14px;
+	vertical-align: middle;
+	padding: 2px 10px 0px 10px;
+}
+
+.label {
+	font-weight: normal;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+	padding: 0px 2px 0px 0px;
+}
+
+.icon {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0px 0px 0px 2px;
+}
+
+.icon {
 	width: 24px; /* you can use % */
 	height: auto;
-	float: right;
 }
 
 
@@ -65,7 +84,3 @@
 }
 
 
-.icon {
-	width: 24px; /* you can use % */
-	height: auto;
-}

@@ -88,10 +88,10 @@ export class BaseService {
     return mines;
   }
 
-  deleteMine(nomMine: string) {
+  deleteMine(key: string) {
     var nb: Promise<number> = BaseService.connexion.remove({
       from: 'MINE',
-      where: { nom: nomMine }
+      where: { key: key }
     });
     console.log("nb mine supprimée :" + nb);
   }
@@ -112,7 +112,7 @@ export class BaseService {
     var count: Promise<number> = BaseService.connexion.count({
       from: 'MINE',
       where: {
-        nom: key
+        key: key
       }
     });
     console.log("existsMine");
@@ -125,7 +125,7 @@ export class BaseService {
     console.log("add mine : " + mine);
     BaseService.connexion.insert({
       into: "MINE",
-      values: [{ nom: mine.nom, content: JSON.stringify(mine) }], //you can insert multiple values at a time
+      values: [{ key: mine.nom, content: JSON.stringify(mine) }], //you can insert multiple values at a time
     }).then(rowsInserted => {
       console.log('rows inserted : ' + rowsInserted);
       success = rowsInserted == 1;

@@ -1,0 +1,21 @@
+.detail-visite-bassin {
+    border: 1px solid ;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.title-detail {
+    text-align: center;
+    width: 100%;
+    background-color: var(--marron);
+    color: var(--blanc);
+    display: table-row;
+
+}
+
+.select-mine {
+    font-style: italic;
+
+    display: table-row;
+}

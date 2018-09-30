@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BassinHistoriqueComponent } from './bassin-historique.component';
+import { FormVisiteMineComponent } from './form-visite-mine.component';
 
-describe('BassinHistoriqueComponent', () => {
-  let component: BassinHistoriqueComponent;
-  let fixture: ComponentFixture<BassinHistoriqueComponent>;
+describe('FormVisiteMineComponent', () => {
+  let component: FormVisiteMineComponent;
+  let fixture: ComponentFixture<FormVisiteMineComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BassinHistoriqueComponent ]
+      declarations: [ FormVisiteMineComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BassinHistoriqueComponent);
+    fixture = TestBed.createComponent(FormVisiteMineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

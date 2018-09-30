@@ -7,6 +7,6 @@ export class VisiteMine {
   contexte: string;
   meteo: string;
   pluviometrie: number;
-  visites: VisiteBassin[];
+  visitesBassins: VisiteBassin[];
 }
 

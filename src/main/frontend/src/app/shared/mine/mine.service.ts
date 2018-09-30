@@ -1,4 +1,4 @@
-import { UtilityService } from '../utility/utility.service';
+
 import { BaseService } from '../base/base.service';
 import { Mine } from '../models/Mine';
 import { MineDAO } from '../models/MineDAO';
@@ -15,7 +15,6 @@ export class MineService {
 
   constructor(private http: HttpClient,
     private baseService: BaseService,
-    private utilityService: UtilityService,
     protected network: Network) {
   }
 
@@ -50,7 +49,7 @@ export class MineService {
         var mines: Array<Mine> = [];
         for (let m of minesDAO) {
           console.log(m);
-          console.log("contenu de " + m.nom);
+          console.log("contenu de " + m.key);
           //          console.log(m.content.replace("^\"|\"$", ""));
           //          var mine:Mine = m.content;
           //          mines[0]=m.content;
@@ -87,7 +86,7 @@ export class MineService {
         var mines: Array<Mine> = [];
         for (let m of minesDAO) {
           console.log(m);
-          console.log("by name contenu de " + m.nom);
+          console.log("by name contenu de " + m.key);
           //          console.log(m.content.replace("^\"|\"$", ""));
           //          var mine:Mine = m.content;
           //          mines[0]=m.content;
