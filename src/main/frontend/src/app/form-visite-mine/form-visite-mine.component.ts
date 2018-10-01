@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Mine } from '../shared/models/Mine';
+import { Bassin } from '../shared/models/Bassin';
 
 @Component({
   selector: 'app-form-visite-mine',
@@ -9,6 +10,7 @@ import { Mine } from '../shared/models/Mine';
 export class FormVisiteMineComponent implements OnInit {
 
   _mine: Mine;
+  bassin: Bassin;
 
   constructor() { }
 
@@ -22,9 +24,14 @@ export class FormVisiteMineComponent implements OnInit {
 
   @Input()
   set mine(m: Mine) {
-    console.log('previous mine: ', this._mine);
-    console.log('current mine: ', m);
+    console.log('form previous mine: ', this._mine);
+    console.log('form current mine: ', m);
     this._mine = m;
+  }
+
+  displayDetail(b: Bassin) {
+    console.log("display visite bassin : ", b.id);
+    this.bassin = b;
   }
 
 }

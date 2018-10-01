@@ -24,6 +24,7 @@ import { CustomReuseStrategy } from './shared/reuse/CustomReuseStrategy';
 import { MineVisiteComponent } from './mine-visite/mine-visite.component';
 import { DetailVisiteBassinComponent } from './detail-visite-bassin/detail-visite-bassin.component';
 import { FormVisiteMineComponent } from './form-visite-mine/form-visite-mine.component';
+import { FormVisiteBassinComponent } from './form-visite-bassin/form-visite-bassin.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FormVisiteMineComponent } from './form-visite-mine/form-visite-mine.com
     MenuComponent,
     MineVisiteComponent,
     DetailVisiteBassinComponent,
-    FormVisiteMineComponent
+    FormVisiteMineComponent,
+    FormVisiteBassinComponent
   ],
   imports: [
     BrowserModule,
