@@ -1,14 +1,7 @@
 <div class="mine-visite" *ngIf="visiteMine">
 
   <div class="bassins">
-    <div class="bassin-container" *ngFor="let vb of visiteMine.visitesBassins" (click)="displayDetail(vb)">
-      <span *ngIf="visiteBassin == vb" class="bassin-selected">
-        {{vb.bassin.id}}
-      </span>
-      <span *ngIf="visiteBassin != vb" class="bassin">
-        {{vb.bassin.id}}
-      </span>
-    </div>
+    <app-list-bassins [bassins]="getBassins()" (notify)="onSelectBassin($event)"></app-list-bassins>
   </div>
   <div class="detail">
     <app-detail-visite-bassin [vb]="visiteBassin"></app-detail-visite-bassin>

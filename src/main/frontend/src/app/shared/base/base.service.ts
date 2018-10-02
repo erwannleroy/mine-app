@@ -9,11 +9,14 @@ import {
   ITable
 } from 'jsstore';
 import * as workerPath from 'file-loader?name=scripts/[name].[hash].js!jsstore/dist/jsstore.worker.js';
+import { VisiteMine } from '../models/VisiteMine';
+import { VisiteMineDAO } from '../models/VisiteMineDAO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
+
 
 
 
@@ -69,9 +72,23 @@ export class BaseService {
       ]
     };
 
+    const visiteMineTable: ITable = {
+      name: "VISITE_MINE",
+      columns: [{
+        name: "key",
+        dataType: 'string',
+        primaryKey: true
+      },
+      {
+        name: "content",
+        dataType: 'string'
+      }
+      ]
+    };
+
     const database: IDataBase = {
       name: this.DB_NAME,
-      tables: [mineTable]
+      tables: [mineTable, visiteMineTable]
     }
 
     console.log('enter getDatabase', database);
@@ -79,12 +96,60 @@ export class BaseService {
   }
 
 
-  getMines(): Promise<MineDAO[]> {
-    var mines: Promise<MineDAO[]> = BaseService.connexion.select({
+  getMines(): Array<Mine> {
+    var minesP: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE'
     });
-    console.log("select MINE");
+
+    return this.convertMines(minesP);
+  }
+
+  convertMines(minesP: Promise<MineDAO[]>): Array<Mine> {
+    var mines: Array<Mine> = [];
+
+    minesP.then(data => {
+      let minesDAO: Array<MineDAO> = data;
+      console.log("retour du select by name");
+      //        console.log(data.content);
+
+      for (let m of minesDAO) {
+        console.log(m);
+        console.log("by name contenu de " + m.key);
+        //          console.log(m.content.replace("^\"|\"$", ""));
+        //          var mine:Mine = m.content;
+        //          mines[0]=m.content;
+        var mine = <Mine>JSON.parse(m.content);
+        mines.push(mine);
+      }
+    });
+
+
     console.log(mines);
+    return mines;
+  }
+
+  convertVisitesMines(vmP: Promise<VisiteMineDAO[]>): Array<VisiteMine> {
+    var mines: Array<VisiteMine> = [];
+    console.log("avant convertVisitesMines");
+    vmP.then(data => {
+      let vmDAO: Array<VisiteMineDAO> = data;
+      console.log("résultat de la requete", data);
+
+
+      for (let m of vmDAO) {
+        console.log(m);
+        console.log("item " + m.key);
+        //          console.log(m.content.replace("^\"|\"$", ""));
+        //          var mine:Mine = m.content;
+        //          mines[0]=m.content;
+        var mine = <VisiteMine>JSON.parse(m.content);
+        mines.push(mine);
+      }
+    });
+
+
+    console.log(mines);
+    console.log("apres convertVisitesMines");
     return mines;
   }
 
@@ -96,17 +161,31 @@ export class BaseService {
     console.log("nb mine supprimée :" + nb);
   }
 
-  selectMines(name: string): Promise<MineDAO[]> {
+  selectMines(name: string): Array<Mine> {
+    var minesP: Promise<MineDAO[]> = BaseService.connexion.select({
+      from: 'MINE',
+      where: {
+        nom: { like: '%' + name + '%' }
+      }
+    });
+
+    return this.convertMines(minesP);
+  }
+
+  selectMinesl(name: string): Promise<MineDAO[]> {
     var mines: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE',
       where: {
         nom: { like: '%' + name + '%' }
       }
     });
+
     console.log("select MINE by name");
     console.log(mines);
     return mines;
   }
+
+
 
   existsMine(key: string): Promise<number> {
     var count: Promise<number> = BaseService.connexion.count({
@@ -135,6 +214,35 @@ export class BaseService {
     });
   }
 
+  addVisiteMine(m: Mine, vm: VisiteMine) {
+    var success: boolean;
+    console.log("add visite mine : " + m);
+    BaseService.connexion.insert({
+      into: "VISITE_MINE",
+      values: [{ key: m.nom, content: JSON.stringify(vm) }], //you can insert multiple values at a time
+    }).then(rowsInserted => {
+      console.log('rows inserted : ' + rowsInserted);
+      success = rowsInserted == 1;
+    }).catch(function (error) {
+      console.log("Erreur � l'insertion : " + error);
+      success = false;
+    });
+  }
+
+  selectVisiteMine(m: Mine): Array<VisiteMine> {
+    console.log("select vm ", m);
+    console.log("avant selectVisiteMine");
+    var minesP: Promise<VisiteMineDAO[]> = BaseService.connexion.select({
+      from: 'VISITE_MINE',
+      where: {
+        key: m.nom
+      }
+    });
+    console.log("apres selectVisiteMine");
+    console.log(minesP);
+    return this.convertVisitesMines(minesP);
+  }
+
   updateMine(mine: Mine): boolean {
     var success: boolean;
     console.log("update mine : " + mine);
@@ -145,6 +253,28 @@ export class BaseService {
       },
       set: {
         content: JSON.stringify(mine)
+      }
+    }).then(rowsUpdated => {
+      console.log('rows updated : ' + rowsUpdated);
+      success = rowsUpdated == 1;
+    }).catch(function (error) {
+      console.log("Erreur a l'insertion : " + error);
+      success = false;
+    });
+
+    return success;
+  }
+
+  updateVisiteMine(mine: Mine, vm: VisiteMine): any {
+    var success: boolean;
+    console.log("update visite mine : " + mine);
+    BaseService.connexion.update({
+      in: 'VISITE_MINE',
+      where: {
+        key: mine.nom
+      },
+      set: {
+        content: JSON.stringify(vm)
       }
     }).then(rowsUpdated => {
       console.log('rows updated : ' + rowsUpdated);

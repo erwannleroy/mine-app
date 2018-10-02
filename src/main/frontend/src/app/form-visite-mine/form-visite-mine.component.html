@@ -17,17 +17,9 @@
 <div class="mine-visite" *ngIf="mine">
 
   <div class="bassins">
-    <div class="bassin-container" *ngFor="let b of mine.bassins" (click)="displayForm(b)">
-      
-      <span *ngIf="bassin == b" class="bassin-selected">
-        {{b.id}}
-      </span>
-      <span *ngIf="bassin != b" class="bassin">
-        {{b.id}}
-      </span>
-    </div>
+    <app-list-bassins [bassins]="mine.bassins" (notify)="onSelectBassin($event)"></app-list-bassins>
   </div>
   <div class="detail">
-    <app-form-visite-bassin [bassin]="bassin"></app-form-visite-bassin>
+    <app-form-visite-bassin [bassin]="bassin" [mine]="mine"></app-form-visite-bassin>
   </div>
 </div>

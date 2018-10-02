@@ -34,4 +34,9 @@ export class FormVisiteMineComponent implements OnInit {
     this.bassin = b;
   }
 
+  onSelectBassin(b:Bassin):void {
+    console.log("notify bassin ",b);
+    this.bassin = b;
+  }
+
 }

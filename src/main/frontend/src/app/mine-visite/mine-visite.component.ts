@@ -19,9 +19,30 @@ export class MineVisiteComponent implements OnInit {
   ngOnInit() {
   }
 
+  getBassins(): Bassin[] {
+    console.log("getBassins vm : ", this._visiteMine);
+    let bassins: Bassin[] = [];
+    if (this._visiteMine) {
+      for (let vb of this._visiteMine.visitesBassins) {
+        bassins.push(vb.bassin);
+      }
+    }
+    return bassins;
+  }
+
+  onSelectBassin(b: Bassin) {
+    console.log("Sélection du bassin : ", b.nom);
+    for (let vb of this._visiteMine.visitesBassins) {
+      if (vb.bassin == b) {
+        this.displayDetail(vb);
+        break;
+      }
+    }
+  }
+
   displayDetail(vb: VisiteBassin) {
-    console.log("display visite bassin : ", vb.id);
     this.visiteBassin = vb;
+    console.log("display visite bassin : ", vb.id);
   }
 
   get visiteMine(): VisiteMine {

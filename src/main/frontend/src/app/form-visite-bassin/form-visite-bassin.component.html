@@ -1,7 +1,9 @@
+<span class="select-mine" *ngIf="!bassin">Sélectionnez un bassin</span>
+<div *ngIf="bassin">
 <span class="title-detail">Détail {{bassin.id}}</span>
 <div class="form-group">
   <label for="enEau">En eau</label>
-  <input type="checkbox" class="form-control" id="enEau" required>
+  <input type="checkbox" class="form-control" id="enEau" [(ngModel)]="enEau" name="enEau">
 </div>
 
 <div class="form-group">
@@ -32,4 +34,5 @@
 <div class="form-group">
   <label for="typeIntervention">Type d'intervention</label>
   <input type="text" class="form-control" id="typeIntervention">
+</div>
 </div>

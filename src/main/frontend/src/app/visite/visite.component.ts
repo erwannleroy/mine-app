@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeAnimation } from '../shared/animation';
 import { Mine } from '../shared/models/Mine';
+import { VisiteMine } from '../shared/models/VisiteMine';
+import { BaseService } from '../shared';
 
 @Component({
   selector: 'app-visite',
@@ -13,19 +15,21 @@ export class VisiteComponent implements OnInit {
   mine: Mine;
   visiteStarted: boolean;
 
-  constructor() { }
+  constructor(private baseService: BaseService) { }
 
   ngOnInit() {
   }
 
- 
+
 
   startVisite() {
     this.visiteStarted = true;
+    let vm: VisiteMine = new VisiteMine();
+    this.baseService.addVisiteMine(this.mine, vm);
   }
 
-  onNotify(m:Mine):void {
-    console.log("notify mine ",m);
+  onNotify(m: Mine): void {
+    console.log("notify mine ", m);
     this.mine = m;
   }
 
