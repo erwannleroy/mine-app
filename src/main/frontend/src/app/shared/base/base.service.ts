@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 //import {JsStoreService} from '../jsstore/jsstore.service';
-import { Mine } from '../models/Mine';
-import { MineDAO } from '../models/MineDAO';
+import {Mine} from '../models/Mine';
+import {MineDAO} from '../models/MineDAO';
 import * as JsStore from 'jsstore';
 import {
   IDataBase,
@@ -9,15 +9,13 @@ import {
   ITable
 } from 'jsstore';
 import * as workerPath from 'file-loader?name=scripts/[name].[hash].js!jsstore/dist/jsstore.worker.js';
-import { VisiteMine } from '../models/VisiteMine';
-import { VisiteMineDAO } from '../models/VisiteMineDAO';
+import {VisiteMine} from '../models/VisiteMine';
+import {VisiteMineDAO} from '../models/VisiteMineDAO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
-
-
 
 
   static connexion = new JsStore.Instance(new Worker(workerPath));
@@ -65,10 +63,10 @@ export class BaseService {
         dataType: 'string',
         primaryKey: true
       },
-      {
-        name: "content",
-        dataType: 'string'
-      }
+        {
+          name: "content",
+          dataType: 'string'
+        }
       ]
     };
 
@@ -79,10 +77,10 @@ export class BaseService {
         dataType: 'string',
         primaryKey: true
       },
-      {
-        name: "content",
-        dataType: 'string'
-      }
+        {
+          name: "content",
+          dataType: 'string'
+        }
       ]
     };
 
@@ -96,87 +94,77 @@ export class BaseService {
   }
 
 
-  getMines(): Array<Mine> {
+  getMines(): Promise<MineDAO[]> {
     var minesP: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE'
     });
-
-    return this.convertMines(minesP);
+    return minesP;
   }
 
-  convertMines(minesP: Promise<MineDAO[]>): Array<Mine> {
+  convertMines(minesDAO: Array<MineDAO>): Array<Mine> {
     var mines: Array<Mine> = [];
+    console.log("avant convertMines");
 
-    minesP.then(data => {
-      let minesDAO: Array<MineDAO> = data;
-      console.log("retour du select by name");
-      //        console.log(data.content);
-
-      for (let m of minesDAO) {
-        console.log(m);
-        console.log("by name contenu de " + m.key);
-        //          console.log(m.content.replace("^\"|\"$", ""));
-        //          var mine:Mine = m.content;
-        //          mines[0]=m.content;
-        var mine = <Mine>JSON.parse(m.content);
-        mines.push(mine);
-      }
-    });
-
+    for (let m of minesDAO) {
+      console.log(m);
+      console.log("item " + m.key);
+      //          console.log(m.content.replace("^\"|\"$", ""));
+      //          var mine:Mine = m.content;
+      //          mines[0]=m.content;
+      var mine = <Mine>JSON.parse(m.content);
+      mines.push(mine);
+    }
 
     console.log(mines);
+    console.log("apres convertMines");
     return mines;
   }
 
-  convertVisitesMines(vmP: Promise<VisiteMineDAO[]>): Array<VisiteMine> {
-    var mines: Array<VisiteMine> = [];
+  convertVisitesMines(vmsDAO: Array<VisiteMineDAO>): Array<VisiteMine> {
+    var vms: Array<VisiteMine> = [];
     console.log("avant convertVisitesMines");
-    vmP.then(data => {
-      let vmDAO: Array<VisiteMineDAO> = data;
-      console.log("résultat de la requete", data);
 
+    for (let vm of vmsDAO) {
+      console.log(vm);
+      console.log("item " + vm.key);
+      //          console.log(m.content.replace("^\"|\"$", ""));
+      //          var mine:Mine = m.content;
+      //          mines[0]=m.content;
+      console.log("ajoute au résultat la mine ", vm);
+      var vmDTO = <VisiteMine>JSON.parse(vm.content);
+      console.log("ajoute au résultat la mine DTO ", vmDTO);
+      vms.push(vmDTO);
+    }
 
-      for (let m of vmDAO) {
-        console.log(m);
-        console.log("item " + m.key);
-        //          console.log(m.content.replace("^\"|\"$", ""));
-        //          var mine:Mine = m.content;
-        //          mines[0]=m.content;
-        var mine = <VisiteMine>JSON.parse(m.content);
-        mines.push(mine);
-      }
-    });
-
-
-    console.log(mines);
+    console.log(vms);
     console.log("apres convertVisitesMines");
-    return mines;
+    return vms;
   }
 
   deleteMine(key: string) {
     var nb: Promise<number> = BaseService.connexion.remove({
       from: 'MINE',
-      where: { key: key }
+      where: {key: key}
     });
     console.log("nb mine supprimée :" + nb);
   }
 
-  selectMines(name: string): Array<Mine> {
+  selectMines(name: string): Promise<MineDAO[]> {
     var minesP: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE',
       where: {
-        nom: { like: '%' + name + '%' }
+        nom: {like: '%' + name + '%'}
       }
     });
-
-    return this.convertMines(minesP);
+    return minesP;
+    //return this.convertMines(minesP);
   }
 
   selectMinesl(name: string): Promise<MineDAO[]> {
     var mines: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE',
       where: {
-        nom: { like: '%' + name + '%' }
+        nom: {like: '%' + name + '%'}
       }
     });
 
@@ -184,7 +172,6 @@ export class BaseService {
     console.log(mines);
     return mines;
   }
-
 
 
   existsMine(key: string): Promise<number> {
@@ -204,7 +191,7 @@ export class BaseService {
     console.log("add mine : " + mine);
     BaseService.connexion.insert({
       into: "MINE",
-      values: [{ key: mine.nom, content: JSON.stringify(mine) }], //you can insert multiple values at a time
+      values: [{key: mine.nom, content: JSON.stringify(mine)}], //you can insert multiple values at a time
     }).then(rowsInserted => {
       console.log('rows inserted : ' + rowsInserted);
       success = rowsInserted == 1;
@@ -219,7 +206,7 @@ export class BaseService {
     console.log("add visite mine : " + m);
     BaseService.connexion.insert({
       into: "VISITE_MINE",
-      values: [{ key: m.nom, content: JSON.stringify(vm) }], //you can insert multiple values at a time
+      values: [{key: m.nom, content: JSON.stringify(vm)}], //you can insert multiple values at a time
     }).then(rowsInserted => {
       console.log('rows inserted : ' + rowsInserted);
       success = rowsInserted == 1;
@@ -229,18 +216,19 @@ export class BaseService {
     });
   }
 
-  selectVisiteMine(m: Mine): Array<VisiteMine> {
+  selectVisiteMine(m: Mine): Promise<VisiteMineDAO[]> {
     console.log("select vm ", m);
     console.log("avant selectVisiteMine");
-    var minesP: Promise<VisiteMineDAO[]> = BaseService.connexion.select({
+    var vmP: Promise<VisiteMineDAO[]> = BaseService.connexion.select({
       from: 'VISITE_MINE',
       where: {
         key: m.nom
       }
     });
     console.log("apres selectVisiteMine");
-    console.log(minesP);
-    return this.convertVisitesMines(minesP);
+    console.log(vmP);
+    return vmP;
+    //return this.convertVisitesMines(minesP);
   }
 
   updateMine(mine: Mine): boolean {

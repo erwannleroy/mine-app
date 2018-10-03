@@ -7,6 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http';
 import { Network } from '@ngx-pwa/offline';
 import { Observable, Subject } from 'rxjs';
+import {VisiteMineDAO} from "../models/VisiteMineDAO";
 
 @Injectable()
 export class MineService {
@@ -41,7 +42,11 @@ export class MineService {
       var minesDAO: Array<MineDAO> = [];
       console.log('on cherche les mines en OFFLINE');
       console.log(this.baseService.getMines());
-      this.subject.next(this.baseService.getMines());
+      this.baseService.getMines().then(data =>  {
+        let minesDAO: Array<MineDAO> = data;
+        let mines = this.baseService.convertMines(minesDAO);
+        this.subject.next(mines);
+      });
     }
   }
 
@@ -61,7 +66,11 @@ export class MineService {
       var minesDAO: Array<MineDAO> = [];
       console.log('on cherche les mines en OFFLINE');
       //      console.log(this.baseService.selectMines(name));
-      this.subject.next(this.baseService.selectMines(name));
+      this.baseService.selectMines(name).then(data =>  {
+        let minesDAO: Array<MineDAO> = data;
+        let mines = this.baseService.convertMines(minesDAO);
+        this.subject.next(mines);
+      });
     }
   }
 

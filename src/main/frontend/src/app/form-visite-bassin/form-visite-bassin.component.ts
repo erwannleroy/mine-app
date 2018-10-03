@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Bassin } from '../shared/models/Bassin';
-import { VisiteBassin } from '../shared/models/VisiteBassin';
-import { Mine } from '../shared/models/Mine';
-import { BaseService } from '../shared';
-import { VisiteMine } from '../shared/models/VisiteMine';
+import {Component, OnInit, Input} from '@angular/core';
+import {Bassin} from '../shared/models/Bassin';
+import {VisiteBassin} from '../shared/models/VisiteBassin';
+import {Mine} from '../shared/models/Mine';
+import {BaseService} from '../shared';
+import {VisiteMine} from '../shared/models/VisiteMine';
+import {VisiteMineDAO} from "../shared/models/VisiteMineDAO";
 
 @Component({
   selector: 'app-form-visite-bassin',
@@ -15,31 +16,55 @@ export class FormVisiteBassinComponent implements OnInit {
   _bassin: Bassin;
   _mine: Mine;
   _enEau: boolean;
+  _couleurBassin: string;
 
   constructor(private baseService: BaseService) {
   }
 
   ngOnInit() {
-    let vms: Array<VisiteMine> = this.baseService.selectVisiteMine(this.mine);
-    if (vms.length == 1) {
-      let vm: VisiteMine = vms[0];
+    this.model2gui();
+  }
 
-      let trouve: boolean = false;
-      let i: number = 0;
-      let vb: VisiteBassin;
+  model2gui() {
+    this.baseService.selectVisiteMine(this.mine).then(data => {
+      let vmDAO: Array<VisiteMineDAO> = data;
+      let visiteMines = this.baseService.convertVisitesMines(vmDAO);
+      console.log("résultat de la requete", data);
 
+      if (visiteMines.length == 1) {
+        let vm: VisiteMine = visiteMines[0];
+
+          let vb: VisiteBassin = this.findVisiteBassin(vm);
+
+          if (!vb) {
+            console.log("model2gui vb pas trouve");
+            this._enEau = false;
+            this._couleurBassin = "";
+          } else {
+            console.log("model2gui vb trouve", vb);
+            this._enEau = vb.enEau;
+            this._couleurBassin = vb.couleurEauBassin;
+          }
+        }
+    });
+  }
+
+  private findVisiteBassin(vm: VisiteMine) {
+    let trouve: boolean = false;
+    let i: number = 0;
+    let vb = null;
+    if (vm && vm.visitesBassins) {
       while (!trouve && i < vm.visitesBassins.length) {
-        vb = vm.visitesBassins[i];
-        trouve = vb.bassin == this.bassin;
+        //console.log("Comparaison de "+vm.visitesBassins[i].bassin.nom+" et "+this.bassin.nom);
+        trouve = vm.visitesBassins[i].bassin.id == this.bassin.id;
+        if (trouve) {
+          vb = vm.visitesBassins[i];
+        }
+        i++;
       }
-
-      if (!trouve) {
-        this._enEau = false;
-      } else {
-        this._enEau = vb.enEau;
-      }
-
     }
+    console.log("findVisiteBassin", vb);
+    return vb;
   }
 
   get bassin(): Bassin {
@@ -52,6 +77,7 @@ export class FormVisiteBassinComponent implements OnInit {
     console.log('previous bassin: ', this._bassin);
     console.log('current bassin: ', b);
     this._bassin = b;
+    this.model2gui();
   }
 
   get mine(): Mine {
@@ -66,45 +92,64 @@ export class FormVisiteBassinComponent implements OnInit {
     this._mine = m;
   }
 
+  get couleurBassin() {
+    return this._couleurBassin;
+  }
+
+  set couleurBassin(c: string) {
+    console.log("set couleur bassin");
+    this._couleurBassin = c;
+    this.gui2model();
+  }
+
   get enEau() {
     return this._enEau;
   }
+
   set enEau(b: boolean) {
     console.log("set en eau");
     this._enEau = b;
-    this.updateModel();
+    this.gui2model();
   }
 
-  updateModel() {
-    console.log("avant selectVisiteMine");
-    let vms: Array<VisiteMine> = this.baseService.selectVisiteMine(this.mine);
-    console.log("après selectVisiteMine");
-    if (vms.length == 1) {
-      let vm: VisiteMine = vms[0];
+  gui2model() {
+    console.log("avant gui2model");
+    if (this.mine) {
+      this.baseService.selectVisiteMine(this.mine).then(data => {
+          let vmDAO: Array<VisiteMineDAO> = data;
+          let visiteMines = this.baseService.convertVisitesMines(vmDAO);
+          console.log("résultat de la requete", data);
 
-      let trouve: boolean = false;
-      let i: number = 0;
-      let vb: VisiteBassin;
 
-      while (!trouve && i < vm.visitesBassins.length) {
-        vb = vm.visitesBassins[i];
-        trouve = vb.bassin == this.bassin;
-      }
+          if (visiteMines.length == 1) {
+            let vm = visiteMines[0];
 
-      if (!trouve) {
-        vb = new VisiteBassin();
-        vb.bassin = this.bassin;
-        vm.visitesBassins.push(vb);
-      }
+            let vb: VisiteBassin = this.findVisiteBassin(vm);
 
-      vb.enEau = this.enEau;
+            if (!vb) {
+              console.log("vb non trouve");
+              vb = new VisiteBassin();
+              if (!vm.visitesBassins) {
+                vm.visitesBassins = [];
+              }
+              vm.visitesBassins.push(vb);
+            }
 
-      this.baseService.updateVisiteMine(this.mine, vm);
+            vb.bassin = this.bassin;
+            vb.enEau = this.enEau;
+            vb.couleurEauBassin = this.couleurBassin;
+
+            this.baseService.updateVisiteMine(this.mine, vm);
+          }
+          else {
+            console.log("oups ...");
+          }
+        }
+      );
     }
 
-    else {
-      console.log("oups ...");
-    }
+
   }
+
 
 }

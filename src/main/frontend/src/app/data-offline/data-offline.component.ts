@@ -14,7 +14,7 @@ import {MineOffline} from '../shared/models/MineOffline';
 export class DataOfflineComponent implements OnInit {
 
   mines: Array<Mine> = [];
-  
+
   constructor(private baseService: BaseService) {}
 
   ngOnInit() {
@@ -22,16 +22,19 @@ export class DataOfflineComponent implements OnInit {
   }
 
   listMines() {
-    this.mines = this.baseService.getMines();
+    this.baseService.getMines().then(data =>  {
+      let minesDAO: Array<MineDAO> = data;
+      this.mines = this.baseService.convertMines(minesDAO);
+    });
   }
 
   update(mine:Mine){
-    console.log("mise à jour de "+mine.nom);  
+    console.log("mise à jour de "+mine.nom);
   }
-  
+
   delete(mine:Mine){
-    console.log("suppression de "+mine.nom); 
-    this.baseService.deleteMine(mine.nom); 
+    console.log("suppression de "+mine.nom);
+    this.baseService.deleteMine(mine.nom);
     this.ngOnInit();
   }
 }
