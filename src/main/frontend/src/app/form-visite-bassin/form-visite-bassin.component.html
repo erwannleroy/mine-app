@@ -1,38 +1,53 @@
-<span class="select-mine" *ngIf="!bassin">Sélectionnez un bassin</span>
-<div *ngIf="bassin">
-<span class="title-detail">Détail {{bassin.id}}</span>
-<div class="form-group">
-  <label for="enEau">En eau</label>
-  <input type="checkbox" class="form-control" id="enEau" [(ngModel)]="enEau" name="enEau">
-</div>
+<fieldset>
+  <legend>Formulaire</legend>
+  <span class="select-mine" *ngIf="!bassin">Sélectionnez un bassin</span>
+  <div class="form" *ngIf="bassin">
+    <div class="form-group">
+      <label for="enEau">En eau</label>
+      <input type="checkbox" class="form-control" id="enEau" [(ngModel)]="enEau" name="enEau">
+    </div>
 
-<div class="form-group">
-  <label for="couleurBassin">Couleur du bassin</label>
-  <input type="text" class="form-control" id="couleurBassin" [(ngModel)]="couleurBassin" name="couleurBassin">
-</div>
+    <div class="form-group">
+      <label for="couleurBassin">Couleur du bassin</label>
+      <select [(ngModel)]="couleurBassin" class="form-control" id="couleurBassin">
+        <option value=''>-- Choisir --</option>
+        <option *ngFor="let couleur of couleurs" [ngValue]="couleurBassin">{{couleur}}</option>
+      </select>
+    </div>
 
-<div class="form-group">
-  <label for="ecoulementEntree">Ecoulement entrée</label>
-  <input type="checkbox" class="form-control" id="ecoulementEntree">
-</div>
+    <div class="form-group">
+      <label for="ecoulementEntree">Ecoulement entrée</label>
+      <input type="checkbox" class="form-control" id="ecoulementEntree">
+    </div>
 
-<div class="form-group">
-  <label for="couleurEauEntree">Couleur à l'entrée</label>
-  <input type="text" class="form-control" id="couleurEauEntree">
-</div>
+    <div class="form-group">
+      <label for="couleurEauEntree">Couleur à l'entrée</label>
+      <select [(ngModel)]="couleurEauEntree" class="form-control" id="couleurEauEntree">
+        <option value=''>-- Choisir --</option>
+        <option *ngFor="let couleur of couleurs" [ngValue]="couleurEauEntree">{{couleur}}</option>
+      </select>
+    </div>
 
-<div class="form-group">
-  <label for="ecoulementSortie">Ecoulement sortie</label>
-  <input type="checkbox" class="form-control" id="ecoulementSortie">
-</div>
+    <div class="form-group">
+      <label for="ecoulementSortie">Ecoulement sortie</label>
+      <input type="checkbox" class="form-control" id="ecoulementSortie">
+    </div>
 
-<div class="form-group">
-  <label for="couleurEauSortie">Couleur à la sortie</label>
-  <input type="text" class="form-control" id="couleurEauSortie">
-</div>
+    <div class="form-group">
+      <label for="couleurEauSortie">Couleur à la sortie</label>
+      <select [(ngModel)]="couleurEauSortie" class="form-control" id="couleurEauSortie">
+        <option value=''>-- Choisir --</option>
+        <option *ngFor="let couleur of couleurs" [ngValue]="couleurEauSortie">{{couleur}}</option>
+      </select>
+      
+    </div>
 
-<div class="form-group">
-  <label for="typeIntervention">Type d'intervention</label>
-  <input type="text" class="form-control" id="typeIntervention">
-</div>
-</div>
+    <div class="form-group">
+      <label for="typeIntervention">Type d'intervention</label>
+      <select [(ngModel)]="typeIntervention" class="form-control" id="typeIntervention">
+        <option value=''>-- Choisir --</option>
+        <option *ngFor="let type of types" [ngValue]="typeIntervention">{{type}}</option>
+      </select>
+    </div>
+  </div>
+</fieldset>

@@ -1,10 +1,13 @@
-<div class="bassins">
-  <div class="bassin-container" *ngFor="let b of bassins" (click)="selectBassin(b)">
-    <span *ngIf="bassinSelected == b" class="bassin-selected">
-      {{b.id}}
-    </span>
-    <span *ngIf="bassinSelected != b" class="bassin">
-      {{b.id}}
-    </span>
+<fieldset>
+  <legend>Bassins</legend>
+  <div class="bassins">
+    <div class="bassin-container" *ngFor="let b of bassins" (click)="selectBassin(b)">
+      <span *ngIf="bassinSelected == b" class="bassin-selected">
+        {{b.id}}
+      </span>
+      <span *ngIf="bassinSelected != b" class="bassin">
+        {{b.id}}
+      </span>
+    </div>
   </div>
-</div>
+</fieldset>

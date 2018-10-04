@@ -19,3 +19,12 @@
 
     display: table-row;
 }
+
+label, select, input {
+    padding: 2px;
+    font-size: 12px;
+}
+
+.form {
+    display: inline-block;
+}

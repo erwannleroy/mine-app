@@ -1,36 +1,38 @@
-<div class="detail-visite-bassin">
-  <span class="title-detail">Détail</span>
-  <div *ngIf="_vb">
-    <table>
-      <tr>
-        <td>En eau</td>
-        <td>{{_vb.enEau}}</td>
-      </tr>
-      <tr>
-        <td>Couleur du bassin</td>
-        <td>{{_vb.couleurEauBassin}}</td>
-      </tr>
-      <tr>
-        <td>Ecoulement entrée</td>
-        <td>{{_vb.ecoulementEntree}}</td>
-      </tr>
-      <tr>
-        <td>Couleur entrée</td>
-        <td>{{_vb.couleurEauEntree}}</td>
-      </tr>
-      <tr>
-        <td>Ecoulement sortie</td>
-        <td>{{_vb.ecoulementSortie}}</td>
-      </tr>
-      <tr>
-        <td>Couleur sortie</td>
-        <td>{{_vb.couleurEauSortie}}</td>
-      </tr>
-      <tr>
-        <td>Type d'intervention</td>
-        <td>{{_vb.typeIntervention}}</td>
-      </tr>
-    </table>
+<fieldset>
+  <legend>Détail</legend>
+  <div class="detail-visite-bassin">
+    <div *ngIf="_vb">
+      <table>
+        <tr>
+          <td>En eau</td>
+          <td>{{_vb.enEau}}</td>
+        </tr>
+        <tr>
+          <td>Couleur du bassin</td>
+          <td>{{_vb.couleurEauBassin}}</td>
+        </tr>
+        <tr>
+          <td>Ecoulement entrée</td>
+          <td>{{_vb.ecoulementEntree}}</td>
+        </tr>
+        <tr>
+          <td>Couleur entrée</td>
+          <td>{{_vb.couleurEauEntree}}</td>
+        </tr>
+        <tr>
+          <td>Ecoulement sortie</td>
+          <td>{{_vb.ecoulementSortie}}</td>
+        </tr>
+        <tr>
+          <td>Couleur sortie</td>
+          <td>{{_vb.couleurEauSortie}}</td>
+        </tr>
+        <tr>
+          <td>Type d'intervention</td>
+          <td>{{_vb.typeIntervention}}</td>
+        </tr>
+      </table>
+    </div>
+    <span class="select-mine" *ngIf="!_vb">Sélectionnez un bassin</span>
   </div>
-  <span class="select-mine" *ngIf="!_vb">Sélectionnez un bassin</span>
-</div>
+</fieldset>

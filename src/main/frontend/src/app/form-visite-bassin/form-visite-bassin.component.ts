@@ -1,10 +1,10 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Bassin} from '../shared/models/Bassin';
-import {VisiteBassin} from '../shared/models/VisiteBassin';
-import {Mine} from '../shared/models/Mine';
-import {BaseService} from '../shared';
-import {VisiteMine} from '../shared/models/VisiteMine';
-import {VisiteMineDAO} from "../shared/models/VisiteMineDAO";
+import { Component, OnInit, Input } from '@angular/core';
+import { Bassin } from '../shared/models/Bassin';
+import { VisiteBassin } from '../shared/models/VisiteBassin';
+import { Mine } from '../shared/models/Mine';
+import { BaseService } from '../shared';
+import { VisiteMine } from '../shared/models/VisiteMine';
+import { VisiteMineDAO } from "../shared/models/VisiteMineDAO";
 
 @Component({
   selector: 'app-form-visite-bassin',
@@ -17,6 +17,8 @@ export class FormVisiteBassinComponent implements OnInit {
   _mine: Mine;
   _enEau: boolean;
   _couleurBassin: string;
+  _couleurEauEntree: string;
+  couleurs = ["Chargée", "Claire", "Rouge"];
 
   constructor(private baseService: BaseService) {
   }
@@ -34,18 +36,18 @@ export class FormVisiteBassinComponent implements OnInit {
       if (visiteMines.length == 1) {
         let vm: VisiteMine = visiteMines[0];
 
-          let vb: VisiteBassin = this.findVisiteBassin(vm);
+        let vb: VisiteBassin = this.findVisiteBassin(vm);
 
-          if (!vb) {
-            console.log("model2gui vb pas trouve");
-            this._enEau = false;
-            this._couleurBassin = "";
-          } else {
-            console.log("model2gui vb trouve", vb);
-            this._enEau = vb.enEau;
-            this._couleurBassin = vb.couleurEauBassin;
-          }
+        if (!vb) {
+          console.log("model2gui vb pas trouve");
+          this._enEau = false;
+          this._couleurBassin = "";
+        } else {
+          console.log("model2gui vb trouve", vb);
+          this._enEau = vb.enEau;
+          this._couleurBassin = vb.couleurEauBassin;
         }
+      }
     });
   }
 
@@ -102,6 +104,16 @@ export class FormVisiteBassinComponent implements OnInit {
     this.gui2model();
   }
 
+  get couleurEauEntree() {
+    return this._couleurEauEntree;
+  }
+
+  set couleurEauEntree(c: string) {
+    console.log("set couleur eau entree");
+    this._couleurEauEntree = c;
+    this.gui2model();
+  }
+
   get enEau() {
     return this._enEau;
   }
@@ -116,35 +128,35 @@ export class FormVisiteBassinComponent implements OnInit {
     console.log("avant gui2model");
     if (this.mine) {
       this.baseService.selectVisiteMine(this.mine).then(data => {
-          let vmDAO: Array<VisiteMineDAO> = data;
-          let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-          console.log("résultat de la requete", data);
+        let vmDAO: Array<VisiteMineDAO> = data;
+        let visiteMines = this.baseService.convertVisitesMines(vmDAO);
+        console.log("résultat de la requete", data);
 
 
-          if (visiteMines.length == 1) {
-            let vm = visiteMines[0];
+        if (visiteMines.length == 1) {
+          let vm = visiteMines[0];
 
-            let vb: VisiteBassin = this.findVisiteBassin(vm);
+          let vb: VisiteBassin = this.findVisiteBassin(vm);
 
-            if (!vb) {
-              console.log("vb non trouve");
-              vb = new VisiteBassin();
-              if (!vm.visitesBassins) {
-                vm.visitesBassins = [];
-              }
-              vm.visitesBassins.push(vb);
+          if (!vb) {
+            console.log("vb non trouve");
+            vb = new VisiteBassin();
+            if (!vm.visitesBassins) {
+              vm.visitesBassins = [];
             }
-
-            vb.bassin = this.bassin;
-            vb.enEau = this.enEau;
-            vb.couleurEauBassin = this.couleurBassin;
-
-            this.baseService.updateVisiteMine(this.mine, vm);
+            vm.visitesBassins.push(vb);
           }
-          else {
-            console.log("oups ...");
-          }
+
+          vb.bassin = this.bassin;
+          vb.enEau = this.enEau;
+          vb.couleurEauBassin = this.couleurBassin;
+
+          this.baseService.updateVisiteMine(this.mine, vm);
         }
+        else {
+          console.log("oups ...");
+        }
+      }
       );
     }
 

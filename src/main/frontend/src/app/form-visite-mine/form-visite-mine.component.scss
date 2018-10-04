@@ -1,14 +1,73 @@
 .mine-visite {
     display: table;
-}
-
-.bassins {
     padding:5px;
 }
 
+.general {
+    padding: 5px;
+    display:table-column
+}
 
+.label {
+    display:block;
+}
+.input {
+    display:block;
+}
+
+
+label, input {
+    font-size: 12px;
+    padding: 2px;
+
+}
 
 .detail {
     display: table-cell;
     width:40%;
 }
+
+
+input[type=text], select, textarea{
+    width: 100%;
+    padding: 2px;
+    resize: vertical;
+  }
+  
+  /* Style the label to display next to the inputs */
+  label {
+    padding: 2px;
+    display: inline-block;
+  }
+  
+  /* Style the submit button */
+  input[type=submit] {
+    padding: 2px;
+    float: right;
+  }
+  
+  /* Style the container */
+  .container {
+    padding: 2px;
+  }
+  
+  /* Floating column for labels: 25% width */
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 2px;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 2px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

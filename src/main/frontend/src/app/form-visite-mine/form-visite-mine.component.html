@@ -1,17 +1,49 @@
-<div class="form-group">
-  <label for="date">Date de la visite</label>
-  <input type="date" class="form-control" id="date">
-</div>
+<fieldset class="general">
+  <legend>Général</legend>
 
-<div class="form-group">
-  <label for="operateur">Opérateur</label>
-  <input type="text" class="form-control" id="operateur">
-</div>
-
-<div class="form-group">
-  <label for="meteo">Météo</label>
-  <input type="text" class="form-control" id="meteo">
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-25">
+        <label for="date">Date de la visite</label>
+      </div>
+      <div class="col-75">
+        <input type="date" class="form-control" id="date" [(ngModel)]="date" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="operateur">Opérateur</label>
+      </div>
+      <div class="col-75">
+        <input type="text" class="form-control" id="operateur" [(ngModel)]="operateur" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="meteo">Météo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" class="form-control" id="meteo" [(ngModel)]="meteo" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="contexte">Contexte</label>
+      </div>
+      <div class="col-75">
+        <input type="text" class="form-control" id="contexte" [(ngModel)]="contexte" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="pluviometrie">Pluviométrie</label>
+      </div>
+      <div class="col-75">
+        <input type="text" class="form-control" id="pluviometrie" [(ngModel)]="pluviometrie" />
+      </div>
+    </div>
+  </div>
+</fieldset>
 
 
 <div class="mine-visite" *ngIf="mine">
