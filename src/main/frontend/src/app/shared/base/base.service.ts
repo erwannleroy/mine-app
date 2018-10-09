@@ -11,6 +11,7 @@ import {
 import * as workerPath from 'file-loader?name=scripts/[name].[hash].js!jsstore/dist/jsstore.worker.js';
 import {VisiteMine} from '../models/VisiteMine';
 import {VisiteMineDAO} from '../models/VisiteMineDAO';
+import { validateStyleParams } from '@angular/animations/browser/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -101,6 +102,13 @@ export class BaseService {
     return minesP;
   }
 
+  getVisitesMines(): Promise<VisiteMineDAO[]> {
+    var vp: Promise<VisiteMineDAO[]> = BaseService.connexion.select({
+      from: 'VISITE_MINE'
+    });
+    return vp;
+  }
+
   convertMines(minesDAO: Array<MineDAO>): Array<Mine> {
     var mines: Array<Mine> = [];
     console.log("avant convertMines");
@@ -186,6 +194,18 @@ export class BaseService {
     return count;
   }
 
+  existsVisiteMine(mine: Mine): Promise<number> {
+    var count: Promise<number> = BaseService.connexion.count({
+      from: 'VISITE_MINE',
+      where: {
+        key: mine.nom
+      }
+    });
+    console.log("existsVisiteMine");
+    console.log(count);
+    return count;
+  }
+
   addMine(mine: Mine) {
     var success: boolean;
     console.log("add mine : " + mine);
@@ -202,6 +222,7 @@ export class BaseService {
   }
 
   addVisiteMine(m: Mine, vm: VisiteMine) {
+    console.log("addVisiteMine", m, vm);
     var success: boolean;
     console.log("add visite mine : " + m);
     BaseService.connexion.insert({

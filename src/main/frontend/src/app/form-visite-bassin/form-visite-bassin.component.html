@@ -8,36 +8,36 @@
     </div>
 
     <div class="form-group">
-      <label for="couleurBassin">Couleur du bassin</label>
-      <select [(ngModel)]="couleurBassin" class="form-control" id="couleurBassin">
+      <label for="couleurEauBassin">Couleur du bassin</label>
+      <select [(ngModel)]="couleurEauBassin" class="form-control" id="couleurEauBassin">
         <option value=''>-- Choisir --</option>
-        <option *ngFor="let couleur of couleurs" [ngValue]="couleurBassin">{{couleur}}</option>
+        <option *ngFor="let c of couleurs" [ngValue]="c">{{c}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="ecoulementEntree">Ecoulement entrée</label>
-      <input type="checkbox" class="form-control" id="ecoulementEntree">
+      <input type="checkbox" class="form-control" id="ecoulementEntree" [(ngModel)]="ecoulementEntree">
     </div>
 
     <div class="form-group">
       <label for="couleurEauEntree">Couleur à l'entrée</label>
       <select [(ngModel)]="couleurEauEntree" class="form-control" id="couleurEauEntree">
         <option value=''>-- Choisir --</option>
-        <option *ngFor="let couleur of couleurs" [ngValue]="couleurEauEntree">{{couleur}}</option>
+        <option *ngFor="let c of couleurs" [ngValue]="c">{{c}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="ecoulementSortie">Ecoulement sortie</label>
-      <input type="checkbox" class="form-control" id="ecoulementSortie">
+      <input type="checkbox" class="form-control" id="ecoulementSortie" [(ngModel)]="ecoulementSortie">
     </div>
 
     <div class="form-group">
       <label for="couleurEauSortie">Couleur à la sortie</label>
       <select [(ngModel)]="couleurEauSortie" class="form-control" id="couleurEauSortie">
         <option value=''>-- Choisir --</option>
-        <option *ngFor="let couleur of couleurs" [ngValue]="couleurEauSortie">{{couleur}}</option>
+        <option *ngFor="let c of couleurs" [ngValue]="c">{{c}}</option>
       </select>
       
     </div>
@@ -46,7 +46,7 @@
       <label for="typeIntervention">Type d'intervention</label>
       <select [(ngModel)]="typeIntervention" class="form-control" id="typeIntervention">
         <option value=''>-- Choisir --</option>
-        <option *ngFor="let type of types" [ngValue]="typeIntervention">{{type}}</option>
+        <option *ngFor="let t of types" [ngValue]="t">{{t}}</option>
       </select>
     </div>
   </div>

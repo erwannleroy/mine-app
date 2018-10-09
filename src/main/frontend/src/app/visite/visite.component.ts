@@ -14,6 +14,7 @@ export class VisiteComponent implements OnInit {
 
   mine: Mine;
   visiteStarted: boolean;
+  visiteExist: boolean;
 
   constructor(private baseService: BaseService) { }
 
@@ -23,14 +24,32 @@ export class VisiteComponent implements OnInit {
 
 
   startVisite() {
+    console.log("startVisite");
     this.visiteStarted = true;
     let vm: VisiteMine = new VisiteMine();
+    vm.nomMine = this.mine.nom;
+    this.baseService.existsMine(this.mine.nom).then(data => {
+      if (!data) {
+        this.baseService.addMine(this.mine);
+      }
+    })
     this.baseService.addVisiteMine(this.mine, vm);
   }
 
-  onNotify(m: Mine): void {
+  continueVisite() {
+    this.visiteStarted = true;
+  }
+
+  selectMine(m: Mine): void {
     console.log("notify mine ", m);
+    this.visiteStarted = false;
+    this.visiteExist = false;
     this.mine = m;
+    this.baseService.existsVisiteMine(m).then(data => {
+      if (data) {
+        this.visiteExist = true;
+      }
+    });
   }
 
 }

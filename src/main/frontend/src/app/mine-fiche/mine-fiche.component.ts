@@ -20,16 +20,21 @@ export class MineFicheComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("init mine fiche");
-    this.baseService.existsMine(this.mine.nom).then(count => {
-      this.localStored = count == 1;
-      console.log("Localement stockée ? " + this.localStored);
-    });
-    if (this.localStored) {
-      this.uptodate = true;
-      var success: boolean = this.baseService.updateMine(this.mine);
-      this.uptodate = success;
-      console.log("A jour ? " + this.uptodate);
+  }
+
+  initialize() {
+    console.log("initialize mine fiche");
+    if (this.mine) {
+      this.baseService.existsMine(this.mine.nom).then(count => {
+        this.localStored = count == 1;
+        console.log("Localement stockée ? " + this.localStored);
+      });
+      if (this.localStored) {
+        this.uptodate = true;
+        var success: boolean = this.baseService.updateMine(this.mine);
+        this.uptodate = success;
+        console.log("A jour ? " + this.uptodate);
+      }
     }
   }
 
@@ -43,6 +48,7 @@ export class MineFicheComponent implements OnInit {
     console.log('previous mine: ', this._mine);
     console.log('current mine: ', m);
     this._mine = m;
+    this.initialize();
   }
 
   showHideDetail(v: VisiteMine) {
@@ -56,6 +62,6 @@ export class MineFicheComponent implements OnInit {
 
   downloadData() {
     this.baseService.addMine(this.mine);
-    this.ngOnInit();
+    this.initialize();
   }
 }

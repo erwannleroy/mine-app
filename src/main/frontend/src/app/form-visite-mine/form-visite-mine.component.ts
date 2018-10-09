@@ -35,6 +35,7 @@ export class FormVisiteMineComponent implements OnInit {
     console.log('form previous mine: ', this._mine);
     console.log('form current mine: ', m);
     this._mine = m;
+    this.model2gui();
   }
 
   displayDetail(b: Bassin) {
@@ -81,7 +82,7 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   set operateur(c: string) {
-    console.log("set operateur");
+    console.log("set operateur", c);
     this._operateur = c;
     this.gui2model();
   }
@@ -97,6 +98,7 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   model2gui() {
+    console.log("avant model2gui");
     this.baseService.selectVisiteMine(this.mine).then(data => {
       let vmDAO: Array<VisiteMineDAO> = data;
       let visiteMines = this.baseService.convertVisitesMines(vmDAO);
@@ -111,6 +113,11 @@ export class FormVisiteMineComponent implements OnInit {
         this._contexte = vm.contexte;
 
       } else {
+        this._meteo = "";
+        this._date = new Date();
+        this._operateur = "";
+        this._pluviometrie = 0;
+        this._contexte = "";
         console.log("oups ...");
       }
     });

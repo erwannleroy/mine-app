@@ -16,9 +16,17 @@
 		</div>
 	</div>
 
-	<div class="visites">
-		<div class="visites-label">Visites à synchroniser</div>
 
+	<div class="visites-label">Visites à synchroniser</div>
+	<div class="visites">
+		<div *ngFor="let v of visites" class="visite">
+			<div class="name">{{v.nomMine}}</div>
+			<div class="uptodate">
+				<img class="icon" src="../assets/icons/upload.png" />
+			</div>
+		</div>
 	</div>
+
+
 
 </div>
