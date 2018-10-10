@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "visite_mine")
 @Data
-@EqualsAndHashCode(exclude="visiteBassins")
+@EqualsAndHashCode(exclude = "visiteBassins")
 public class VisiteMine {
 
 	@Id
@@ -47,5 +47,9 @@ public class VisiteMine {
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_visite_mine")
 	private Set<VisiteBassin> visitesBassins;
+
+	@ManyToOne
+	@JoinColumn(name = "fk_mine")
+	private Mine mine;
 
 }

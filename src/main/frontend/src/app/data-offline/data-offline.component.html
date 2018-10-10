@@ -21,7 +21,7 @@
 	<div class="visites">
 		<div *ngFor="let v of visites" class="visite">
 			<div class="name">{{v.nomMine}}</div>
-			<div class="uptodate">
+			<div class="uptodate" (click)="uploadVisite(v)">
 				<img class="icon" src="../assets/icons/upload.png" />
 			</div>
 		</div>

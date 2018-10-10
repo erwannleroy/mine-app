@@ -6,6 +6,7 @@ import {MineDAO} from '../shared/models/MineDAO';
 import {MineOffline} from '../shared/models/MineOffline';
 import { VisiteMineDAO } from '../shared/models/VisiteMineDAO';
 import { VisiteMine } from '../shared/models/VisiteMine';
+import { MineService } from '../shared';
 
 @Component({
   selector: 'app-data-offline',
@@ -18,7 +19,7 @@ export class DataOfflineComponent implements OnInit {
   mines: Array<Mine> = [];
   visites: Array<VisiteMine> = [];
 
-  constructor(private baseService: BaseService) {}
+  constructor(private baseService: BaseService, private mineService: MineService) {}
 
   ngOnInit() {
     this.listMines();
@@ -47,5 +48,9 @@ export class DataOfflineComponent implements OnInit {
     console.log("suppression de "+mine.nom);
     this.baseService.deleteMine(mine.nom);
     this.ngOnInit();
+  }
+
+  uploadVisite(vm: VisiteMine) {
+    this.mineService.addVisite(vm);
   }
 }

@@ -8,9 +8,11 @@ import { RequestOptions, RequestOptionsArgs, RequestMethod } from '@angular/http
 import { Network } from '@ngx-pwa/offline';
 import { Observable, Subject } from 'rxjs';
 import {VisiteMineDAO} from "../models/VisiteMineDAO";
+import { VisiteMine } from '../models/VisiteMine';
 
 @Injectable()
 export class MineService {
+ 
   private subject = new Subject<Mine[]>();
 
 
@@ -74,5 +76,14 @@ export class MineService {
     }
   }
 
+  addVisite(vm: VisiteMine): any {
+    if (this.network.online) {
 
+      console.log(name);
+      //this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
+      this.http.post('http://localhost:8080/services/mine/'+vm.nomMine+'/add-visite', vm).subscribe(data => {
+        console.log(data);
+      });
+    }
+  }
 }

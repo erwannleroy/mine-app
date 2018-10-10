@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,15 +25,18 @@ import com.wann.minesoft.dto.VisiteMineDTO;
 public class MineController {
 
 	@Autowired
-	private MineRepository repo;
+	private MineRepository mineRepo;
 
+	@Autowired
+	private VisiteRepository visiteRepo;
+	
 	@Autowired
 	private ModelMapper modelMapper;
 
 	@GetMapping("/services/mines-all")
 	@CrossOrigin
 	public List<MineLightDTO> retrieveAll() {
-		List<Mine> result = repo.findAll();
+		List<Mine> result = mineRepo.findAll();
 		return result.stream().map(mine -> convertMineToDTO(mine)).collect(Collectors.toList());
 	}
 
@@ -54,10 +59,23 @@ public class MineController {
 	@GetMapping("/services/mines-by-name")
 	@CrossOrigin
 	public Collection<MineLightDTO> findByName(@RequestParam String name) {
-		Collection<Mine> mines = repo.findByNomContaining(name);
+		Collection<Mine> mines = mineRepo.findByNomContaining(name);
 		List<MineLightDTO> result = mines.stream().map(mine -> convertMineToDTO(mine)).collect(Collectors.toList());
 		return result;
 	}
 
-	
+	@PostMapping("/services/mine/{mineId}/add-visite")
+	public void addVisite(@PathVariable String mineId, @RequestBody VisiteMineDTO visite) {
+
+		VisiteMine vm = convertVisiteToDAO(mineId, visite);
+		visiteRepo.save(vm);
+
+	}
+
+	private VisiteMine convertVisiteToDAO(String mineId, VisiteMineDTO visite) {
+		VisiteMine vmDAO = modelMapper.map(visite, VisiteMine.class);
+		Mine m = mineRepo.getByNom(mineId);
+		vmDAO.setMine(m);
+		return vmDAO;
+	}
 }
