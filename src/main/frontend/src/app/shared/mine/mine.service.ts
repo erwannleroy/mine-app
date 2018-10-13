@@ -79,11 +79,11 @@ export class MineService {
   addVisite(vm: VisiteMine): any {
     if (this.network.online) {
 
-      console.log(name);
-      this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
+      //console.log(name);
+     // this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
     //this.http.post('http://localhost:8080/services/mine/'+vm.nomMine+'/add-visite', vm).subscribe(data => {
-        console.log(data);
-      });
+     //   console.log(data);
+     // });
     }
   }
 }
