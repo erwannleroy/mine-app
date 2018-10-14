@@ -21,7 +21,7 @@
 
 	<div class="last-visites-title">Dernières visites</div>
 	<div class="visite" *ngFor="let vm of mine.visitesMines">
-		<div (click)="showHideDetail(vm)">
+		<div (click)="selectVisiteMine(vm)">
 			<div class="visite-contexte">{{vm.contexte}}</div>
 			<div class="visite-general">Opéré par {{vm.operateur}} le {{vm.dateVisite}}</div>
 			<div class="visite-conditions">
@@ -31,7 +31,7 @@
 				<span class="visite-condition">{{vm.pluviometrie}} mm</span>
 			</div>
 		</div>
-		<app-mine-visite [visiteMine]="currentVisite" *ngIf="vm == currentVisite"></app-mine-visite>
+		<app-mine-visite [visiteMine]="vm" *ngIf="vm == currentVisite"></app-mine-visite>
 	</div>
 
 </div>

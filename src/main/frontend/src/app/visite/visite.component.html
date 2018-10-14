@@ -1,7 +1,7 @@
 <div class="main" [@fade]="'in'">
 	<app-menu></app-menu>
 
-	<app-mine-list (notify)="selectMine($event)"></app-mine-list>
+	<app-mine-list></app-mine-list>
 	<div class="start-visite-disable" *ngIf="!mine">Sélectionnez une mine</div>
 	<div class="start-visite" *ngIf="mine && !visiteExist" (click)="startVisite()">Démarrer une visite pour cette mine</div>
 	<div class="continue-visite" *ngIf="mine && visiteExist" (click)="continueVisite()">Continuer la visite pour cette mine</div>

@@ -19,7 +19,7 @@ export class AppComponent {
   constructor(protected network: Network) {}
 
   isOffline(): Boolean {
-//    console.log("online ? " + this.network.online);
+//    //console.log("online ? " + this.network.online);
     return !this.network.online;
   }
 

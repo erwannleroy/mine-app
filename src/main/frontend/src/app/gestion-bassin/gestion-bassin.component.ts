@@ -10,16 +10,10 @@ import { Mine } from '../shared/models/Mine';
 })
 export class GestionBassinComponent implements OnInit {
 
-  mine: Mine;
-
   constructor() { }
 
   ngOnInit() {
   }
 
-  onNotify(m:Mine):void {
-    console.log("notify mine ",m);
-    this.mine = m;
-  }
 
 }

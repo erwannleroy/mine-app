@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Mine } from '../shared/models/Mine';
 import { Bassin } from '../shared/models/Bassin';
+import { UtilityService } from '../utility.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ListBassinsComponent implements OnInit {
   
   @Output() notify: EventEmitter<Bassin> = new EventEmitter<Bassin>();
 
-  constructor() { }
+  constructor(private utilityService: UtilityService) { }
 
   ngOnInit() {
   }
@@ -27,15 +28,15 @@ export class ListBassinsComponent implements OnInit {
 
   @Input()
   set bassins(bs: Bassin[]) {
-    console.log('form previous bassins: ', this._bassins);
-    console.log('form current bassins: ', bs);
+    //console.log('form previous bassins: ', this._bassins);
+    //console.log('form current bassins: ', bs);
     this._bassins = bs;
   }
 
   selectBassin(b: Bassin) {
     console.log("select bassin", b);
     this.bassinSelected = b;
-    this.notify.emit(this.bassinSelected);
+    this.utilityService.setSelectedBassin(b);
   }
 
 }

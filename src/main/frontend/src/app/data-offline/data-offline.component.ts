@@ -41,11 +41,11 @@ export class DataOfflineComponent implements OnInit {
   }
 
   update(mine:Mine){
-    console.log("mise à jour de "+mine.nom);
+    //console.log("mise à jour de "+mine.nom);
   }
 
   delete(mine:Mine){
-    console.log("suppression de "+mine.nom);
+    //console.log("suppression de "+mine.nom);
     this.baseService.deleteMine(mine.nom);
     this.ngOnInit();
   }

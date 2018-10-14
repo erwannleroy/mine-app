@@ -16,9 +16,9 @@ export class GlobalSearchFormComponent implements OnInit {
   }
 
   updatesMines() {
-    console.log("updateMines");
+    //console.log("updateMines");
     const formValue = this.globalSearch;
-    console.log(formValue);
+    //console.log(formValue);
     this.mineService.findByName(formValue);
   }
 

@@ -26,6 +26,9 @@ import { DetailVisiteBassinComponent } from './detail-visite-bassin/detail-visit
 import { FormVisiteMineComponent } from './form-visite-mine/form-visite-mine.component';
 import { FormVisiteBassinComponent } from './form-visite-bassin/form-visite-bassin.component';
 import { ListBassinsComponent } from './list-bassins/list-bassins.component';
+import { MineBoxComponent } from './mine-box/mine-box.component';
+import { BassinBoxComponent } from './bassin-box/bassin-box.component';
+import { ListBassinsVisitesComponent } from './list-bassins-visites/list-bassins-visites.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { ListBassinsComponent } from './list-bassins/list-bassins.component';
     DetailVisiteBassinComponent,
     FormVisiteMineComponent,
     FormVisiteBassinComponent,
-    ListBassinsComponent
+    ListBassinsComponent,
+    ListBassinsVisitesComponent,
+    MineBoxComponent,
+    BassinBoxComponent
   ],
   imports: [
     BrowserModule,

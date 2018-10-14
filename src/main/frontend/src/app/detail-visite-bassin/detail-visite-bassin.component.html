@@ -1,38 +1,38 @@
 <fieldset>
   <legend>Détail</legend>
   <div class="detail-visite-bassin">
-    <div *ngIf="_vb">
+    <div *ngIf="visiteBassin">
       <table>
         <tr>
           <td>En eau</td>
-          <td>{{_vb.enEau}}</td>
+          <td>{{visiteBassin.enEau}}</td>
         </tr>
         <tr>
           <td>Couleur du bassin</td>
-          <td>{{_vb.couleurEauBassin}}</td>
+          <td>{{visiteBassin.couleurEauBassin}}</td>
         </tr>
         <tr>
           <td>Ecoulement entrée</td>
-          <td>{{_vb.ecoulementEntree}}</td>
+          <td>{{visiteBassin.ecoulementEntree}}</td>
         </tr>
         <tr>
           <td>Couleur entrée</td>
-          <td>{{_vb.couleurEauEntree}}</td>
+          <td>{{visiteBassin.couleurEauEntree}}</td>
         </tr>
         <tr>
           <td>Ecoulement sortie</td>
-          <td>{{_vb.ecoulementSortie}}</td>
+          <td>{{visiteBassin.ecoulementSortie}}</td>
         </tr>
         <tr>
           <td>Couleur sortie</td>
-          <td>{{_vb.couleurEauSortie}}</td>
+          <td>{{visiteBassin.couleurEauSortie}}</td>
         </tr>
         <tr>
           <td>Type d'intervention</td>
-          <td>{{_vb.typeIntervention}}</td>
+          <td>{{visiteBassin.typeIntervention}}</td>
         </tr>
       </table>
     </div>
-    <span class="select-mine" *ngIf="!_vb">Sélectionnez un bassin</span>
+    <span class="select-mine" *ngIf="!visiteBassin">Sélectionnez un bassin</span>
   </div>
 </fieldset>

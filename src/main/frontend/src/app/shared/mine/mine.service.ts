@@ -21,29 +21,26 @@ export class MineService {
     protected network: Network) {
   }
 
-
-
-
   getMines(): Observable<Mine[]> {
     return this.subject.asObservable();
   }
 
   retrieveAll() {
-    console.log('retrievall' + this.network.online);
+    //console.log('retrievall' + this.network.online);
     if (this.network.online) {
-      console.log('on cherche les mines en ONLINE');
-      //      console.log('port utilis� : ', process.env.PORT);
-            this.http.get<Mine[]>('/services/mines-all').subscribe(data => {
-      //this.http.get<Mine[]>('http://localhost:8080/services/mines-all').subscribe(data => {
-        console.log("retour du WS");
-        console.log(data);
+      //console.log('on cherche les mines en ONLINE');
+      //      //console.log('port utilis� : ', process.env.PORT);
+      //      this.http.get<Mine[]>('/services/mines-all').subscribe(data => {
+      this.http.get<Mine[]>('http://localhost:8080/services/mines-all').subscribe(data => {
+        //console.log("retour du WS");
+        //console.log(data);
         this.subject.next(data);
       });
     } else {
       // on tente dans le local storage
       var minesDAO: Array<MineDAO> = [];
-      console.log('on cherche les mines en OFFLINE');
-      console.log(this.baseService.getMines());
+      //console.log('on cherche les mines en OFFLINE');
+      //console.log(this.baseService.getMines());
       this.baseService.getMines().then(data =>  {
         let minesDAO: Array<MineDAO> = data;
         let mines = this.baseService.convertMines(minesDAO);
@@ -57,17 +54,17 @@ export class MineService {
     if (this.network.online) {
       const myParams = new HttpParams().set('name', name);
 
-      console.log(name);
-      this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
-      //this.http.get<Mine[]>('http://localhost:8080/services/mines-by-name', { params: myParams }).subscribe(data => {
+      //console.log(name);
+      //this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
+      this.http.get<Mine[]>('http://localhost:8080/services/mines-by-name', { params: myParams }).subscribe(data => {
         this.subject.next(data);
-        console.log(data);
+        //console.log(data);
       });
     } else {
       // on tente dans le local storage
       var minesDAO: Array<MineDAO> = [];
-      console.log('on cherche les mines en OFFLINE');
-      //      console.log(this.baseService.selectMines(name));
+      //console.log('on cherche les mines en OFFLINE');
+      //      //console.log(this.baseService.selectMines(name));
       this.baseService.selectMines(name).then(data =>  {
         let minesDAO: Array<MineDAO> = data;
         let mines = this.baseService.convertMines(minesDAO);
@@ -79,10 +76,10 @@ export class MineService {
   addVisite(vm: VisiteMine): any {
     if (this.network.online) {
 
-      //console.log(name);
+      ////console.log(name);
      // this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
     //this.http.post('http://localhost:8080/services/mine/'+vm.nomMine+'/add-visite', vm).subscribe(data => {
-     //   console.log(data);
+     //   //console.log(data);
      // });
     }
   }

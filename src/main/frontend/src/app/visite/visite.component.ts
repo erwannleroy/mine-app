@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
 import { fadeAnimation } from '../shared/animation';
 import { Mine } from '../shared/models/Mine';
 import { VisiteMine } from '../shared/models/VisiteMine';
 import { BaseService } from '../shared';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-visite',
@@ -16,15 +17,30 @@ export class VisiteComponent implements OnInit {
   visiteStarted: boolean;
   visiteExist: boolean;
 
-  constructor(private baseService: BaseService) { }
+  constructor(private baseService: BaseService, private utilityService: UtilityService) {
+    this.utilityService.getSelectedMine().subscribe(data => {
+      this.mine = data;
+      this.initialize();
+    });
+  }
 
   ngOnInit() {
   }
 
-
+  initialize() {
+    if (this.mine) {
+      this.visiteStarted = false;
+      this.visiteExist = false
+      this.baseService.existsVisiteMine(m).then(data => {
+        if (data) {
+          this.visiteExist = true;
+        }
+      });
+    }
+  }
 
   startVisite() {
-    console.log("startVisite");
+    //console.log("startVisite");
     this.visiteStarted = true;
     let vm: VisiteMine = new VisiteMine();
     vm.nomMine = this.mine.nom;
@@ -40,16 +56,6 @@ export class VisiteComponent implements OnInit {
     this.visiteStarted = true;
   }
 
-  selectMine(m: Mine): void {
-    console.log("notify mine ", m);
-    this.visiteStarted = false;
-    this.visiteExist = false;
-    this.mine = m;
-    this.baseService.existsVisiteMine(m).then(data => {
-      if (data) {
-        this.visiteExist = true;
-      }
-    });
-  }
+
 
 }

@@ -33,12 +33,12 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   model2gui() {
-    console.log("model2gui : ", this._mine);
+    //console.log("model2gui : ", this._mine);
     if (this._mine) {
       this.baseService.selectVisiteMine(this._mine).then(data => {
         let vmDAO: Array<VisiteMineDAO> = data;
         let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-        console.log("résultat de la requete", data);
+        //console.log("résultat de la requete", data);
 
         if (visiteMines.length == 1) {
           let vm: VisiteMine = visiteMines[0];
@@ -46,7 +46,7 @@ export class FormVisiteBassinComponent implements OnInit {
           let vb: VisiteBassin = this.findVisiteBassin(vm);
 
           if (!vb) {
-            console.log("model2gui vb pas trouve");
+            //console.log("model2gui vb pas trouve");
             this._enEau = false;
             this._couleurEauBassin = "";
             this._couleurEauEntree = "";
@@ -55,7 +55,7 @@ export class FormVisiteBassinComponent implements OnInit {
             this._ecoulementSortie = false;
             this._typeIntervention = "";
           } else {
-            console.log("model2gui vb trouve", vb);
+            //console.log("model2gui vb trouve", vb);
             this._enEau = vb.enEau;
             this._couleurEauBassin = vb.couleurEauBassin;
             this._couleurEauEntree = vb.couleurEauEntree;
@@ -70,14 +70,14 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   private findVisiteBassin(vm: VisiteMine) {
-    console.log("findVisiteBassin", vm);
+    //console.log("findVisiteBassin", vm);
     let trouve: boolean = false;
     let i: number = 0;
     let vb = null;
-    if (vm && vm.visitesBassins) {
+    if (vm && vm.visitesBassins && this._bassin) {
       while (!trouve && i < vm.visitesBassins.length) {
         console.log("parcours de visitebassin", vm.visitesBassins[i]);
-        //console.log("Comparaison de "+vm.visitesBassins[i].bassin.nom+" et "+this.bassin.nom);
+        ////console.log("Comparaison de "+vm.visitesBassins[i].bassin.nom+" et "+this.bassin.nom);
         trouve = vm.visitesBassins[i].bassin.id == this._bassin.id;
         if (trouve) {
           vb = vm.visitesBassins[i];
@@ -85,7 +85,7 @@ export class FormVisiteBassinComponent implements OnInit {
         i++;
       }
     }
-    console.log("findVisiteBassin", vb);
+    //console.log("findVisiteBassin", vb);
     return vb;
   }
 
@@ -96,8 +96,8 @@ export class FormVisiteBassinComponent implements OnInit {
 
   @Input()
   set bassin(b: Bassin) {
-    console.log('previous bassin: ', this._bassin);
-    console.log('current bassin: ', b);
+    //console.log('previous bassin: ', this._bassin);
+    //console.log('current bassin: ', b);
     this._bassin = b;
     this.model2gui();
   }
@@ -109,8 +109,8 @@ export class FormVisiteBassinComponent implements OnInit {
 
   @Input()
   set mine(m: Mine) {
-    console.log('previous mine: ', this._mine);
-    console.log('current mine: ', m);
+    //console.log('previous mine: ', this._mine);
+    //console.log('current mine: ', m);
     this._mine = m;
     this.model2gui();
   }
@@ -121,7 +121,7 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   set enEau(b: boolean) {
-    console.log("set en eau", b);
+    //console.log("set en eau", b);
     this._enEau = b;
     this.gui2model();
   }
@@ -132,7 +132,7 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   set couleurEauBassin(c: string) {
-    console.log("set couleur bassin", c);
+    //console.log("set couleur bassin", c);
     this._couleurEauBassin = c;
     this.gui2model();
   }
@@ -142,7 +142,7 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   set couleurEauEntree(c: string) {
-    console.log("set couleur eau entrée", c);
+    //console.log("set couleur eau entrée", c);
     this._couleurEauEntree = c;
     this.gui2model();
   }
@@ -152,7 +152,7 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   set couleurEauSortie(c: string) {
-    console.log("set couleur eau sortie", c);
+    //console.log("set couleur eau sortie", c);
     this._couleurEauSortie = c;
     this.gui2model();
   }
@@ -163,7 +163,7 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   set ecoulementEntree(b: boolean) {
-    console.log("set ecoulement entrée", b);
+    //console.log("set ecoulement entrée", b);
     this._ecoulementEntree = b;
     this.gui2model();
   }
@@ -173,7 +173,7 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   set ecoulementSortie(b: boolean) {
-    console.log("set ecoulement sortie", b);
+    //console.log("set ecoulement sortie", b);
     this._ecoulementSortie = b;
     this.gui2model();
   }
@@ -183,18 +183,18 @@ export class FormVisiteBassinComponent implements OnInit {
   }
 
   set typeIntervention(t: string) {
-    console.log("set type intervention", t);
+    //console.log("set type intervention", t);
     this._typeIntervention = t;
     this.gui2model();
   }
 
   gui2model() {
-    console.log("avant gui2model");
+    //console.log("avant gui2model");
     if (this.mine) {
       this.baseService.selectVisiteMine(this.mine).then(data => {
         let vmDAO: Array<VisiteMineDAO> = data;
         let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-        console.log("résultat de la requete", data);
+        //console.log("résultat de la requete", data);
 
 
         if (visiteMines.length == 1) {
@@ -203,7 +203,7 @@ export class FormVisiteBassinComponent implements OnInit {
           let vb: VisiteBassin = this.findVisiteBassin(vm);
 
           if (!vb) {
-            console.log("vb non trouve");
+            //console.log("vb non trouve");
             vb = new VisiteBassin();
             if (!vm.visitesBassins) {
               vm.visitesBassins = [];
@@ -223,12 +223,12 @@ export class FormVisiteBassinComponent implements OnInit {
           this.baseService.updateVisiteMine(this.mine, vm);
         }
         else {
-          console.log("oups ...");
+          //console.log("oups ...");
         }
       }
       );
     }
-    console.log("apres gui2model");
+    //console.log("apres gui2model");
   }
 
 

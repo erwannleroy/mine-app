@@ -8,12 +8,7 @@
 
 	<div class="mines">
 		<div class="mine-container" *ngFor="let m of mines" (click)="selectMine(m)">
-			<span *ngIf="mineSelected == m" class="mine-selected">
-				{{m.nom}}
-			</span>
-			<span *ngIf="mineSelected != m" class="mine">
-				{{m.nom}}
-			</span>
+			<app-mine-box [mine]="m"></app-mine-box>
 		</div>
 	</div>
 </div>

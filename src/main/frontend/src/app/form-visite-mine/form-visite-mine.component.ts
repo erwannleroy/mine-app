@@ -32,19 +32,19 @@ export class FormVisiteMineComponent implements OnInit {
 
   @Input()
   set mine(m: Mine) {
-    console.log('form previous mine: ', this._mine);
-    console.log('form current mine: ', m);
+    //console.log('form previous mine: ', this._mine);
+    //console.log('form current mine: ', m);
     this._mine = m;
     this.model2gui();
   }
 
   displayDetail(b: Bassin) {
-    console.log("display visite bassin : ", b.id);
+    //console.log("display visite bassin : ", b.id);
     this.bassin = b;
   }
 
   onSelectBassin(b: Bassin): void {
-    console.log("notify bassin ", b);
+    //console.log("notify bassin ", b);
     this.bassin = b;
   }
 
@@ -53,7 +53,7 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   set meteo(c: string) {
-    console.log("set meteo");
+    //console.log("set meteo");
     this._meteo = c;
     this.gui2model();
   }
@@ -63,7 +63,7 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   set contexte(c: string) {
-    console.log("set contexte");
+    //console.log("set contexte");
     this._contexte = c;
     this.gui2model();
   }
@@ -73,7 +73,7 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   set pluviometrie(c: number) {
-    console.log("set pluviometrie");
+    //console.log("set pluviometrie");
     this._pluviometrie = c;
     this.gui2model();
   }
@@ -82,7 +82,7 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   set operateur(c: string) {
-    console.log("set operateur", c);
+    //console.log("set operateur", c);
     this._operateur = c;
     this.gui2model();
   }
@@ -92,17 +92,17 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   set date(c: Date) {
-    console.log("set date");
+    //console.log("set date");
     this._date = c;
     this.gui2model();
   }
 
   model2gui() {
-    console.log("avant model2gui");
+    //console.log("avant model2gui");
     this.baseService.selectVisiteMine(this.mine).then(data => {
       let vmDAO: Array<VisiteMineDAO> = data;
       let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-      console.log("résultat de la requete", data);
+      //console.log("résultat de la requete", data);
 
       if (visiteMines.length == 1) {
         let vm: VisiteMine = visiteMines[0];
@@ -118,18 +118,18 @@ export class FormVisiteMineComponent implements OnInit {
         this._operateur = "";
         this._pluviometrie = 0;
         this._contexte = "";
-        console.log("oups ...");
+        //console.log("oups ...");
       }
     });
   }
 
   gui2model() {
-    console.log("avant gui2model");
+    //console.log("avant gui2model");
     if (this.mine) {
       this.baseService.selectVisiteMine(this.mine).then(data => {
         let vmDAO: Array<VisiteMineDAO> = data;
         let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-        console.log("résultat de la requete", data);
+        //console.log("résultat de la requete", data);
 
 
         if (visiteMines.length == 1) {
@@ -143,7 +143,7 @@ export class FormVisiteMineComponent implements OnInit {
           this.baseService.updateVisiteMine(this.mine, vm);
         }
         else {
-          console.log("oups ...");
+          //console.log("oups ...");
         }
       }
       );

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { VisiteBassin } from '../shared/models/VisiteBassin';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-detail-visite-bassin',
@@ -8,24 +9,15 @@ import { VisiteBassin } from '../shared/models/VisiteBassin';
 })
 export class DetailVisiteBassinComponent implements OnInit {
   
-  _vb: VisiteBassin;
+  visiteBassin: VisiteBassin;
 
-  constructor() { }
+  constructor(private utilityService: UtilityService) { 
+    this.utilityService.getSelectedVisiteBassin().subscribe(data => {
+      this.visiteBassin = data;
+    });
+  }
 
   ngOnInit() {
-  }
-
-
-  get vb(): VisiteBassin {
-    // transform value for display
-    return this._vb;
-  }
-  
-  @Input()
-  set vb(vb: VisiteBassin) {
-    console.log('prev value: ', this._vb);
-    console.log('got vb: ', vb);
-    this._vb = vb;
   }
 
 }

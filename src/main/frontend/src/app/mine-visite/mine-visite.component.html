@@ -1,9 +1,9 @@
 <div class="mine-visite" *ngIf="visiteMine">
 
   <div class="bassins">
-    <app-list-bassins [bassins]="getBassins()" (notify)="onSelectBassin($event)"></app-list-bassins>
+    <app-list-bassins-visites [bassinsVisites]="visiteMine.visitesBassins"></app-list-bassins-visites>
   </div>
   <div class="detail">
-    <app-detail-visite-bassin [vb]="visiteBassin"></app-detail-visite-bassin>
+    <app-detail-visite-bassin></app-detail-visite-bassin>
   </div>
 </div>

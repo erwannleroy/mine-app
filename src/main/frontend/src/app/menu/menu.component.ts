@@ -14,8 +14,8 @@ export class MenuComponent implements OnInit {
   }
 
   go(destination) {
-//    console.log (this.router.url);
-//    console.log("route actuelle : " + this.router.url +" , destination :"+destination);
+//    //console.log (this.router.url);
+//    //console.log("route actuelle : " + this.router.url +" , destination :"+destination);
     if (this.router.url != "/"+destination) {
       this.router.navigate([destination]);
     }

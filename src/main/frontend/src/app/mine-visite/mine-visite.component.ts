@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { VisiteMine } from '../shared/models/VisiteMine';
 import { VisiteBassin } from '../shared/models/VisiteBassin';
 import { Bassin } from '../shared/models/Bassin';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-mine-visite',
@@ -11,28 +12,25 @@ import { Bassin } from '../shared/models/Bassin';
 export class MineVisiteComponent implements OnInit {
 
   visiteBassin: VisiteBassin;
-  _visiteMine: VisiteMine;
+  visiteMineSelected: VisiteMine;
+  @Input()
+  visiteMine: VisiteMine;
 
-  constructor() {
+
+  
+  constructor(private utilityService: UtilityService) {
+    this.utilityService.getSelectedVisiteMine().subscribe(data => {
+      this.visiteMineSelected = data;
+    });
   }
 
   ngOnInit() {
   }
 
-  getBassins(): Bassin[] {
-    console.log("getBassins vm : ", this._visiteMine);
-    let bassins: Bassin[] = [];
-    if (this._visiteMine) {
-      for (let vb of this._visiteMine.visitesBassins) {
-        bassins.push(vb.bassin);
-      }
-    }
-    return bassins;
-  }
 
   onSelectBassin(b: Bassin) {
     console.log("Sélection du bassin : ", b.nom);
-    for (let vb of this._visiteMine.visitesBassins) {
+    for (let vb of this.visiteMine.visitesBassins) {
       if (vb.bassin == b) {
         this.displayDetail(vb);
         break;
@@ -42,19 +40,8 @@ export class MineVisiteComponent implements OnInit {
 
   displayDetail(vb: VisiteBassin) {
     this.visiteBassin = vb;
+    this.utilityService.setSelectedVisiteBassin(vb);
     console.log("display visite bassin : ", vb.id);
-  }
-
-  get visiteMine(): VisiteMine {
-    // transform value for display
-    return this._visiteMine;
-  }
-
-  @Input()
-  set visiteMine(v: VisiteMine) {
-    console.log('previous visite mine: ', this._visiteMine);
-    console.log('current visite mine: ', v);
-    this._visiteMine = v;
   }
 
 }
