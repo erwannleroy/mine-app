@@ -10,64 +10,120 @@ import { VisiteMine } from './shared/models/VisiteMine';
   providedIn: 'root'
 })
 export class UtilityService {
-
  
+  private mineGestion: Mine;
+  private mineVisite: Mine;
+  private bassinGestion: VisiteBassin;
+  private vmGestion: VisiteMine;
+  private vmVisite: VisiteMine;
+  private bassinVisite: Bassin;
 
-
-  private mineGestion = new Subject<Mine>();
-  private mineVisite = new Subject<Mine>();
-  private bassinGestion = new Subject<VisiteBassin>();
-  private vmGestion = new Subject<VisiteMine>();
-  private bassinVisite = new Subject<Bassin>();
+  private mineGestionS = new Subject<Mine>();
+  private mineVisiteS = new Subject<Mine>();
+  private bassinGestionS = new Subject<VisiteBassin>();
+  private vmGestionS = new Subject<VisiteMine>();
+  private vmVisiteS = new Subject<VisiteMine>();
+  private bassinVisiteS = new Subject<Bassin>();
 
   constructor(public router: Router) {
   }
 
 
-  setSelectedVisiteBassin(vb: VisiteBassin): any {
-    this.bassinGestion.next(vb);
-  }
-
-  getSelectedVisiteBassin(): Observable<VisiteBassin> {
-    return this.bassinGestion.asObservable();
-  }
+  
 
   setVisiteMine(vm: VisiteMine): any {
-    this.vmGestion.next(vm);
+    this.vmGestion = vm;
+    this.vmGestionS.next(vm);
   }
 
-  getSelectedVisiteMine(): Observable<VisiteMine> {
-    return this.vmGestion.asObservable();
-  }
-
-  getSelectedMine(): Observable<Mine> {
+  setSelectedVisiteMine(vm: VisiteMine): any {
     if (this.router.url == '/gestionbassin') {
-      return this.mineGestion.asObservable();
+      this.vmGestion = vm;
+      this.vmGestionS.next(vm);
     } else if (this.router.url == '/visite') {
-      return this.mineVisite.asObservable();
+      this.vmVisite = vm;
+      this.vmVisiteS.next(vm);
     }
+  }
 
+  observeSelectedVisiteMine(): Observable<VisiteMine> {
+    if (this.router.url == '/gestionbassin') {
+      return this.vmGestionS.asObservable();
+    } else if (this.router.url == '/visite') {
+      return this.vmVisiteS.asObservable();
+    }
+  }
+
+  getSelectedVisiteMine(): VisiteMine {
+    if (this.router.url == '/gestionbassin') {
+      return this.vmGestion;
+    } else if (this.router.url == '/visite') {
+      return this.vmVisite;
+    }
+  }
+
+  observeSelectedMine(): Observable<Mine> {
+    if (this.router.url == '/gestionbassin') {
+      return this.mineGestionS.asObservable();
+    } else if (this.router.url == '/visite') {
+      return this.mineVisiteS.asObservable();
+    }
+  }
+
+  getSelectedMine(): Mine {
+    if (this.router.url == '/gestionbassin') {
+      return this.mineGestion;
+    } else if (this.router.url == '/visite') {
+      return this.mineVisite;
+    }
   }
 
   setSelectedMine(m: Mine) {
     if (this.router.url == '/gestionbassin') {
-      this.mineGestion.next(m);
+      this.mineGestion = m;
+      this.mineGestionS.next(m);
     } else if (this.router.url == '/visite') {
-      this.mineVisite.next(m);
+      this.mineVisite = m;
+      this.mineVisiteS.next(m);
     }
   }
 
-  getSelectedBassin(): Observable<Bassin> {
-    if (this.router.url == '/gestionbassin') {
-      return this.bassinVisite.asObservable();
-    } else if (this.router.url == '/visite') {
-      return this.bassinVisite.asObservable();
+  observeSelectedBassin(): Observable<Bassin> {
+     if (this.router.url == '/visite') {
+      return this.bassinVisiteS.asObservable();
+    }
+  }
+
+  getSelectedBassin(): Bassin {
+     if (this.router.url == '/visite') {
+      return this.bassinVisite;
     }
   }
 
   setSelectedBassin(b: Bassin) {
-    if (this.router.url == '/gestionbassin') {
-      this.bassinVisite.next(b);
+     if (this.router.url == '/visite') {
+      this.bassinVisite = b;
+      this.bassinVisiteS.next(b);
     }
+  }
+
+  
+  observeSelectedVisiteBassin(): Observable<VisiteBassin> {
+    if (this.router.url == '/gestionbassin') {
+      return this.bassinGestionS.asObservable();
+    } 
+  }
+
+  getSelectedVisiteBassin(): VisiteBassin {
+    if (this.router.url == '/gestionbassin') {
+      return this.bassinGestion;
+    } 
+  }
+
+  setSelectedVisiteBassin(vb: VisiteBassin) {
+    if (this.router.url == '/gestionbassin') {
+      this.bassinGestion = vb;
+      this.bassinGestionS.next(vb);
+    } 
   }
 }

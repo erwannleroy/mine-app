@@ -5,6 +5,7 @@ import { Mine } from '../shared/models/Mine';
 import { BaseService } from '../shared';
 import { VisiteMine } from '../shared/models/VisiteMine';
 import { VisiteMineDAO } from "../shared/models/VisiteMineDAO";
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-form-visite-bassin',
@@ -13,7 +14,7 @@ import { VisiteMineDAO } from "../shared/models/VisiteMineDAO";
 })
 export class FormVisiteBassinComponent implements OnInit {
 
-  _bassin: Bassin;
+  bassin: Bassin;
   _mine: Mine;
   _enEau: boolean;
   _couleurEauBassin: string;
@@ -26,46 +27,40 @@ export class FormVisiteBassinComponent implements OnInit {
   couleurs = ["Chargée", "Claire", "Rouge"];
   types = ["Vidange", "Récurrage", "Bouchage renard"];
 
-  constructor(private baseService: BaseService) {
+  constructor(private baseService: BaseService, private utilityService: UtilityService) {
   }
 
   ngOnInit() {
+    this.utilityService.observeSelectedBassin().subscribe(data => {
+      console.log("form bassin nouveau " + data);
+      this.bassin = data;
+      this.model2gui();
+    });
   }
 
   model2gui() {
-    //console.log("model2gui : ", this._mine);
-    if (this._mine) {
-      this.baseService.selectVisiteMine(this._mine).then(data => {
-        let vmDAO: Array<VisiteMineDAO> = data;
-        let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-        //console.log("résultat de la requete", data);
+    console.log("model2gui : ");
+    var vm = this.utilityService.getSelectedVisiteMine();
+    let vb: VisiteBassin = this.findVisiteBassin(vm);
 
-        if (visiteMines.length == 1) {
-          let vm: VisiteMine = visiteMines[0];
-
-          let vb: VisiteBassin = this.findVisiteBassin(vm);
-
-          if (!vb) {
-            //console.log("model2gui vb pas trouve");
-            this._enEau = false;
-            this._couleurEauBassin = "";
-            this._couleurEauEntree = "";
-            this._ecoulementEntree = false;
-            this._couleurEauSortie = "";
-            this._ecoulementSortie = false;
-            this._typeIntervention = "";
-          } else {
-            //console.log("model2gui vb trouve", vb);
-            this._enEau = vb.enEau;
-            this._couleurEauBassin = vb.couleurEauBassin;
-            this._couleurEauEntree = vb.couleurEauEntree;
-            this._ecoulementEntree = vb.ecoulementEntree;
-            this._couleurEauSortie = vb.couleurEauSortie;
-            this._ecoulementSortie = vb.ecoulementSortie;
-            this._typeIntervention = vb.typeIntervention;
-          }
-        }
-      });
+    if (!vb) {
+      //console.log("model2gui vb pas trouve");
+      this._enEau = false;
+      this._couleurEauBassin = "";
+      this._couleurEauEntree = "";
+      this._ecoulementEntree = false;
+      this._couleurEauSortie = "";
+      this._ecoulementSortie = false;
+      this._typeIntervention = "";
+    } else {
+      //console.log("model2gui vb trouve", vb);
+      this._enEau = vb.enEau;
+      this._couleurEauBassin = vb.couleurEauBassin;
+      this._couleurEauEntree = vb.couleurEauEntree;
+      this._ecoulementEntree = vb.ecoulementEntree;
+      this._couleurEauSortie = vb.couleurEauSortie;
+      this._ecoulementSortie = vb.ecoulementSortie;
+      this._typeIntervention = vb.typeIntervention;
     }
   }
 
@@ -74,11 +69,11 @@ export class FormVisiteBassinComponent implements OnInit {
     let trouve: boolean = false;
     let i: number = 0;
     let vb = null;
-    if (vm && vm.visitesBassins && this._bassin) {
+    if (vm && vm.visitesBassins && this.bassin) {
       while (!trouve && i < vm.visitesBassins.length) {
         console.log("parcours de visitebassin", vm.visitesBassins[i]);
         ////console.log("Comparaison de "+vm.visitesBassins[i].bassin.nom+" et "+this.bassin.nom);
-        trouve = vm.visitesBassins[i].bassin.id == this._bassin.id;
+        trouve = vm.visitesBassins[i].bassin.id == this.bassin.id;
         if (trouve) {
           vb = vm.visitesBassins[i];
         }
@@ -89,6 +84,7 @@ export class FormVisiteBassinComponent implements OnInit {
     return vb;
   }
 
+  /*
   get bassin(): Bassin {
     // transform value for display
     return this._bassin;
@@ -99,22 +95,23 @@ export class FormVisiteBassinComponent implements OnInit {
     //console.log('previous bassin: ', this._bassin);
     //console.log('current bassin: ', b);
     this._bassin = b;
-    this.model2gui();
+    //this.model2gui();
   }
-
-  get mine(): Mine {
-    // transform value for display
-    return this._mine;
-  }
-
-  @Input()
-  set mine(m: Mine) {
-    //console.log('previous mine: ', this._mine);
-    //console.log('current mine: ', m);
-    this._mine = m;
-    this.model2gui();
-  }
-
+  */
+  /*
+    get mine(): Mine {
+      // transform value for display
+      return this._mine;
+    }
+  
+    @Input()
+    set mine(m: Mine) {
+      //console.log('previous mine: ', this._mine);
+      //console.log('current mine: ', m);
+      this._mine = m;
+      //this.model2gui();
+    }
+  */
 
   get enEau() {
     return this._enEau;
@@ -190,46 +187,31 @@ export class FormVisiteBassinComponent implements OnInit {
 
   gui2model() {
     //console.log("avant gui2model");
-    if (this.mine) {
-      this.baseService.selectVisiteMine(this.mine).then(data => {
-        let vmDAO: Array<VisiteMineDAO> = data;
-        let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-        //console.log("résultat de la requete", data);
 
+    let mine = this.utilityService.getSelectedMine();
+    let vm = this.utilityService.getSelectedVisiteMine();
 
-        if (visiteMines.length == 1) {
-          let vm = visiteMines[0];
+    let vb: VisiteBassin = this.findVisiteBassin(vm);
 
-          let vb: VisiteBassin = this.findVisiteBassin(vm);
-
-          if (!vb) {
-            //console.log("vb non trouve");
-            vb = new VisiteBassin();
-            if (!vm.visitesBassins) {
-              vm.visitesBassins = [];
-            }
-            vm.visitesBassins.push(vb);
-          }
-
-          vb.bassin = this._bassin;
-          vb.enEau = this._enEau;
-          vb.couleurEauBassin = this._couleurEauBassin;
-          vb.couleurEauEntree = this._couleurEauEntree;
-          vb.ecoulementEntree = this._ecoulementEntree;
-          vb.couleurEauSortie = this._couleurEauSortie;
-          vb.ecoulementSortie = this._ecoulementSortie;
-          vb.typeIntervention = this._typeIntervention;
-
-          this.baseService.updateVisiteMine(this.mine, vm);
-        }
-        else {
-          //console.log("oups ...");
-        }
+    if (!vb) {
+      //console.log("vb non trouve");
+      vb = new VisiteBassin();
+      if (!vm.visitesBassins) {
+        vm.visitesBassins = [];
       }
-      );
+      vm.visitesBassins.push(vb);
     }
-    //console.log("apres gui2model");
-  }
 
+    vb.bassin = this.bassin;
+    vb.enEau = this._enEau;
+    vb.couleurEauBassin = this._couleurEauBassin;
+    vb.couleurEauEntree = this._couleurEauEntree;
+    vb.ecoulementEntree = this._ecoulementEntree;
+    vb.couleurEauSortie = this._couleurEauSortie;
+    vb.ecoulementSortie = this._ecoulementSortie;
+    vb.typeIntervention = this._typeIntervention;
+
+    this.baseService.updateVisiteMine(mine, vm);
+  }
 
 }

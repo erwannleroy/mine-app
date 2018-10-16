@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Bassin } from '../shared/models/Bassin';
 import { BaseService } from '../shared';
 import { UtilityService } from '../utility.service';
+import { VisiteBassin } from '../shared/models/VisiteBassin';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bassin-box',
@@ -11,49 +13,63 @@ import { UtilityService } from '../utility.service';
 export class BassinBoxComponent implements OnInit {
 
   _bassin: Bassin;
-  visiteFilled: boolean;
+  _vb: VisiteBassin;
+  bassinFilled: boolean;
   style: string = 'bassin';
   bassinSelected: Bassin;
+  vbSelected: VisiteBassin;
 
-  constructor(private baseService: BaseService, private utilityService: UtilityService) {
-    this.utilityService.getSelectedBassin().subscribe(data => {
-      this.bassinSelected = data;
-      this.updateStyle();
-    });
-    this.initialize();
+  constructor(public router: Router, private baseService: BaseService, private utilityService: UtilityService) {
   }
 
   ngOnInit() {
-  }
-
-  initialize() {
-    //console.log("initialize mine fiche");
-    if (this._bassin) {
-     /* this.baseService.existsVisiteForBassin(this._bassin).then(count => {
-        //this.visiteFilled = count == 1;
-        //console.log("Localement stockée ? " + this.localStored);
-      });*/
-
+    if (this.router.url == '/visite') {
+      this.utilityService.observeSelectedBassin().subscribe(data => {
+        console.log("bassin box, change bassin " + data.id);
+        this.bassinSelected = data;
+        this.updateStyleForBassin();
+      });
     }
-    this.updateStyle();
+    if (this.router.url == '/gestionbassin') {
+      this.utilityService.observeSelectedVisiteBassin().subscribe(data => {
+        console.log("bassin box, change bassin " + data.id);
+        this.vbSelected = data;
+        this.updateStyleForVisiteBassin();
+      });
+    }
   }
 
 
 
-  updateStyle() {
+
+  updateStyleForVisiteBassin() {
+    console.log("styleClass");
+    if (this._vb) {
+      if (this._vb == this.vbSelected) {
+        this.style = 'bassin-selected';
+        console.log("==============> updateStyle vb selected : " + this._vb.bassin.nom);
+      } else {
+        this.style = 'bassin';
+        console.log("bassin normal : " + this._vb.bassin.id);
+      }
+    }
+  }
+
+  updateStyleForBassin() {
     console.log("styleClass");
     if (this._bassin) {
       if (this._bassin == this.bassinSelected) {
         this.style = 'bassin-selected';
-        console.log("==============> updateStyle bassin selected : " + this._bassin.nom);
+        console.log("==============> updateStyle vb selected : " + this._bassin.nom);
       } else {
-        this.baseService.existsMine(this._bassin.nom).then(data => {
+        this.baseService.existsVisiteForBassin(this.utilityService.getSelectedMine(), this._bassin).then(data => {
+          console.log("Nb de visite du bassin " + this._bassin.id + " : " + data);
           if (data == 1) {
-            this.style = 'bassin-visited';
-            console.log("mine stored : " + this._bassin.nom);
+            this.style = 'bassin-stored';
+            console.log("bassin stored : " + this._bassin.id);
           } else {
             this.style = 'bassin';
-            console.log("mine normal : " + this._bassin.nom);
+            console.log("bassin normal : " + this._bassin.id);
           }
         });
       }
@@ -71,7 +87,20 @@ export class BassinBoxComponent implements OnInit {
     //console.log('previous mine: ', this._mine);
     //console.log('current mine: ', m);
     this._bassin = b;
-    this.initialize();
+    this.updateStyleForBassin();
   }
 
+  get vb(): VisiteBassin {
+    // transform value for display
+    return this._vb;
+  }
+
+  @Input()
+  set vb(vb: VisiteBassin) {
+    console.log('===========> BassinBoxComponent vb: ' + vb.bassin.nom);
+    //console.log('previous mine: ', this._mine);
+    //console.log('current mine: ', m);
+    this._vb = vb;
+    this.updateStyleForVisiteBassin();
+  }
 }

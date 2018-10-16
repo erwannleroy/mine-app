@@ -19,7 +19,7 @@ export class MineVisiteComponent implements OnInit {
 
   
   constructor(private utilityService: UtilityService) {
-    this.utilityService.getSelectedVisiteMine().subscribe(data => {
+    this.utilityService.observeSelectedVisiteMine().subscribe(data => {
       this.visiteMineSelected = data;
     });
   }

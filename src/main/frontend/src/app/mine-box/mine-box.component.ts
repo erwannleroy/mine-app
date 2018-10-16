@@ -18,7 +18,7 @@ export class MineBoxComponent implements OnInit {
   mineSelected: Mine;
 
   constructor(private baseService: BaseService, private utilityService: UtilityService) {
-    this.utilityService.getSelectedMine().subscribe(data => {
+    this.utilityService.observeSelectedMine().subscribe(data => {
       console.log("Mine box : " + data.nom);
       this.mineSelected = data;
       this.updateStyle();

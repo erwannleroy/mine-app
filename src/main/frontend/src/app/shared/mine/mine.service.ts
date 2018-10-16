@@ -30,8 +30,8 @@ export class MineService {
     if (this.network.online) {
       //console.log('on cherche les mines en ONLINE');
       //      //console.log('port utilis� : ', process.env.PORT);
-      //      this.http.get<Mine[]>('/services/mines-all').subscribe(data => {
-      this.http.get<Mine[]>('http://localhost:8080/services/mines-all').subscribe(data => {
+            this.http.get<Mine[]>('/services/mines-all').subscribe(data => {
+     // this.http.get<Mine[]>('http://localhost:8080/services/mines-all').subscribe(data => {
         //console.log("retour du WS");
         //console.log(data);
         this.subject.next(data);
@@ -55,8 +55,8 @@ export class MineService {
       const myParams = new HttpParams().set('name', name);
 
       //console.log(name);
-      //this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
-      this.http.get<Mine[]>('http://localhost:8080/services/mines-by-name', { params: myParams }).subscribe(data => {
+      this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
+      //this.http.get<Mine[]>('http://localhost:8080/services/mines-by-name', { params: myParams }).subscribe(data => {
         this.subject.next(data);
         //console.log(data);
       });

@@ -12,7 +12,7 @@ export class DetailVisiteBassinComponent implements OnInit {
   visiteBassin: VisiteBassin;
 
   constructor(private utilityService: UtilityService) { 
-    this.utilityService.getSelectedVisiteBassin().subscribe(data => {
+    this.utilityService.observeSelectedVisiteBassin().subscribe(data => {
       this.visiteBassin = data;
     });
   }

@@ -18,9 +18,7 @@ import { Bassin } from '../models/Bassin';
   providedIn: 'root'
 })
 export class BaseService {
-  existsVisiteForBassin(_bassin: Bassin): any {
-    return null;
-  }
+
 
 
   static connexion = new JsStore.Instance(new Worker(workerPath));
@@ -172,20 +170,6 @@ export class BaseService {
     //return this.convertMines(minesP);
   }
 
-  selectMinesl(name: string): Promise<MineDAO[]> {
-    var mines: Promise<MineDAO[]> = BaseService.connexion.select({
-      from: 'MINE',
-      where: {
-        nom: {like: '%' + name + '%'}
-      }
-    });
-
-    //console.log("select MINE by name");
-    //console.log(mines);
-    return mines;
-  }
-
-
   existsMine(key: string): Promise<number> {
     var count: Promise<number> = BaseService.connexion.count({
       from: 'MINE',
@@ -298,5 +282,21 @@ export class BaseService {
     });
 
     return success;
+  }
+
+  existsVisiteForBassin(mine: Mine, bassin: Bassin): any {
+    console.log("Recherche de visite pour mine "+mine.nom+" et bassin "+bassin.id);
+    var count: Promise<number> = BaseService.connexion.count({
+      from: 'VISITE_MINE',
+      where: {
+        key: mine.nom,
+        content: {
+          like:'%"'+bassin.id+'"%'
+        }
+      }
+    });
+    console.log("existsVisiteForBassin");
+    //console.log(count);
+    return count;
   }
 }

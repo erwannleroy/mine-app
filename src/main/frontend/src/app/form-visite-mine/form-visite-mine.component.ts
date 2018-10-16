@@ -4,6 +4,7 @@ import { Bassin } from '../shared/models/Bassin';
 import { BaseService } from '../shared';
 import { VisiteMineDAO } from '../shared/models/VisiteMineDAO';
 import { VisiteMine } from '../shared/models/VisiteMine';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-form-visite-mine',
@@ -20,7 +21,7 @@ export class FormVisiteMineComponent implements OnInit {
   _pluviometrie: number;
   _contexte: string;
 
-  constructor(private baseService: BaseService) { }
+  constructor(private baseService: BaseService, private utilityService: UtilityService) { }
 
   ngOnInit() {
   }
@@ -126,27 +127,14 @@ export class FormVisiteMineComponent implements OnInit {
   gui2model() {
     //console.log("avant gui2model");
     if (this.mine) {
-      this.baseService.selectVisiteMine(this.mine).then(data => {
-        let vmDAO: Array<VisiteMineDAO> = data;
-        let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-        //console.log("résultat de la requete", data);
+      let vm = this.utilityService.getSelectedVisiteMine();
+      vm.meteo = this._meteo;
+      vm.dateVisite = this._date;
+      vm.operateur = this._operateur;
+      vm.pluviometrie = this._pluviometrie;
+      vm.contexte = this._contexte;
 
-
-        if (visiteMines.length == 1) {
-          let vm = visiteMines[0];
-          vm.meteo = this._meteo;
-          vm.dateVisite = this._date;
-          vm.operateur = this._operateur;
-          vm.pluviometrie = this._pluviometrie;
-          vm.contexte = this._contexte;
-
-          this.baseService.updateVisiteMine(this.mine, vm);
-        }
-        else {
-          //console.log("oups ...");
-        }
-      }
-      );
+      this.baseService.updateVisiteMine(this.mine, vm);
     }
   }
 }

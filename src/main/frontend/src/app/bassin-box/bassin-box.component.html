@@ -1,3 +1,7 @@
-<span [className]="style">
+<span *ngIf="bassin" [className]="style">
   {{bassin.id}}
+</span>
+
+<span *ngIf="vb" [className]="style">
+  {{vb.bassin.id}}
 </span>

@@ -21,7 +21,7 @@ export class MineFicheComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.utilityService.getSelectedMine().subscribe(data => {
+    this.utilityService.observeSelectedMine().subscribe(data => {
       this.mine = data;
       this.initialize();
     },

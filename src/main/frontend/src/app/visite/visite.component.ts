@@ -4,6 +4,7 @@ import { Mine } from '../shared/models/Mine';
 import { VisiteMine } from '../shared/models/VisiteMine';
 import { BaseService } from '../shared';
 import { UtilityService } from '../utility.service';
+import { VisiteMineDAO } from '../shared/models/VisiteMineDAO';
 
 @Component({
   selector: 'app-visite',
@@ -18,7 +19,7 @@ export class VisiteComponent implements OnInit {
   visiteExist: boolean;
 
   constructor(private baseService: BaseService, private utilityService: UtilityService) {
-    this.utilityService.getSelectedMine().subscribe(data => {
+    this.utilityService.observeSelectedMine().subscribe(data => {
       this.mine = data;
       this.initialize();
     });
@@ -31,7 +32,7 @@ export class VisiteComponent implements OnInit {
     if (this.mine) {
       this.visiteStarted = false;
       this.visiteExist = false
-      this.baseService.existsVisiteMine(m).then(data => {
+      this.baseService.existsVisiteMine(this.mine).then(data => {
         if (data) {
           this.visiteExist = true;
         }
@@ -50,10 +51,20 @@ export class VisiteComponent implements OnInit {
       }
     })
     this.baseService.addVisiteMine(this.mine, vm);
+    this.utilityService.setSelectedVisiteMine(vm);
   }
 
   continueVisite() {
     this.visiteStarted = true;
+    this.baseService.selectVisiteMine(this.mine).then(data => {
+      let vmDAO: Array<VisiteMineDAO> = data;
+      let visiteMines = this.baseService.convertVisitesMines(vmDAO);
+      if (visiteMines.length == 1) {
+        let vm = visiteMines[0];
+        this.utilityService.setSelectedVisiteMine(vm);
+      }
+    });
+    
   }
 
 

@@ -2,7 +2,7 @@
   <legend>Bassins</legend>
   <div class="bassins">
     <div class="bassin-container" *ngFor="let vb of bassinsVisites" (click)="selectBassinVisite(vb)">
-     <app-bassin-box [bassin]="vb.bassin"></app-bassin-box>
+     <app-bassin-box [vb]="vb"></app-bassin-box>
     </div>
   </div>
 </fieldset>

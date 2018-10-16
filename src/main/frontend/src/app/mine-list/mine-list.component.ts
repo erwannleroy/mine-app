@@ -25,7 +25,7 @@ export class MineListComponent implements OnInit, OnDestroy {
     },
       error => console.log(error));
 
-    this.utilityService.getSelectedMine().subscribe(data => {
+    this.utilityService.observeSelectedMine().subscribe(data => {
       this.mineSelected = data;
     });
   }
