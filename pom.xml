@@ -137,65 +137,65 @@
 			</build>
 		</profile>
 
-		<!-- <profile> -->
-		<!-- <id>full-local-h2</id> -->
-		<!-- <properties> -->
-		<!-- <activatedProperties>local-h2</activatedProperties> -->
-		<!-- </properties> -->
-		<!-- <dependencies> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.h2database</groupId> -->
-		<!-- <artifactId>h2</artifactId> -->
-		<!-- </dependency> -->
-		<!-- </dependencies> -->
-		<!-- <build> -->
-		<!-- <plugins> -->
-		<!-- <plugin> -->
+		<profile>
+			<id>full-local-h2</id>
+			<properties>
+				<activatedProperties>local-h2</activatedProperties>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
 
-		<!-- <groupId>com.github.eirslett</groupId> -->
-		<!-- <artifactId>frontend-maven-plugin</artifactId> -->
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
 
-		<!-- <configuration> -->
-		<!-- <nodeVersion>v8.11.3</nodeVersion> -->
-		<!-- <npmVersion>5.6.0</npmVersion> -->
-		<!-- <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot> -->
-		<!-- <workingDirectory>src/main/frontend</workingDirectory> -->
-		<!-- </configuration> -->
+						<configuration>
+							<nodeVersion>v8.11.3</nodeVersion>
+							<npmVersion>5.6.0</npmVersion>
+							<nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+							<workingDirectory>src/main/frontend</workingDirectory>
+						</configuration>
 
-		<!-- <executions> -->
-		<!-- <execution> -->
-		<!-- <id>install node and npm</id> -->
-		<!-- <goals> -->
-		<!-- <goal>install-node-and-npm</goal> -->
-		<!-- </goals> -->
-		<!-- </execution> -->
+						<executions>
+							<execution>
+								<id>install node and npm</id>
+								<goals>
+									<goal>install-node-and-npm</goal>
+								</goals>
+							</execution>
 
-		<!-- <execution> -->
-		<!-- <id>npm install</id> -->
-		<!-- <goals> -->
-		<!-- <goal>npm</goal> -->
-		<!-- </goals> -->
-		<!-- </execution> -->
+							<execution>
+								<id>npm install</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+							</execution>
 
-		<!-- <execution> -->
-		<!-- <id>npm run build</id> -->
-		<!-- <goals> -->
-		<!-- <goal>npm</goal> -->
-		<!-- </goals> -->
+							<execution>
+								<id>npm run build</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
 
-		<!-- <configuration> -->
-		<!-- <arguments>run build</arguments> -->
-		<!-- </configuration> -->
-		<!-- </execution> -->
-		<!-- </executions> -->
-		<!-- </plugin> -->
-		<!-- <plugin> -->
-		<!-- <groupId>org.springframework.boot</groupId> -->
-		<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
-		<!-- </plugin> -->
-		<!-- </plugins> -->
-		<!-- </build> -->
-		<!-- </profile> -->
+								<configuration>
+									<arguments>run build</arguments>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>full-remote-pg</id>
 			<properties>
