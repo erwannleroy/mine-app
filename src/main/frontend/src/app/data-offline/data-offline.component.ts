@@ -31,11 +31,12 @@ export class DataOfflineComponent implements OnInit {
   listMines() {
     this.utilityService.log("listMines");
     this.baseService.getMines().then(data =>  {
-      this.utilityService.log(data);
+      this.utilityService.log("then "+data);
       let minesDAO: Array<MineDAO> = data;
       this.mines = this.baseService.convertMines(minesDAO);
+      this.utilityService.log("convertMines "+this.mines);
     }).catch(error => {
-      this.utilityService.log(error);
+      this.utilityService.log("error" + error);
     });
   }
 
