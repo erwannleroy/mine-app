@@ -11,6 +11,8 @@ import { VisiteMine } from './shared/models/VisiteMine';
 })
 export class UtilityService {
  
+  private text: String;
+  private textS = new Subject<String>();
   private mineGestion: Mine;
   private mineVisite: Mine;
   private bassinGestion: VisiteBassin;
@@ -29,7 +31,14 @@ export class UtilityService {
   }
 
 
-  
+  log(text) {
+    this.text = text;
+    this.textS.next(this.text);
+  }
+
+  observeLog(): Observable<String>{
+    return this.textS;
+  }
 
   setVisiteMine(vm: VisiteMine): any {
     this.vmGestion = vm;
@@ -127,3 +136,4 @@ export class UtilityService {
     } 
   }
 }
+

@@ -56,7 +56,9 @@ export class MineFicheComponent implements OnInit {
   }
 
   downloadData() {
+    this.utilityService.log("downloadData start");
     this.baseService.addMine(this.mine);
     this.initialize();
+    this.utilityService.log("downloadData end");
   }
 }

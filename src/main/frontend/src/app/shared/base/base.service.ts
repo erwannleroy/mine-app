@@ -13,6 +13,7 @@ import {VisiteMine} from '../models/VisiteMine';
 import {VisiteMineDAO} from '../models/VisiteMineDAO';
 import { validateStyleParams } from '@angular/animations/browser/src/util';
 import { Bassin } from '../models/Bassin';
+import { UtilityService } from '../../utility.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class BaseService {
 
   DB_NAME = 'MINESOFT';
 
-  constructor() {
+  constructor(private utilityService: UtilityService) {
     // turn on jsstore log status - help you to debug
     // off it in production or when you dont need
     BaseService.connexion.setLogStatus(true);
@@ -98,9 +99,11 @@ export class BaseService {
 
 
   getMines(): Promise<MineDAO[]> {
+    this.utilityService.log("getMines 1");
     var minesP: Promise<MineDAO[]> = BaseService.connexion.select({
       from: 'MINE'
     });
+    this.utilityService.log("getMines 2");
     return minesP;
   }
 
@@ -196,15 +199,18 @@ export class BaseService {
 
   addMine(mine: Mine) {
     var success: boolean;
-    //console.log("add mine : " + mine);
+    this.utilityService.log("add mine : " + mine);
+    console.log("add mine : " + mine);
     BaseService.connexion.insert({
       into: "MINE",
       values: [{key: mine.nom, content: JSON.stringify(mine)}], //you can insert multiple values at a time
     }).then(rowsInserted => {
-      //console.log('rows inserted : ' + rowsInserted);
+      this.utilityService.log('rows inserted : ' + rowsInserted);
+      console.log('rows inserted : ' + rowsInserted);
       success = rowsInserted == 1;
     }).catch(function (error) {
-      //console.log("Erreur � l'insertion : " + error);
+      this.utilityService.log("Erreur � l'insertion : " + error);
+      console.log("Erreur � l'insertion : " + error);
       success = false;
     });
   }

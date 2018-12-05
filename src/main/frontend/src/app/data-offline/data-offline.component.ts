@@ -7,6 +7,7 @@ import {MineOffline} from '../shared/models/MineOffline';
 import { VisiteMineDAO } from '../shared/models/VisiteMineDAO';
 import { VisiteMine } from '../shared/models/VisiteMine';
 import { MineService } from '../shared';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-data-offline',
@@ -19,7 +20,8 @@ export class DataOfflineComponent implements OnInit {
   mines: Array<Mine> = [];
   visites: Array<VisiteMine> = [];
 
-  constructor(private baseService: BaseService, private mineService: MineService) {}
+  constructor(private baseService: BaseService, private mineService: MineService,
+    private utilityService: UtilityService) {}
 
   ngOnInit() {
     this.listMines();
@@ -27,9 +29,13 @@ export class DataOfflineComponent implements OnInit {
   }
 
   listMines() {
+    this.utilityService.log("listMines");
     this.baseService.getMines().then(data =>  {
+      this.utilityService.log(data);
       let minesDAO: Array<MineDAO> = data;
       this.mines = this.baseService.convertMines(minesDAO);
+    }).catch(error => {
+      this.utilityService.log(error);
     });
   }
 
