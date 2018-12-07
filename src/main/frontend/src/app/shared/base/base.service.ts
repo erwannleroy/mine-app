@@ -22,26 +22,26 @@ export class BaseService {
 
 
 
-  static connexion = new JsStore.Instance(new Worker(workerPath));
+ 
 
   DB_NAME = 'MINESOFT';
 
   constructor(private utilityService: UtilityService) {
     // turn on jsstore log status - help you to debug
     // off it in production or when you dont need
-    BaseService.connexion.setLogStatus(true);
-    this.initializeDB();
+    this.getConnection();
   }
 
-  //  get connection() {
-  //    return JsStoreService.idbCon;
-  //  }
+  private getConnection() : JsStore.Instance  {
+    var connexion = new JsStore.Instance(new Worker(workerPath));
+    connexion.setLogStatus(true);
+    this.initializeDB(connexion);
+    return connexion;
+  }
 
-  initializeDB() {
-    var con = BaseService.connexion;
+  initializeDB(con) {
     var database: IDataBase = this.getDatabase();
     var dbName = this.DB_NAME;
-
     //console.log(con);
     //console.log('initializeDB exist ? ', con.isDbExist(this.DB_NAME));
     con.isDbExist(this.DB_NAME).then(function (isExist) {
@@ -100,7 +100,7 @@ export class BaseService {
 
   getMines(): Promise<MineDAO[]> {
     this.utilityService.log("getMines 1");
-    var minesP: Promise<MineDAO[]> = BaseService.connexion.select({
+    var minesP: Promise<MineDAO[]> = this.getConnection().select({
       from: 'MINE'
     });
     this.utilityService.log("getMines 2");
@@ -108,7 +108,7 @@ export class BaseService {
   }
 
   getVisitesMines(): Promise<VisiteMineDAO[]> {
-    var vp: Promise<VisiteMineDAO[]> = BaseService.connexion.select({
+    var vp: Promise<VisiteMineDAO[]> = this.getConnection().select({
       from: 'VISITE_MINE'
     });
     return vp;
@@ -155,7 +155,7 @@ export class BaseService {
   }
 
   deleteMine(key: string) {
-    var nb: Promise<number> = BaseService.connexion.remove({
+    var nb: Promise<number> = this.getConnection().remove({
       from: 'MINE',
       where: {key: key}
     });
@@ -163,7 +163,7 @@ export class BaseService {
   }
 
   selectMines(name: string): Promise<MineDAO[]> {
-    var minesP: Promise<MineDAO[]> = BaseService.connexion.select({
+    var minesP: Promise<MineDAO[]> = this.getConnection().select({
       from: 'MINE',
       where: {
         nom: {like: '%' + name + '%'}
@@ -174,7 +174,7 @@ export class BaseService {
   }
 
   existsMine(key: string): Promise<number> {
-    var count: Promise<number> = BaseService.connexion.count({
+    var count: Promise<number> = this.getConnection().count({
       from: 'MINE',
       where: {
         key: key
@@ -186,7 +186,7 @@ export class BaseService {
   }
 
   existsVisiteMine(mine: Mine): Promise<number> {
-    var count: Promise<number> = BaseService.connexion.count({
+    var count: Promise<number> = this.getConnection().count({
       from: 'VISITE_MINE',
       where: {
         key: mine.nom
@@ -201,7 +201,7 @@ export class BaseService {
     var success: boolean;
     this.utilityService.log("add mine : " + mine);
     console.log("add mine : " + mine);
-    BaseService.connexion.insert({
+    this.getConnection().insert({
       into: "MINE",
       values: [{key: mine.nom, content: JSON.stringify(mine)}], //you can insert multiple values at a time
     }).then(rowsInserted => {
@@ -219,7 +219,7 @@ export class BaseService {
     //console.log("addVisiteMine", m, vm);
     var success: boolean;
     //console.log("add visite mine : " + m);
-    BaseService.connexion.insert({
+    this.getConnection().insert({
       into: "VISITE_MINE",
       values: [{key: m.nom, content: JSON.stringify(vm)}], //you can insert multiple values at a time
     }).then(rowsInserted => {
@@ -234,7 +234,7 @@ export class BaseService {
   selectVisiteMine(m: Mine): Promise<VisiteMineDAO[]> {
     //console.log("select vm ", m);
     //console.log("avant selectVisiteMine");
-    var vmP: Promise<VisiteMineDAO[]> = BaseService.connexion.select({
+    var vmP: Promise<VisiteMineDAO[]> = this.getConnection().select({
       from: 'VISITE_MINE',
       where: {
         key: m.nom
@@ -249,7 +249,7 @@ export class BaseService {
   updateMine(mine: Mine): boolean {
     var success: boolean;
     //console.log("update mine : " + mine);
-    BaseService.connexion.update({
+    this.getConnection().update({
       in: 'MINE',
       where: {
         key: mine.nom
@@ -271,7 +271,7 @@ export class BaseService {
   updateVisiteMine(mine: Mine, vm: VisiteMine): any {
     var success: boolean;
     //console.log("update visite mine : " + mine);
-    BaseService.connexion.update({
+    this.getConnection().update({
       in: 'VISITE_MINE',
       where: {
         key: mine.nom
@@ -292,7 +292,7 @@ export class BaseService {
 
   existsVisiteForBassin(mine: Mine, bassin: Bassin): any {
     console.log("Recherche de visite pour mine "+mine.nom+" et bassin "+bassin.id);
-    var count: Promise<number> = BaseService.connexion.count({
+    var count: Promise<number> = this.getConnection().count({
       from: 'VISITE_MINE',
       where: {
         key: mine.nom,
