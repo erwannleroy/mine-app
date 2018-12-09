@@ -29,7 +29,17 @@ import { ListBassinsComponent } from './list-bassins/list-bassins.component';
 import { MineBoxComponent } from './mine-box/mine-box.component';
 import { BassinBoxComponent } from './bassin-box/bassin-box.component';
 import { ListBassinsVisitesComponent } from './list-bassins-visites/list-bassins-visites.component';
+import {DexieModule,DexieConfig} from 'ngx-dexie';
 
+ 
+
+const config: DexieConfig = {
+  databaseName: 'MINESOFT-DEXIE',//your database name here
+  schema: {
+            mines: 'key,content',
+            visites: 'key,content'
+          } // any schema of your choice
+};
 
 @NgModule({
   declarations: [
@@ -60,7 +70,8 @@ import { ListBassinsVisitesComponent } from './list-bassins-visites/list-bassins
     FormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     routingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DexieModule.forRoot(config)
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent]
