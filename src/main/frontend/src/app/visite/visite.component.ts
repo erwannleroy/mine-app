@@ -45,7 +45,7 @@ export class VisiteComponent implements OnInit {
     this.visiteStarted = true;
     let vm: VisiteMine = new VisiteMine();
     vm.nomMine = this.mine.nom;
-    this.baseService.existsMine(this.mine.nom).then(data => {
+    this.baseService.getMine(this.mine.nom).then(data => {
       if (!data) {
         this.baseService.addMine(this.mine);
       }

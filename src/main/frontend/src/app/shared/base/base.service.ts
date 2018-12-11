@@ -10,6 +10,7 @@ import { validateStyleParams } from '@angular/animations/browser/src/util';
 import { Bassin } from '../models/Bassin';
 import { UtilityService } from '../../utility.service';
 import {DexieService} from 'ngx-dexie';
+import { Dexie } from 'dexie';
 
 
 @Injectable({
@@ -30,11 +31,11 @@ export class BaseService {
 
 
 
-  getMines(): Promise<MineDAO[]> {
+  getMines(): Dexie.Promise<MineDAO[]> {
     return this.dexieService.toArray("mines");
   }
 
-  getVisitesMines(): Promise<VisiteMineDAO[]> {
+  getVisitesMines(): Dexie.Promise<VisiteMineDAO[]> {
     // var vp: Promise<VisiteMineDAO[]> = this.getConnection().select({
     //   from: 'VISITE_MINE'
     // });
@@ -103,7 +104,8 @@ export class BaseService {
     return null;
   }
 
-  existsMine(key: string): Promise<number> {
+  getMine(key: string): Dexie.Promise<MineDAO> {
+    return this.dexieService.getByPrimaryKey("mines", key);
     // var count: Promise<number> = this.getConnection().count({
     //   from: 'MINE',
     //   where: {
@@ -112,7 +114,6 @@ export class BaseService {
     // });
     //console.log("existsMine");
     //console.log(count);
-    return null;
   }
 
   existsVisiteMine(mine: Mine): Promise<number> {

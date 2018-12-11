@@ -32,8 +32,8 @@ export class MineFicheComponent implements OnInit {
   initialize() {
     //console.log("initialize mine fiche");
     if (this.mine) {
-      this.baseService.existsMine(this.mine.nom).then(count => {
-        this.localStored = count == 1;
+      this.baseService.getMine(this.mine.nom).then(m => {
+        this.localStored = m != null;
         //console.log("Localement stockée ? " + this.localStored);
       });
       if (this.localStored) {

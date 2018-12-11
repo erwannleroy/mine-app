@@ -32,16 +32,17 @@ export class MineBoxComponent implements OnInit {
   initialize() {
     //console.log("initialize mine fiche");
     if (this.mine) {
-      // this.baseService.existsMine(this.mine.nom).then(count => {
-      //   this.localStored = count == 1;
-      //   //console.log("Localement stockée ? " + this.localStored);
-      // });
-      // if (this.localStored) {
-      //   this.uptodate = true;
-      //   var success: boolean = this.baseService.updateMine(this.mine);
-      //   this.uptodate = success;
-      //   //console.log("A jour ? " + this.uptodate);
-      // }
+      this.baseService.getMine(this.mine.nom).then(m => {
+        this.utilityService.log("mine trouvée "+m);
+        this.localStored = m != null;
+        //console.log("Localement stockée ? " + this.localStored);
+      });
+      if (this.localStored) {
+        this.uptodate = true;
+        var success: boolean = this.baseService.updateMine(this.mine);
+        this.uptodate = success;
+        //console.log("A jour ? " + this.uptodate);
+      }
     }
     this.updateStyle();
   }
@@ -53,17 +54,16 @@ export class MineBoxComponent implements OnInit {
         this.style = 'mine-selected';
         console.log("==============> updateStyle mine selected : " + this._mine.nom);
       } else {
-        // this.baseService.existsMine(this._mine.nom).then(data => {
-        //   if (data == 1) {
-        //     this.style = 'mine-stored';
-        //     console.log("mine stored : " + this._mine.nom);
-        //   } else {
+        this.baseService.getMine(this._mine.nom).then(data => {
+          if (data) {
+            this.style = 'mine-stored';
+            console.log("mine stored : " + this._mine.nom);
+          } else {
             this.style = 'mine';
             console.log("mine normal : " + this._mine.nom);
           }
-        
-        // );
-      
+        });
+      }
     }
   }
 
