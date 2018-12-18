@@ -46,6 +46,8 @@ export class UtilityService {
   }
 
   setSelectedVisiteMine(vm: VisiteMine): any {
+    console.log("setSelectedVisiteMine");
+    console.log(vm);
     if (this.router.url == '/gestionbassin') {
       this.vmGestion = vm;
       this.vmGestionS.next(vm);
@@ -65,8 +67,10 @@ export class UtilityService {
 
   getSelectedVisiteMine(): VisiteMine {
     if (this.router.url == '/gestionbassin') {
+      console.log("route gestionbassin");
       return this.vmGestion;
     } else if (this.router.url == '/visite') {
+      console.log("route visite");
       return this.vmVisite;
     }
   }

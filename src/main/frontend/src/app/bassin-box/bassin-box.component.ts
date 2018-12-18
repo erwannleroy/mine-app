@@ -4,6 +4,8 @@ import { BaseService } from '../shared';
 import { UtilityService } from '../utility.service';
 import { VisiteBassin } from '../shared/models/VisiteBassin';
 import { Router } from '@angular/router';
+import { VisiteMine } from '../shared/models/VisiteMine';
+import { VisiteMineDAO } from '../shared/models/VisiteMineDAO';
 
 @Component({
   selector: 'app-bassin-box',
@@ -56,20 +58,25 @@ export class BassinBoxComponent implements OnInit {
   }
 
   updateStyleForBassin() {
-    console.log("styleClass");
+    //console.log("styleClass");
     if (this._bassin) {
       if (this._bassin == this.bassinSelected) {
         this.style = 'bassin-selected';
-        console.log("==============> updateStyle vb selected : " + this._bassin.nom);
+        //console.log("==============> updateStyle vb selected : " + this._bassin.nom);
       } else {
-        this.baseService.existsVisiteForBassin(this.utilityService.getSelectedMine(), this._bassin).then(data => {
-          console.log("Nb de visite du bassin " + this._bassin.id + " : " + data);
-          if (data == 1) {
-            this.style = 'bassin-stored';
-            console.log("bassin stored : " + this._bassin.id);
-          } else {
-            this.style = 'bassin';
-            console.log("bassin normal : " + this._bassin.id);
+        this.baseService.getVisiteMine(this.utilityService.getSelectedMine().nom).then(data => {
+          //console.log("Nb de visite du bassin " + this._bassin.id + " : " + data);
+          if (data) {
+            let vm: VisiteMineDAO = data;
+            console.log("bassin already visited", vm.content, this._bassin.id.toString());
+            if (vm.content.includes(this._bassin.id.toString())) {
+              this.style = 'bassin-stored';
+              console.log("bassin stored : " + this._bassin.id);
+            }
+            else {
+              this.style = 'bassin';
+              console.log("bassin normal : " + this._bassin.id);
+            }
           }
         });
       }

@@ -28,3 +28,24 @@ label, select, input {
 .form {
     display: inline-block;
 }
+
+/* Floating column for labels: 25% width */
+.col-25 {
+    float: left;
+    width: 50%;
+    margin-top: 2px;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 50%;
+    margin-top: 2px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

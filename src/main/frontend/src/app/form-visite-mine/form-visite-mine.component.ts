@@ -21,7 +21,8 @@ export class FormVisiteMineComponent implements OnInit {
   _pluviometrie: number;
   _contexte: string;
 
-  constructor(private baseService: BaseService, private utilityService: UtilityService) { }
+  constructor(private baseService: BaseService, private utilityService: UtilityService) { 
+  }
 
   ngOnInit() {
   }
@@ -99,14 +100,14 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   model2gui() {
-    //console.log("avant model2gui");
-    this.baseService.selectVisiteMine(this.mine).then(data => {
-      let vmDAO: Array<VisiteMineDAO> = data;
-      let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-      //console.log("résultat de la requete", data);
-
-      if (visiteMines.length == 1) {
-        let vm: VisiteMine = visiteMines[0];
+    console.log("avant model2gui");
+    this.baseService.getVisiteMine(this.mine.nom).then(data => {
+     console.log("get VM", data);
+      if (data) {
+        let vmDAO: VisiteMineDAO = data;
+        console.log("model2gui avant convert", vmDAO);
+        let vm:VisiteMine = this.baseService.convertVisiteMine(vmDAO);
+        console.log("model2gui apres convert", vm);
         this._meteo = vm.meteo;
         this._date = vm.dateVisite;
         this._operateur = vm.operateur;
@@ -125,9 +126,10 @@ export class FormVisiteMineComponent implements OnInit {
   }
 
   gui2model() {
-    //console.log("avant gui2model");
+    console.log("avant gui2model");
     if (this.mine) {
       let vm = this.utilityService.getSelectedVisiteMine();
+      console.log(vm);
       vm.meteo = this._meteo;
       vm.dateVisite = this._date;
       vm.operateur = this._operateur;

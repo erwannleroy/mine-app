@@ -30,6 +30,7 @@ import { MineBoxComponent } from './mine-box/mine-box.component';
 import { BassinBoxComponent } from './bassin-box/bassin-box.component';
 import { ListBassinsVisitesComponent } from './list-bassins-visites/list-bassins-visites.component';
 import {DexieModule,DexieConfig} from 'ngx-dexie';
+import { DesktopComponent } from './desktop/desktop.component';
 
  
 
@@ -62,7 +63,8 @@ const config: DexieConfig = {
     ListBassinsComponent,
     ListBassinsVisitesComponent,
     MineBoxComponent,
-    BassinBoxComponent
+    BassinBoxComponent,
+    DesktopComponent
   ],
   imports: [
     BrowserModule,

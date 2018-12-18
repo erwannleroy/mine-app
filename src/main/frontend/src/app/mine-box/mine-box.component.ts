@@ -19,7 +19,7 @@ export class MineBoxComponent implements OnInit {
 
   constructor(private baseService: BaseService, private utilityService: UtilityService) {
     this.utilityService.observeSelectedMine().subscribe(data => {
-      console.log("Mine box : " + data.nom);
+      //console.log("Mine box : " + data.nom);
       this.mineSelected = data;
       this.updateStyle();
     });
@@ -48,7 +48,7 @@ export class MineBoxComponent implements OnInit {
   }
 
   updateStyle() {
-    console.log("styleClass");
+    // console.log("styleClass");
     if (this._mine) {
       if (this._mine == this.mineSelected) {
         this.style = 'mine-selected';

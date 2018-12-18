@@ -32,7 +32,7 @@ export class VisiteComponent implements OnInit {
     if (this.mine) {
       this.visiteStarted = false;
       this.visiteExist = false
-      this.baseService.existsVisiteMine(this.mine).then(data => {
+      this.baseService.getVisiteMine(this.mine.nom).then(data => {
         if (data) {
           this.visiteExist = true;
         }
@@ -56,15 +56,14 @@ export class VisiteComponent implements OnInit {
 
   continueVisite() {
     this.visiteStarted = true;
-    this.baseService.selectVisiteMine(this.mine).then(data => {
-      let vmDAO: Array<VisiteMineDAO> = data;
-      let visiteMines = this.baseService.convertVisitesMines(vmDAO);
-      if (visiteMines.length == 1) {
-        let vm = visiteMines[0];
+    this.baseService.getVisiteMine(this.mine.nom).then(data => {
+      if (data) {
+        let vmDAO: VisiteMineDAO = data;
+        let vm = this.baseService.convertVisiteMine(vmDAO);
         this.utilityService.setSelectedVisiteMine(vm);
       }
     });
-    
+
   }
 
 

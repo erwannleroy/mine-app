@@ -1,15 +1,15 @@
-import {Injectable} from '@angular/core';
-import {JsStoreService} from '../jsstore/jsstore.service';
-import {Mine} from '../models/Mine';
-import {MineDAO} from '../models/MineDAO';
+import { Injectable } from '@angular/core';
+import { JsStoreService } from '../jsstore/jsstore.service';
+import { Mine } from '../models/Mine';
+import { MineDAO } from '../models/MineDAO';
 
 import * as workerPath from 'file-loader?name=scripts/[name].[hash].js!jsstore/dist/jsstore.worker.js';
-import {VisiteMine} from '../models/VisiteMine';
-import {VisiteMineDAO} from '../models/VisiteMineDAO';
+import { VisiteMine } from '../models/VisiteMine';
+import { VisiteMineDAO } from '../models/VisiteMineDAO';
 import { validateStyleParams } from '@angular/animations/browser/src/util';
 import { Bassin } from '../models/Bassin';
 import { UtilityService } from '../../utility.service';
-import {DexieService} from 'ngx-dexie';
+import { DexieService } from 'ngx-dexie';
 import { Dexie } from 'dexie';
 
 
@@ -27,7 +27,7 @@ export class BaseService {
     // this.getConnection();
   }
 
-  
+
 
 
 
@@ -83,6 +83,16 @@ export class BaseService {
     return vms;
   }
 
+  convertVisiteMine(vmDAO: VisiteMineDAO): VisiteMine {
+    console.log("convertVisiteMine");
+    console.log(vmDAO);
+    var vm: VisiteMine;
+
+    var vmDTO = <VisiteMine>JSON.parse(vmDAO.content);
+    console.log("apres convert", vmDTO);
+    return vmDTO;
+  }
+
   deleteMine(key: string) {
     // var nb: Promise<number> = this.getConnection().remove({
     //   from: 'MINE',
@@ -92,7 +102,7 @@ export class BaseService {
   }
 
   selectMines(name: string): Promise<MineDAO[]> {
-  
+
     // var minesP: Promise<MineDAO[]> = this.getConnection().select({
     //   from: 'MINE',
     //   where: {
@@ -106,72 +116,45 @@ export class BaseService {
 
   getMine(key: string): Dexie.Promise<MineDAO> {
     return this.dexieService.getByPrimaryKey("mines", key);
-    // var count: Promise<number> = this.getConnection().count({
-    //   from: 'MINE',
-    //   where: {
-    //     key: key
-    //   }
-    // });
-    //console.log("existsMine");
-    //console.log(count);
   }
 
-  existsVisiteMine(mine: Mine): Promise<number> {
-    // var count: Promise<number> = this.getConnection().count({
-    //   from: 'VISITE_MINE',
-    //   where: {
-    //     key: mine.nom
-    //   }
-    // });
-    // console.log("existsVisiteMine");
-    //console.log(count);
-    return null;
+  getVisiteMine(key: string): Dexie.Promise<VisiteMineDAO> {
+    return this.dexieService.getByPrimaryKey("visites", key);
   }
+
+
 
   addMine(mine: Mine) {
     var success: boolean;
     this.utilityService.log("add mine : " + mine);
     console.log("add mine : " + mine);
-    this.dexieService.addOne("mines",{key: mine.nom, content: JSON.stringify(mine)})
-    .then(rowsInserted => {
-      this.utilityService.log('rows inserted : ' + rowsInserted);
-      console.log('rows inserted : ' + rowsInserted);
-      success = rowsInserted == 1;
-    }).catch(function (error) {
-      this.utilityService.log("Erreur � l'insertion : " + error);
-      console.log("Erreur � l'insertion : " + error);
-      success = false;
-    });
+    this.dexieService.addOne("mines", { key: mine.nom, content: JSON.stringify(mine) })
+      .then(rowsInserted => {
+        this.utilityService.log('rows inserted : ' + rowsInserted);
+        console.log('rows inserted : ' + rowsInserted);
+        success = rowsInserted == 1;
+      }).catch(function (error) {
+        this.utilityService.log("Erreur � l'insertion : " + error);
+        console.log("Erreur � l'insertion : " + error);
+        success = false;
+      });
   }
 
   addVisiteMine(m: Mine, vm: VisiteMine) {
     //console.log("addVisiteMine", m, vm);
     var success: boolean;
     //console.log("add visite mine : " + m);
-    this.dexieService.addOne("visites",{key: m.nom, content: JSON.stringify(vm)})
-    .then(rowsInserted => {
-      //console.log('rows inserted : ' + rowsInserted);
-      success = rowsInserted == 1;
-    }).catch(function (error) {
-      //console.log("Erreur � l'insertion : " + error);
-      success = false;
-    });
+    this.dexieService.addOne("visites", { key: m.nom, content: JSON.stringify(vm) })
+      .then(rowsInserted => {
+        //console.log('rows inserted : ' + rowsInserted);
+        success = rowsInserted == 1;
+      }).catch(function (error) {
+        //console.log("Erreur � l'insertion : " + error);
+        success = false;
+      });
   }
 
-  selectVisiteMine(m: Mine): Promise<VisiteMineDAO[]> {
-    //console.log("select vm ", m);
-    //console.log("avant selectVisiteMine");
-    // var vmP: Promise<VisiteMineDAO[]> = this.getConnection().select({
-    //   from: 'VISITE_MINE',
-    //   where: {
-    //     key: m.nom
-    //   }
-    // });
-    //console.log("apres selectVisiteMine");
-    //console.log(vmP);
-    return null;
-    //return this.convertVisitesMines(minesP);
-  }
+
 
   updateMine(mine: Mine): boolean {
     var success: boolean;
@@ -197,28 +180,14 @@ export class BaseService {
 
   updateVisiteMine(mine: Mine, vm: VisiteMine): any {
     var success: boolean;
-    //console.log("update visite mine : " + mine);
-    // this.getConnection().update({
-    //   in: 'VISITE_MINE',
-    //   where: {
-    //     key: mine.nom
-    //   },
-    //   set: {
-    //     content: JSON.stringify(vm)
-    //   }
-    // }).then(rowsUpdated => {
-    //   //console.log('rows updated : ' + rowsUpdated);
-    //   success = rowsUpdated == 1;
-    // }).catch(function (error) {
-    //   //console.log("Erreur a l'insertion : " + error);
-    //   success = false;
-    // });
+
+    this.dexieService.update("visites", mine.nom, {content: JSON.stringify(vm)});
 
     return success;
   }
 
   existsVisiteForBassin(mine: Mine, bassin: Bassin): any {
-    console.log("Recherche de visite pour mine "+mine.nom+" et bassin "+bassin.id);
+    console.log("Recherche de visite pour mine " + mine.nom + " et bassin " + bassin.id);
     // var count: Promise<number> = this.getConnection().count({
     //   from: 'VISITE_MINE',
     //   where: {
