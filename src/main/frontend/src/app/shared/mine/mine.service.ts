@@ -78,8 +78,8 @@ export class MineService {
     if (this.network.online) {
 
       ////console.log(name);
-      // this.http.get<Mine[]>('/services/mines-by-name', {params: myParams}).subscribe(data => {
-      return this.http.post('http://localhost:8080/services/mine/' + vm.nomMine + '/upload-visite', vm);
+      return this.http.post('/services/mine/' + vm.nomMine + '/upload-visite', vm);
+      // return this.http.post('http://localhost:8080/services/mine/' + vm.nomMine + '/upload-visite', vm);
     } else {
       window.alert("Vous n'êtes pas connecté !");
       return null;
