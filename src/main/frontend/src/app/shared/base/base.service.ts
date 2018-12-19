@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { JsStoreService } from '../jsstore/jsstore.service';
+//import { JsStoreService } from '../jsstore/jsstore.service';
 import { Mine } from '../models/Mine';
 import { MineDAO } from '../models/MineDAO';
 
-import * as workerPath from 'file-loader?name=scripts/[name].[hash].js!jsstore/dist/jsstore.worker.js';
+//import * as workerPath from 'file-loader?name=scripts/[name].[hash].js!jsstore/dist/jsstore.worker.js';
 import { VisiteMine } from '../models/VisiteMine';
 import { VisiteMineDAO } from '../models/VisiteMineDAO';
 import { validateStyleParams } from '@angular/animations/browser/src/util';
@@ -17,6 +17,10 @@ import { Dexie } from 'dexie';
   providedIn: 'root'
 })
 export class BaseService {
+  
+  deleteVisiteMine(vm: VisiteMine): any {
+    this.dexieService.deleteOne("visites", vm.nomMine);
+  }
 
   DB_NAME = 'MINESOFT-DEXIE';
 

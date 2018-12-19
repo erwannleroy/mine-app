@@ -39,6 +39,11 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>5.5.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>0.7.4</version>
@@ -326,6 +331,7 @@
 							</filesets>
 						</configuration>
 					</plugin>
+
 					<plugin>
 						<groupId>org.springframework.boot</groupId>
 						<artifactId>spring-boot-maven-plugin</artifactId>

@@ -2,6 +2,7 @@ package com.wann.minesoft.dao;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,11 +34,11 @@ public class Mine {
     @Column(name="gps") 
     private String gps;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="fk_mine")
     private List<Bassin> bassins;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="fk_mine")
     @OrderBy("dateVisite DESC")
     private List<VisiteMine> visitesMines;

@@ -58,6 +58,10 @@ export class DataOfflineComponent implements OnInit {
   }
 
   uploadVisite(vm: VisiteMine) {
-    this.mineService.addVisite(vm);
+    this.mineService.uploadVisite(vm).subscribe( data => {
+      console.log("uploadVisite", data)
+      this.baseService.deleteVisiteMine(vm);
+      window.location.reload();
+    });
   }
 }

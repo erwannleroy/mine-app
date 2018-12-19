@@ -1,8 +1,10 @@
 package com.wann.minesoft.dao;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -21,7 +23,7 @@ import lombok.Getter;
 @Entity
 @Table(name = "bassin")
 @Data
-@EqualsAndHashCode(exclude="visiteBassins")
+@EqualsAndHashCode(exclude="visitesBassins")
 public class Bassin {
 
 	@Id
@@ -40,8 +42,8 @@ public class Bassin {
 	@Column(name = "gps")
 	private String gps;
 
-	@OneToMany(mappedBy = "bassin")
-	private Set<VisiteBassin> visiteBassins;
+	@OneToMany(mappedBy = "bassin", cascade=CascadeType.ALL)
+	private Collection<VisiteBassin> visitesBassins;
 
 	public Bassin() {
 	}

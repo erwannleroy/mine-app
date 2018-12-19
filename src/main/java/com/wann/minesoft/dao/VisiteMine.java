@@ -1,9 +1,11 @@
 package com.wann.minesoft.dao;
 
 import java.util.Calendar;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,11 +19,13 @@ import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Entity
 @Table(name = "visite_mine")
 @Data
-@EqualsAndHashCode(exclude = "visiteBassins")
+@EqualsAndHashCode(exclude = { "visitesBassins", "mine" })
+@ToString(exclude = { "visitesBassins", "mine" })
 public class VisiteMine {
 
 	@Id
@@ -44,9 +48,9 @@ public class VisiteMine {
 	@Column(name = "pluviometrie")
 	private Double pluviometrie;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "fk_visite_mine")
-	private Set<VisiteBassin> visitesBassins;
+	private Collection<VisiteBassin> visitesBassins;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_mine")

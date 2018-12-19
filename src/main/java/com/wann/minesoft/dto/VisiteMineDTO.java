@@ -1,6 +1,8 @@
 package com.wann.minesoft.dto;
 
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +31,7 @@ public class VisiteMineDTO {
     private String contexte;
     private String meteo;
     private Double pluviometrie;
-    private Set<VisiteBassinDTO> visitesBassins;
+    private Collection<VisiteBassinDTO> visitesBassins;
     
 
 
