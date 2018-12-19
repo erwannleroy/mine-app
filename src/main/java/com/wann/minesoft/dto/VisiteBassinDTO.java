@@ -15,11 +15,11 @@ import lombok.Data;
 public class VisiteBassinDTO {
 
 	private Long id;
-	private String enEau;
+	private Boolean enEau;
 	private String couleurEauBassin;
-	private String ecoulementEntree;
+	private Boolean ecoulementEntree;
 	private String couleurEauEntree;
-	private String ecoulementSortie;
+	private Boolean ecoulementSortie;
 	private String couleurEauSortie;
 	private String etatParois;
 	private Boolean presenceRenard;

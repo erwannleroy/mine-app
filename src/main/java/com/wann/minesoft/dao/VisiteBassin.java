@@ -29,19 +29,19 @@ public class VisiteBassin {
 	private Long id;
 
 	@Column(name = "en_eau")
-	private String enEau;
+	private Boolean enEau;
 
 	@Column(name = "couleur_eau_bassin")
 	private String couleurEauBassin;
 
 	@Column(name = "ecoulement_entree")
-	private String ecoulementEntree;
+	private Boolean ecoulementEntree;
 
 	@Column(name = "couleur_eau_entree")
 	private String couleurEauEntree;
 
 	@Column(name = "ecoulement_sortie")
-	private String ecoulementSortie;
+	private Boolean ecoulementSortie;
 
 	@Column(name = "couleur_eau_sortie")
 	private String couleurEauSortie;

@@ -2,7 +2,6 @@
 DROP TABLE IF EXISTS visite_bassin;
 DROP TABLE IF EXISTS visite_mine;
 DROP TABLE IF EXISTS bassin;
-
 DROP TABLE IF EXISTS mine;
 
 
@@ -40,7 +39,7 @@ CREATE TABLE visite_mine (
 
 CREATE TABLE visite_bassin(
    id SERIAL,
-   en_eau VARCHAR(10),
+   en_eau BOOLEAN,
    couleur_eau_bassin VARCHAR(10),
    ecoulement_entree BOOLEAN,
    couleur_eau_entree VARCHAR(10),
