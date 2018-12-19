@@ -43,7 +43,7 @@ public class Bassin {
 	private String gps;
 
 	@OneToMany(mappedBy = "bassin", cascade=CascadeType.ALL)
-	private Collection<VisiteBassin> visitesBassins;
+	private Set<VisiteBassin> visitesBassins;
 
 	public Bassin() {
 	}

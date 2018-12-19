@@ -177,278 +177,278 @@ INSERT INTO minesoft.visite_mine (date_visite, fk_mine, operateur, contexte, met
 
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_1');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_1');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_2');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_2');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_3');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_3');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_4');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_4');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_5');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_5');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_6');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_6');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_7');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_7');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 6, 'K_B_8');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 6, 'K_B_8');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_9');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_9');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 6, 'K_B_10');
+VALUES(false, 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 6, 'K_B_10');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('OUI', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 6, 'K_B_11');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 6, 'K_B_11');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_12');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_12');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_13');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_13');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_14');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_14');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_15');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 6, 'K_B_15');
 
 
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_1');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_1');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_2');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_2');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_3');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_3');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_4');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_4');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_5');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_5');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_6');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_6');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_7');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_7');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 5, 'T_B_8');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 5, 'T_B_8');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_9');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_9');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 5, 'T_B_10');
+VALUES(false, 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 5, 'T_B_10');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('OUI', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 5, 'T_B_11');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 5, 'T_B_11');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_12');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_12');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_13');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_13');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_14');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_14');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_15');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 5, 'T_B_15');
 
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_1');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_1');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_2');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_2');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_3');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_3');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_4');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_4');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_5');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_5');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_6');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_6');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_7');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_7');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 7, 'T_B_8');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 7, 'T_B_8');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_9');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_9');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 7, 'T_B_10');
+VALUES(false, 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 7, 'T_B_10');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('OUI', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 7, 'T_B_11');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 7, 'T_B_11');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_12');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_12');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_13');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_13');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_14');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_14');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_15');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 7, 'T_B_15');
 
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_1');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_1');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_2');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_2');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_3');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_3');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_4');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_4');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_5');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_5');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_6');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_6');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_7');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_7');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 8, 'T_B_8');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 8, 'T_B_8');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_9');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_9');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 8, 'T_B_10');
+VALUES(false, 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 8, 'T_B_10');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('OUI', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 8, 'T_B_11');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 8, 'T_B_11');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_12');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_12');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_13');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_13');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_14');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_14');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_15');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 8, 'T_B_15');
 
 
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_1');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_1');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_2');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_2');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_3');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_3');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_4');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_4');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_5');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_5');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_6');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_6');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_7');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_7');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 4, 'C_B_8');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 4, 'C_B_8');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_9');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_9');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 4, 'C_B_10');
+VALUES(false, 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 4, 'C_B_10');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('OUI', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 4, 'C_B_11');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 4, 'C_B_11');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_12');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_12');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_13');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_13');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_14');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_14');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_15');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 4, 'C_B_15');
 
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_1');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_1');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_2');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_2');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_3');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_3');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_4');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_4');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_5');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_5');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_6');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_6');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_7');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_7');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 3, 'V_B_8');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EBOULEMENT', false, 'VISITE', 3, 'V_B_8');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_9');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_9');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 3, 'V_B_10');
+VALUES(false, 'CHARGEE', false, 'CLAIRE', false, 'CHARGEE', 'RAS', false, 'VISITE', 3, 'V_B_10');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('OUI', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 3, 'V_B_11');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'EROSION', false, 'VISITE', 3, 'V_B_11');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_12');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_12');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_13');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_13');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_14');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_14');
 INSERT INTO minesoft.visite_bassin
 (en_eau, couleur_eau_bassin, ecoulement_entree, couleur_eau_entree, ecoulement_sortie, couleur_eau_sortie, etat_parois, presence_renard, type_intervention, fk_visite_mine, fk_bassin)
-VALUES('NON', 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_15');
+VALUES(false, 'CHARGEE', false, 'ROUGE', false, 'CLAIRE', 'RAS', false, 'VISITE', 3, 'V_B_15');

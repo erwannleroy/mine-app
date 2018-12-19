@@ -50,7 +50,7 @@ public class VisiteMine {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "fk_visite_mine")
-	private Collection<VisiteBassin> visitesBassins;
+	private Set<VisiteBassin> visitesBassins;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_mine")

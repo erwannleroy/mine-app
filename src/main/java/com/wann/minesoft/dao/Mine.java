@@ -1,6 +1,7 @@
 package com.wann.minesoft.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,7 +37,7 @@ public class Mine {
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="fk_mine")
-    private List<Bassin> bassins;
+    private Set<Bassin> bassins;
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="fk_mine")

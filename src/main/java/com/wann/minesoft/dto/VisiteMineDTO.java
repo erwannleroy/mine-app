@@ -31,7 +31,7 @@ public class VisiteMineDTO {
     private String contexte;
     private String meteo;
     private Double pluviometrie;
-    private Collection<VisiteBassinDTO> visitesBassins;
+    private Set<VisiteBassinDTO> visitesBassins;
     
 
 
