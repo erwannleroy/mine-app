@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
 //    //console.log (this.router.url);
 //    //console.log("route actuelle : " + this.router.url +" , destination :"+destination);
     if (this.router.url != "/"+destination) {
-      this.router.navigate([destination]);
+      this.router.navigate([destination], { skipLocationChange: true });
     }
   }
 
