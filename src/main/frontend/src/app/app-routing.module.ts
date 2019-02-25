@@ -10,8 +10,8 @@ import {ModuleWithProviders} from "@angular/core";
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: "login", component: LoginComponent},
+  //{path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: "", component: LoginComponent},
   {path: "gestionbassin", component: GestionBassinComponent},
   {path: "visite", component: VisiteComponent},
   {path: "dataoffline", component: DataOfflineComponent}

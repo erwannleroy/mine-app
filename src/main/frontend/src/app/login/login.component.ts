@@ -1,5 +1,6 @@
 import { fadeAnimation } from '../shared/animation';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
+  entrer(destination) {
+    this.router.navigate(["/gestionbassin"], { skipLocationChange: true });
+  }
 }
