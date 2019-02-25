@@ -21,4 +21,24 @@
       ]
     }
   }]
+  ,
+  "routing":{
+    "routes":{
+      "/": {
+        "match": true
+      },
+      "/login":{
+        "match": "prefix"
+      },
+      "/gestionbassin":{
+        "match": "prefix"
+      },
+      "/visite":{
+        "match": "prefix"
+      },
+      "/dataoffline":{
+        "match": "prefix"
+      }
+    }
+  }
 }

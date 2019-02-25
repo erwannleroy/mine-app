@@ -5,6 +5,7 @@ import {Bassin} from './shared/models/Bassin';
 import {Component} from '@angular/core';
 import {Network} from '@ngx-pwa/offline';
 import { UtilityService } from './utility.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
